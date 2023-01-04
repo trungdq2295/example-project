@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://14.225.255.99:3306/example_db
+    username: trungnguyen
+    password: trungnguyen
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  redis:
+    port: 6379
+    host: 14.225.255.99
+    password: trungnguyen
+    database: 0
