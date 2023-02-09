@@ -1,0 +1,6 @@
+What is socket programing java?
+Socket programming is a way of connecting two nodes on a network to communicate with each other. One socket (node) listens on a particular port at an 
+IP, while other socket reaches out to the other in order to form a connection.
+
+When to use Socket program in java? 
+Socket programming in Java is used for communication between the applications that are running on different JRE. It can be either connection-oriented or connectionless. On the whole, a socket is a way to establish a connection between a client and a server.
