@@ -1,0 +1,22 @@
+AOP (Aspect Oriented Programming) là 1 kỹ thuật lập trình bổ sung cho lập trình hướng đối tượng (OOP), nó tạo ra 1 cách suy nghĩ khác của lập trình cấu trúc. Đối tượng của OOP là class, còn đối tượng của AOP là aspect.
+
+Pointcut 
+A Pointcut is a predicate that helps match an Advice to be applied by an Aspect at a particular JoinPoint.
+We often associate the Advice with a Pointcut expression, and it runs at any Joinpoint matched by the Pointcut.
+tldr: tell spring where to apply aspect
+
+Advice
+What we gonnna do at pointcut
+
+Join Point
+Khi code chạy và điều kiện pointcut đạt được. advice được chạy. Join Point là 1 instance của advice (cái này mình chưa dùng nhiều).
+
+@Before, @After, @AfterReturning, @AfterThrowing
+Đây là định nghĩa khi nào code của advice được chạy
+	@Before : chạy trược method
+	@After: Chạy trong 2 trường hợp method chạy thành công hay có exception
+	@AfterReturning: Chạy khi method chạy thành công
+	@AfterThrowing: Chạy khi method có exception
+	
+
+@Around

@@ -1,0 +1,14 @@
+TCP - Transmission Control Protocol (TCP) và Internet Protocol (IP). TCP cung cấp cho các ứng dụng cách để chuyển (và nhận) một luồng gói thông tin đã được đặt hàng và kiểm tra lỗi qua mạng.
+
+Giao thức TCP có độ tin cậy cao, các gói tin được gửi bằng TCP sẽ được theo dõi do vậy dữ liệu sẽ không bị mất hoặc hỏng trong quá trình vận chuyển. Đó là lý do tại sao file tải xuống không bị hỏng ngay cả khi mạng có vấn đề. Tất nhiên, nếu bên nhận hoàn toàn ngoại tuyến, máy tính của bạn sẽ từ bỏ và bạn sẽ thấy một thông báo lỗi ghi nó không thể giao tiếp với máy chủ lưu trữ từ xa.
+
+
+
+Giao thức User Datagram Protocol (UDP) được các ứng dụng sử dụng để vận chuyển một luồng dữ liệu nhanh hơn bằng cách bỏ qua kiểm tra lỗi. Khi cấu hình phần cứng hoặc phần mềm mạng bạn sẽ thấy sự khác biệt.
+UDP được sử dụng khi tốc độ nhanh và không cần thiết sửa lỗi. Ví dụ, UDP thường được sử dụng cho các chương trình phát sóng trực tiếp và game online.
+
+TCP
+Tốt nhất cho web, truyền file, email và Secure Shell (SSH)
+
+UDP
+Tốt nhất cho VPN, phát video trực tuyến, VoIP, phát sóng trực tiếp và chơi game trực tuyến.

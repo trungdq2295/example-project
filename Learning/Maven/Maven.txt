@@ -25,3 +25,6 @@ f the parent POM is not located in the parent folder, we need to use the relativ
     <version>1.0.0-SNAPSHOT</version>
     <relativePath>../module1/pom.xml</relativePath>
 </parent>
+
+
+Version dependecy will be auto imported by the parent version

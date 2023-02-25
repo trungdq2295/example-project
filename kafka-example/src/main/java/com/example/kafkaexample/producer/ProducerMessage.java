@@ -25,7 +25,6 @@ public class ProducerMessage {
     private static final String TRANSACTION_TOPIC_1 = "quickstart";
     private static final String TRANSACTION_TOPIC_2 = "transaction-topic-2";
 
-    @Transactional
     public void run() {
         try {
             sendMessage(KAFKA_TOPIC);

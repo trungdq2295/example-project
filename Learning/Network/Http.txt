@@ -1,0 +1,22 @@
+Http use TCP to transfer
+
+Http2 bring new features multiplexed streams, server push, header compression and binary format 
+
+Multiplexed streams is 
+to make assets into smaller parts and passing them all via one connection, and then reassembling the resources after they've reached the final destination, the browser.
+
+Server push 
+Server push represents a more efficient way to deliver assets to a browser. In an HTTP/1 environment, the HTML page is sent to the browser, the browser has to parse it and decide what assets it might need, then request those assets from the server.
+
+HTTP/2 is more proactive in this regard, sending assets that the browser is likely to need without it having to ask. These assets go to the browser's cache, and are available immediately if and when they're needed, which is a plus for performance.
+
+Prioritization
+Http2 allow browser to download priority resource to show on website.
+Ví dụ: thẻ <script> trong <head> của trang sẽ được tải trong Chrome ở mức độ ưu tiên High (thấp hơn CSS - Highest), nhưng mức độ ưu tiên đó sẽ thay đổi thành Low nếu nó có thuộc tính async (có nghĩa là nó có thể được tải và chạy không đồng bộ).
+
+Http 2 Binary
+Binary Protocol (giao thức nhị phân) sẽ hiệu quả hơn để phân tích (parse), gọn nhẹ hơn để giao tiếp và quan trọng nhất là chúng sẽ ít bị lỗi hơn so với dạng text (văn bản). Đơn giản là bởi vì dữ liệu nhị phân không cần xử lý những trường hợp như khoảng trắng, in hoa, xuống dòng, dòng trống, emoji,…
+
+Header compression
+Header will be packed and then reuse for next header
+unlike http1, everytime client sent request, it will generate header >> waste resource

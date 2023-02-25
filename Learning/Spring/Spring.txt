@@ -1,0 +1,8 @@
+Record will response base on the name of variable
+For example
+record CustomeResponse(String trungnguyen){}; and trungnguyen value is abc
+Result will be: 
+{
+	"trungnguyen":"abc";
+
+}
