@@ -1,0 +1,7 @@
+Bộ nhớ stack là một phần của bộ nhớ chứa mehtod, local variable và variable tham chiếu.Bộ nhớ stack luôn được tham chiếu theo last in first out. Local variable thi được tạo trong stack.
+Bộ nhớ Heap là phần bộ nhớ chưa các Object cũng có thể chưa biến tham chiếu, instance variable được tạo ở đây.
+
+
+Stack là được sử dụng để lưu trữ các biến local , parameter của phương thức. Heap sẽ lưu trữ các biến global và static.
+
+Garbage Collector là Java dùng để xóa bộ nhớ không được tham chiếu đến nữa để tránh trường hợp tràn ram

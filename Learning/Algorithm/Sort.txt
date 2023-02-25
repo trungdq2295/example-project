@@ -1,0 +1,36 @@
+Bubble Sort
+Chạy 2 vòng lặp
+
+Bubble Sort (Sắp xếp nổi bọt) là một thuật toán sắp xếp đơn giản, với thao tác cơ bản là so sánh hai phần tử kề nhau, nếu chúng chưa đứng đúng thứ tự thì đổi chỗ (swap).
+Ưu : Thuật toán đơn giản:
+Nhược: chậm vì chạy vòng lặp  O(n2)O(n2)
+
+Selection Sort
+Là chia ra làm 2 mảng, 1 mảng được sắp xếp và mảng chưa sắp xếp. Ban đầu mảng được sắp xếp là rỗng và mảng chưa sắp xếp chứa toàn bộ data trong array.
+Selection sort đầu tiên tạo ra 1 biến indexMin ở giá trị đầu tiên và đem so sánh với tất cả phần tử còn lại để đem giá trị lớn nhất ( hoặc nhỏ nhất) lên đầu tiên. Tương tự với vòng lặp thứ 2 sẽ tìm số lớn(nhỏ) thứ 2 hai về phía bên trái ..
+Ưu : Thuật toán đơn giản:
+Nhược: chậm vì chạy vòng lặp   O(n2)O(n2)
+
+Insert sort
+Ý tưởng chính của thuật toán là ta sẽ sắp xếp lần lượt từng đoạn gồm 1 phần tử đầu tiên, 2 phần tử đầu tiên, …, N phần tử.
+Ví dụ là [6,4,1,5,7]
+Thì sẽ chạy bắt đầu tại vị trí thứ 2 (index = 1) và so sanh từ nó sang bên trái và sắp xếp nó lại.
+Chạy 1 vòng lặp while bên để kiểm tra nếu có số nhỏ hơn thì tiếp tục dịch chuyện về phía bên trái(phải)
+
+Ưu: Nếu danh sách đã gần đúng thứ tự, Insertion Sort sẽ chạy rất nhanh. Ví dụ bạn cần sắp xếp Highscore trong game.
+Nhược: Độ phức tạp O(N2), không đủ nhanh với dữ liệu lớn.
+
+Merge Sort
+Ý tưởng là chia nhỏ để trị, là từ 1 mảng lớn chia thành mảng nhỏ nhất có thể, rồi từ những mảng nhỏ nhất đó mình ghép lại từ từ để so sanh và sắp xếp lại
+Ưu điểm: Hiệu suất của merge sort rất cao
+Nhược điểm: Code thuật toán này khá phức tạp
+
+Quicksort
+Ý tưởng là tạo ra 1 pivot point từ mảng rồi từ point đó tạo ra 2 mãng, 1 mảng nhỏ hơn hoặc bằng point và 1 mảng lớn hơn point.  Và lặp đi lặp lại như vậy cho đến khi kết thúc.
+Ưu điểm: Tuỳ cách chọn pivot mà tốc độ của thuật toán nhanh hay chậm
+Nhược điểm: Code khá phức tạp
+
+
+Shell Sort là một giải thuật sắp xếp mang lại hiệu quả cao dựa trên giải thuật sắp xếp chèn (Insertion Sort). Giải thuật này tránh các trường hợp phải tráo đổi vị trí của hai phần tử xa nhau trong giải thuật sắp xếp chọn (nếu như phần tử nhỏ hơn ở vị trí bên phải khá xa so với phần tử lớn hơn bên trái).
+Ưu: Nhanh hơn insert sort
+Nhược: Độ phức tạp O(N2)

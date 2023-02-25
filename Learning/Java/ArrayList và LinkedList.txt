@@ -16,3 +16,7 @@ LinkedList yêu cầu nhiều bộ nhớ hơn so với ArrayList. Bởi vì Link
 Khi nào sử dụng
 ArrayList tốt hơn trong việc lưu trữ và truy xuất dữ liệu (get).
 LinkedList tốt hơn trong việc thao tác dữ liệu (thêm/ xóa).
+
+
+Array
+Performance and speed are important factors for deciding which method to use. About that, Arrays perform better than ArrayLists. But why? Arrays have fixed sizes as we remember. Besides, ArrayList resizes itself and this operation slows its performance. Furthermore, ArrayLists can hold only Objects, and they usually store more place than Arrays. Even though Arrays are faster than ArrayLists, fast execution consumes more memory than ArrayList. Of course, these numbers rarely affect seconds but faster is always better.
