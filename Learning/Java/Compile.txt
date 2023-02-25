@@ -1,0 +1,12 @@
+Đầu tiên, khi viết mã, hệ thống sẽ tạo ra 1 file java. Sau đó java sẽ compile thành các bytecode và JVM sẽ thông dịch bytecode này thành binary code (machine code) ( phù hợp với OS) 
+Ưu điểm: chạy đa nền tảng nếu như JVM có hỗ trợ
+Nhược điểm: Chậm hơn các ngôn ngữ biên dịch khác
+
+Just In time Compiler:
+
+JIT stands for Just-In-Time and it is used for improving the performance during run time. It does the task of compiling parts of byte code having similar functionality at the same time thereby reducing the amount of compilation time for the code to run.
+The compiler is nothing but a translator of source code to machine-executable code. But what is special about the JIT compiler? Let us see how it works:
+First, the Java source code (.java) conversion to byte code (.class) occurs with the help of the javac compiler.
+Then, the .class files are loaded at run time by JVM and with the help of an interpreter, these are converted to machine understandable code.
+JIT compiler is a part of JVM. When the JIT compiler is enabled, the JVM analyzes the method calls in the .class files and compiles them to get more efficient and native code. It also ensures that the prioritized method calls are optimized.
+Once the above step is done, the JVM executes the optimized code directly instead of interpreting the code again. This increases the performance and speed of the execution.
