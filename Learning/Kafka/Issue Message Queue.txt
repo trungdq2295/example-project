@@ -1,0 +1,7 @@
+Problem with Message Queue:
+	Message loss: Messages can be lost due to network failures, system crashes, or other unexpected events.
+	Message ordering: In a distributed system, messages may not be received in the same order they were sent, which can cause issues when processing the messages.
+	Poison messages: Poison messages are messages that cannot be processed by the consuming application due to errors such as format errors, missing dependencies, or application errors. These messages can block the processing of other messages in the queue, causing delays and other problems.
+	Overload: Queue-based systems can become overwhelmed if the rate of incoming messages exceeds the system’s ability to process them. This can lead to high memory usage, slow performance, and even system crashes.
+	High latency: Queue-based systems can experience high latency due to long processing times, large message sizes, or network congestion.
+	

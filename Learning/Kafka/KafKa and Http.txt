@@ -1,0 +1,15 @@
+Kafka - Publish & Subscribe (just process the pipeline, will notify once the job is done)
+REST - Request & Await response (on-demand)
+
+Kafka - Publish once - Subscribe n times (by n components).
+REST - Request once, get the response once. Deal over.
+
+Kafka - Data is stored in topic. Seek back & forth (offsets) whenever you want till the topic is retained. (retain on brokers)
+REST - Once the response is over, it is over. Manually employ a database to store the processed data. ( save to DB)
+
+Kafka - Split the processing, have intermediate data stored in intermediate topics (for speed and fault-tolerance)
+REST - Take the data, process it all at once OR if you wish to break it down, don't forget to take care of your OWN intermediate data stores.
+
+Kafka - The one who makes the request typically is not interested in a response (except the response that if the message is sent)
+REST - I am making the request means I typically expect a response (not just a response that you have received the request, but something that is meaningful to me, some computed result for example!)
+

@@ -6,8 +6,7 @@
 //Describe topic my-first-topic
 .\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic my-first-topic --describe
 //get information of all goup
-.\bin\windows\kafka-consumer-groups.bat --list
-
+.\bin\windows\kafka-consumer-groups.bat --lis
 //Produce a message
 .\bin\windows\kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
 
@@ -18,3 +17,15 @@
 .\bin\windows\kafka-server-start.bat .\config\server.properties
 .\bin\windows\kafka-server-start.bat .\config\server-1.properties
 .\bin\windows\kafka-server-start.bat .\config\server-2.properties
+
+// Docker
+kafka-topics  --bootstrap-server localhost:9092 --list
+--Create 
+kafka-topics --bootstrap-server localhost:9092 --topic my-first-topic --create --partitions 3 --replication-factor 1
+-- Describe
+kafka-topics --bootstrap-server localhost:9092 --topic my-first-topic --describe
+-- Produce
+kafka-console-producer --bootstrap-server localhost:9092 --topic my-first-topic
+--consume
+kafka-console-consumer --bootstrap-server localhost:9092 --topic my-first-topic --group my-first-application 
+--group
