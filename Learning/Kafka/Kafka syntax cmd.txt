@@ -8,7 +8,7 @@
 //get information of all goup
 .\bin\windows\kafka-consumer-groups.bat --lis
 //Produce a message
-.\bin\windows\kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
+.\bin\windows\kafka-console-producer.bat --topic quic	kstart-events --bootstrap-server localhost:9092
 
 //Consume a message
 
