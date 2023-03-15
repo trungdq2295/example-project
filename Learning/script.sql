@@ -10,7 +10,7 @@ CREATE TABLE weather(
 	`timezone` int DEFAULT '0',
 	`name` VARCHAR(200) DEFAULT '',
 	`code` VARCHAR(100)  DEFAULT '',
-	`weather_coordinates` BIGINT NOT NULL,
+	`weather_coordinates_id` BIGINT NOT NULL,
 	`weather_main_id` BIGINT NOT NULL,
 	`weather_wind_id` BIGINT NOT NULL,
 	`weather_cloud_id` BIGINT NOT NULL,
@@ -25,6 +25,9 @@ CREATE TABLE weather_coordinates(
 	`weather_coordinates_id` BIGINT PRIMARY KEY AUTO_INCREMENT,
 	`latitude` DECIMAL(10,4) DEFAULT '0.0000',
 	`longitude` DECIMAL(10,4) DEFAULT '0.0000',
+	`city_name` VARCHAR(200) DEFAULT '',
+	`country` VARCHAR(100) DEFAULT '',
+    `state` VARCHAR(100) DEFAULT NULL,
 	`created_date` TIMESTAMP NULL DEFAULT NULL,
 	`updated_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
