@@ -6,9 +6,14 @@
 //Describe topic my-first-topic
 .\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --topic my-first-topic --describe
 //get information of all goup
-.\bin\windows\kafka-consumer-groups.bat --lis
+.\bin\windows\kafka-consumer-groups.bat --list --bootstrap-server localhost:9092
+
+.\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --describe --group  my-first-app
 //Produce a message
 .\bin\windows\kafka-console-producer.bat --topic quic	kstart-events --bootstrap-server localhost:9092
+.\bin\windows\kafka-console-producer.bat --topic my-first-topic --bootstrap-server localhost:9092
+// Conssumer Message
+.\bin\windows\kafka-console-consumer.bat --topic my-first-topic --bootstrap-server localhost:9092
 
 //Consume a message
 

@@ -5,3 +5,37 @@ Problem with Message Queue:
 	Overload: Queue-based systems can become overwhelmed if the rate of incoming messages exceeds the system’s ability to process them. This can lead to high memory usage, slow performance, and even system crashes.
 	High latency: Queue-based systems can experience high latency due to long processing times, large message sizes, or network congestion.
 	
+Solving Queue Overloading :
+	Implement backpressure: By implementing backpressure, the message queue can slow down or stop accepting messages when it becomes overloaded, preventing the queue from becoming overwhelmed.
+	Use multiple queues: By using multiple queues, different types of messages can be processed in parallel, reducing the likelihood of a single queue becoming overloaded.
+	Use a dead-letter queue: A dead-letter queue is a queue that holds messages that cannot be processed by a consumer, it can be used to hold messages that are not critical and can be processed later, or that are blocked because of a problem.
+	Implement retry mechanism: Implementing a retry mechanism for failed messages can help reduce the number of messages in the queue and improve the overall performance of the system.
+	Others: Monitor the queue for actual problems, Scale the queue
+
+Solving Poison Messages:
+	Use DLQ : A dead letter queue (DLQ) is a queue used to hold messages that cannot be successfully processed by the consuming application. These messages may be undeliverable due to a variety of reasons, such as format errors, missing dependencies, or application errors.
+
+	The purpose of a DLQ is to provide a mechanism for isolating and handling problematic messages, so that they do not block the processing of other messages in the main queue. Once a message is placed in a DLQ, it can be examined and potentially re-processed, or discarded if it is determined to be unimportant or unprocessable. This process of handling a message in DLQ is also known as poison message handling.
+
+	DLQs are commonly used in message-oriented middleware systems, such as RabbitMQ and Kafka etc. DLQs can be implemented in different ways, but typically, they are associated with a primary queue, and a message will be moved to the DLQ if it cannot be successfully processed by the consuming application after a certain number of retries.
+	
+Solving Message Loss:
+	Implement acknowledgement: Acknowledgement is a mechanism that allows the consumer to confirm that it has received and processed a message. This can be used to ensure that messages are not lost if the consumer crashes or is disconnected.
+	Use persistence: Persistence is a mechanism that allows messages to be stored on disk, rather than in memory. This ensures that messages are not lost if the message queue is restarted or if there is a power outage.
+	Use replication: Replication is a mechanism that allows messages to be replicated across multiple servers. This ensures that messages are not lost if one of the servers goes down.
+	Use a transaction: using a transaction to handle message enqueue and dequeue can help ensure that a message is not lost if the dequeue process is failed
+	
+Solving Large Data Volume:
+	Use a distributed message queue: A distributed message queue allows messages to be stored and processed across multiple servers, allowing for greater scalability and the ability to handle large volumes of data.
+	Use compression: Compressing the data before adding it to the queue can significantly reduce the amount of data that needs to be stored, allowing the message queue to handle larger volumes of data.
+	Partition the data: By partitioning the data, it can be divided into smaller chunks, which can be processed separately, reducing the load on the message queue.
+	Consider using a database/data lake: If the data volume is really large, using a database specifically designed to handle large data volume such as NoSQL database like Cassandra, MongoDB could be more suitable than using a message queue.
+
+Solving High Latency :
+	Optimize network communication: By optimizing the network communication, such as using faster protocols or reducing the amount of data that needs to be sent over the network, the time it takes for messages to be delivered can be reduced, reducing latency.
+	Cache: See if we can use a cache or in memory message queue like redis
+	
+Solving message ordering :
+	Using a timestamp: By adding a timestamp to each message, messages can be sorted by their timestamp and processed in the order they were sent.
+	Using a unique ID / sequence number : By assigning a unique ID to each message, messages can be sorted by their ID and processed in the order they were sent.
+	Using a distributed log system like Apache Kafka, it uses a log-based storage system and each message is assigned an offset in the log. This allows for the messages to be read in the order they were written to the log.
