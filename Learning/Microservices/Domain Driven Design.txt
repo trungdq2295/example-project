@@ -13,6 +13,6 @@ CQRS ( Command Query Responsibility Segregation) là pattern phân chia query v�
 
 ContextualValidation
 Ví dụ 
-Tạo ra 1 interface cho validation ( validate email, first name, password, tuổi, )
+Tạo ra 1 interfaceexample cho validation ( validate email, first name, password, tuổi, )
 Ví dụ như create thì sẽ call validate password,
 Update thì sẽ chỉ validate password nếu cần thiết

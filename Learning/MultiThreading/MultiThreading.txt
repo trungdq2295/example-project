@@ -29,7 +29,7 @@ Executors help to manage thread for example: allow how many threads run at same 
 
 Callable help to get value return from Thread
 
-FutureTask is base concrete implementation of Future interface and provides asynchronous processing. It contains the methods to start and cancel a task and also methods that can return the state of the FutureTask as whether it’s completed or cancelled. We need a callable object to create a future task and then we can use Java Thread Pool Executor to process these asynchronously.
+FutureTask is base concrete implementation of Future interfaceexample and provides asynchronous processing. It contains the methods to start and cancel a task and also methods that can return the state of the FutureTask as whether it’s completed or cancelled. We need a callable object to create a future task and then we can use Java Thread Pool Executor to process these asynchronously.
 
 Different between CompletableFuture and Thread
 CompletableFuture.runAsync(...) runs the Runnable in the forkJoin-Pool which is managed, while new Thread() creates a new thread which you have to manage.
