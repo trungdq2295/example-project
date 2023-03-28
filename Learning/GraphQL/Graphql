@@ -1,0 +1,26 @@
+What is GraphQL
+	GraphQL is a query language to retrieve data from Server and it will response what we need to get from client
+
+For example : if client require id and fullname, graphql will response id and fullname only.
+
+How we use it
+
+When to use GraphQL rather than Rest
+	Data fetching control
+		Will return what we need, while rest need to create a model for it
+	Multiple Datasource
+		GraphQL simplifies the task of aggregating data from multiple sources or APIs and then resolving the data to the client in a single API call. On the other hand, API technologies like REST would require multiple HTTP calls to access data from multiple sources.
+	Single Endpoint
+		For Rest it can be GET/PUT/POST/DELETE method and many endpoints such as product/{id}, products, ...
+		For GraphQL, single endpoints /graphql only
+		
+	
+
+Drawback of GraphQL
+	Complexity Config
+	Need to design carefully to response data client need
+	Difficult to handle Error (Exception in Java)
+	File Uploading is not part in GraphQL so implementation is up to us like
+		+ Encode to base64 but request will be larger and more expensive to encode and decode
+		+ A separate server or API
+		+ A library like graphql-upload, which implements the GraphQL multipart request specification

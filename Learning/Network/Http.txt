@@ -20,3 +20,7 @@ Binary Protocol (giao thức nhị phân) sẽ hiệu quả hơn để phân tí
 Header compression
 Header will be packed and then reuse for next header
 unlike http1, everytime client sent request, it will generate header >> waste resource
+
+
+Process
+Client will open connection to server (TCP connection on port 80) and send request, server receives request and response on TCP connection, server close connetion and client will close connection
