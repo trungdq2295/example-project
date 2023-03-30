@@ -1,4 +1,4 @@
-package example.interfaceexample;
+package example.nine.version.interfaceexample;
 
 public interface Human {
     default void awake() {

@@ -19,6 +19,7 @@ public class CompletableFutureExample {
                     int abc = i;
                     CompletableFuture.runAsync(() -> {
                         try {
+
                             System.out.println(Thread.currentThread().getName()+ " "+t+" " + Thread.currentThread().getId());
                             Thread.sleep(5000);
                         } catch (InterruptedException e) {

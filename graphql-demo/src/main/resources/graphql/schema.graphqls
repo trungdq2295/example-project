@@ -1,5 +1,74 @@
 type Query{
     bookById(id: ID): Book
+    getWeatherByCityName(cityName: String): WeatherDTO
+}
+
+type WeatherDTO {
+    base: String
+    visibility: Int
+    dt: Float
+    id: Float
+    name: String
+    cod: Int
+    weather: [WeatherCodeDTO]
+    wind : WeatherWindDTO
+    rain: WeatherRainDTO
+    main: WeatherMainDTO
+    cloud: WeatherCloudDTO
+    snow: WeatherSnowDTO
+    coord: WeatherCoordinateDTO
+    sys: WeatherSunDTO
+}
+
+type WeatherCodeDTO{
+    id: Float
+    main: String
+    description: String
+    icon: String
+}
+
+type WeatherWindDTO{
+    speed: Float
+    deg: Float
+    gust: Float
+}
+
+type WeatherRainDTO{
+    oneHour: Float
+    threeHours: Float
+}
+
+type WeatherSnowDTO{
+    oneHour: Float
+    threeHours: Float
+}
+
+type WeatherMainDTO{
+    temp: Float
+    feelsLike:  Float
+    temperatureMin: Float
+    temperatureMax: Float
+    pressure: Int
+    humidity: Int
+    seaLevel: Int
+    groundLevel: Int
+}
+
+type WeatherCloudDTO{
+    all: Float
+}
+
+type WeatherCoordinateDTO{
+    lon: Float
+    lat: Float
+}
+
+type WeatherSunDTO{
+    type: Int
+    id: ID
+    country: String
+    sunRise: Int
+    sunSet: Int
 }
 
 type Book{

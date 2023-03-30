@@ -1,4 +1,4 @@
-package example.concurrencyexample;
+package example.nine.version.concurrencyexample;
 
 import java.util.ArrayList;
 import java.util.Arrays;

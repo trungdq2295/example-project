@@ -1,4 +1,4 @@
-package example.interfaceexample;
+package example.nine.version.interfaceexample;
 
 public class People implements Human {
 
