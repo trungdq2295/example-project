@@ -97,8 +97,7 @@ CREATE TABLE weather_snow(
 
 CREATE TABLE weather_sun(
 	`weather_sun_id` BIGINT PRIMARY KEY AUTO_INCREMENT,
-    `type` INT DEFAULT 0,
-	`id` BIGINT DEFAULT 0,
+    `type` INT DEFAULT 0,	
 	`country_code` VARCHAR(2) NOT NULL,
 	`message` TEXT,
 	`sun_rise` TIMESTAMP,
