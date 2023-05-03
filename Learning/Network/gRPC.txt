@@ -1,0 +1,17 @@
+What is gRPC?
+	
+Why to use gRPC?
+	High performance along with Safety
+	Duplex streaming
+	Auto generated client code
+	Heavily optimized
+	Connection Pool 
+Drawback of gRPC
+	not support for old browser
+	No url end points hence can’t be tested with postman or curl to check the response.
+	No predefined status codes and creating custom status code may end up in conflicts.
+When to use gRPC?
+	Internal service communication in microservice
+	When your internal services requires duplex streaming with high load of data.
+
+The number tags in grpc filed message is unique number. It help to serializing and des

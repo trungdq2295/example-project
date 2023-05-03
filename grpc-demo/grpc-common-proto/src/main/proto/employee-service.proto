@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+
+enum Role {
+  //default role
+  USER = 0;
+  HR = 1;
+  MANAGER = 2;
+  ADMIN = 3;
+}
+
+message EmployeeRequest{
+  string emp_id = 1;
+}
+message EmployeeResponse {
+  string emp_id = 1;
+  string name = 2;
+  Role role = 3;
+}
+
+service EmployeeService {
+  rpc getEmployee(EmployeeRequest) returns (EmployeeResponse) {};
+}
