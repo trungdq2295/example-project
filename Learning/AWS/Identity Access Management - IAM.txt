@@ -1,0 +1,25 @@
+What is AWS IAM ?
+	To manage User
+	
+	
+Guideline for IAM 
+	Do not use root account except for AWS account setup
+	One AWS user = one physical user mean if you have 3 people using AWS then create 3 aws account for each of them
+	Assign users to groups and assigns permissions to groups
+	Create a strong password policy
+	Use and Enforce multi-Factor Authentication(MFA)
+	Create and use Roles for giving permission to AWS services
+	Use Access Keys for Programmatic Access(CLI/SDK)
+	Audit permissions of you account using IAM Credential Report and IAM Access Advisor
+	Never share IAM users and access keys
+	
+Summary IAM
+	Users: mapped to a physical users, has a password for AWS console
+	Groups: contains users only
+	Policies: JSON doocument that outline permissions for  users or groups
+	Roles: a permission for EC2 instance or AWS services
+	Security: MFA + Password Policy
+	AWS CLI: manage your AWS services using command line
+	AWS SDK: manage your AWS sservices using programming language ( Java, Python, ... )
+	Access Key: key to access AWS using CLI or SDK
+	Audit: IAM Credential Reprots and IAM Access Advisor

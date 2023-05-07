@@ -1,0 +1,16 @@
+Console sign-in URL
+https://118561919466.signin.aws.amazon.com/console
+
+User name
+trungnguyenAWS
+
+Console password
+Ilovemyfamily62@
+
+Account allias
+trung-nguyen-qn
+https://trung-nguyen-qn.signin.aws.amazon.com/console
+
+It better to use Iam user account than root account
+
+AWS cloudshell is AWS CLI online
