@@ -1,0 +1,49 @@
+EBS
+	Elastic Book Store is a network drive you can attach to your instances while they run
+	It allos your instances to persit data, even after their termination 
+	They are bound to a specific AZ
+	EBS is like "network USB"
+	
+EBS Volumne
+	It's a network drive
+		It uses the network to communicate the instance, which means there might be a  bit of latencyy
+		It can be detached from an EC2 instance and attached to another one quickly.
+	It's locked to an Availability Zone (AZ)
+		An EBS Volume in us-east-1 can not be attached to us-east-1b
+		You need to snapshot it if you want to move EBS Volume across AZ
+	Have a provisioned capacity (size in GBS, and IOPS - the speed to write/read data)
+		You get billed for all the provisioned capacity
+		You can increase the capacity of the drive over time
+	
+	Control the EBS behaviour when an EC2 instance terminates
+		By default, the root EBS volume is deleted( attribute enanbled)
+		By default, any other attached EBS volume is not deleted ( attribute disabled)
+	This can be controlled by the AWS console/ AWS CLI
+	Use case: preserve root volume when instance is terminated
+
+EBS Snapshot
+	Make a backup(snapshot) of your EBS volume at a point in time
+	Not necessary to detach volume to do snapshot, but recommended
+	Can copy snapshots across AZ or Region
+	Features:
+		EBS Snapshot Archive
+			Move a snapshot to an "Archive tier" that is 75% cheaper
+			Takes within 24 to 72 hours for restoring the archive
+		Recycle bin for EBS snapshots
+			Set up rules to retain deleted snapshots so you can recover them after an accidental deletion
+			Specify retention (from 1 day to 1 year)
+		Fast Snapshot Restore ( FSR)
+			Force full initialization of snapshot to have no latency on the first use ($$$)
+			
+EC2 Instance Sotre
+	High-performance hardward disk ( bettern than EBS)
+	EC2 Instant store lose their storage if they 're stopped (ephemeral)
+	Good for buffer/ cache/ scratch data/ temporary content
+	Risk of data loss if hardware fails
+	Backup and Replication are your responsibility
+	
+EBS Volume types
+	gp2/gp3 (SSD): General purpose SSD volume that balances price and performance for a wide variety of workloads
+	io1/io2 (SSD): Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads
+	st1 (HDD): Low cost HDD volume designed for frequently accessed, thorughput intensive workloads
+	sc1 (HDD): Lowest cost HDD volume deisgned for lesss frequently accessed workloads

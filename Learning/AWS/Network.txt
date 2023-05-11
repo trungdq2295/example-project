@@ -1,0 +1,75 @@
+Networkings
+	
+	Elastic ÍP
+		When  you stop and then start EC2 instanc, it can change its public IP
+		If you need to have a fixed public IP for your instance, you need an Elastic IP
+		An Elastic IP is a public Ipv4 IP you own as long as you don't delete it
+		You can attach it to one instance at a time
+		
+		With an Elastic IP address, you can mask the failure of an intance or software by rapidly remapping the address to another instance in your account
+		You can only have 5 Elastic IP in your account ( can ask AWS for more)
+		
+		Try to avoid using Elastic IP
+			Reflect poor architectural decisions
+			Instead, use a random public IP and register DNS name to it
+
+Placement Groups
+	Cluster
+		All EC2 instances are on same hardware
+		Pros: 
+			Great Network - low latency between instance ( 10 gigabits bandwidth between instances)
+		Cons: if the rack fails, all the instances fails at the same time
+		Use cases:
+			Big Data job that need to complete fast
+			Applicaton that needs extremely low latency and high network throughput
+	Spread
+		All EC2 instances are located on different hardware
+		Pros: 
+			can span across Availability Zones (AZ)
+			Reduced risk is simultaneous failure
+		Cons:
+			Limited to the size of placement groups ( maxium size is 7 instances per group)
+		Use cases:
+			Application that need to maximize high availibity
+			Critical Applications where each instance must be isolated from failure from each other
+	Partition
+		Multiple partition in a hardware(Up to 7 parition) and in each partition will have multiple EC2 instances ( Up to 100 EC2 Instance)
+		Pros:
+			The instances in a parition do not share racks with the instances in the other parition
+			A partition failure can affect EC2 instance inside it but not other partition
+			EC2 instances get access to the parition information as metadata
+		Use Cases:
+			Big data application such ass Casssandra, kafka
+
+
+Elastic Network Interfaces (ENI)
+	Logical Component in a VPC that represents a virtual network card
+	The ENI can have the following attribute
+		Primary private Ipv4, one or more secondary IPv4
+		One Elastic Ip (IPv4) per private Ipv4
+		One Public Ipv4
+		One or more security groups
+		A MAC address
+	You can create ENI independently and attach them on the fly (move the) on instnaces for failover ( It mean you 1 ENI belong to EC2 instances and you can move them to another EC2 instances)
+	Bound to specific AZ
+				
+				
+EC2 Hibernate
+	The in-memory (RAM) state is preserved
+	The instance boot is much faster ( the OS is not stopped /restarted)
+	Under the hood: the RAM state is written to a file in the root EBS volumen
+	The root EBS volume must be encrypted
+	Workflow
+		When we hibnernate a EC2 instance, RAM will be copied into Root EBS Volume and deleted in EC2. And when we start again, RAM will be copied from EBS volumn to EC2 instances, that's why data on RAM will be saved
+	Use case:
+		Long-running process
+		Saving the RAM state
+		Services that take time to initialize
+	Good to know:
+		Supproted instance family - c3, c4, c5, i3
+		Instace RAM Size - must be less than 150GB
+		Instace Size - not supported for bare metal instances
+		AMI - Amazon Linux 2, Linux AMI, Ubuntu,
+		Root Volume - must be EBS, encrypted, not instance store, and large
+		Available for On-Demand, Reserved and Spot Instance
+		An instance can not be hibernated for more than 60 days( number of days can be changed)
