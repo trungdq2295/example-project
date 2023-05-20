@@ -1,0 +1,38 @@
+Amazon Aurora
+	proprietary technology from AWS ( not open sourced)
+	Postgres and MySQL are both supported as a Aurora DB (that means your driver will work as if Aurora was a Postgres or MySQL)
+	Aurora is a "AWS cloud optimized" and claims 5x performance improvement over MySQL on RDS, over 3x the performance on Postgres on RDS
+	Aurora storage automatically grows in increment of 10GB, up to 128TB
+	Aurora can have up to 15 replicas and the replication process is faster than MySQL(sub 10 ms replica lag)
+	Failover in Aurora is instantaneous. It's high avaliability  native.
+	Aurora cost more than RDS (20% more) - it's more efficient
+	
+	Aurora High Availability and Read Scaling
+		6 copies of your data across 3 AZ ( means everytime you write a data, Aurora will create 6 copies of it across 3 Az, 2 copies in each AZ):
+			only need 4 copies available of 6 needed for write
+			only need 3 copies available of 6 needed for read
+			Self healing with peer-to-peer replication
+			Storage is striped across 100s of volumes
+		One Aurora Instance takes write (master)
+		Automated failover  for master less than 30seconds
+		Master+ up to  15 Aurora read Replicas serve reads
+		Support for Cross Region Replication
+		
+	Aurora DB Cluster
+		Writer Endpoint
+			the endpoint client use to write data
+		Reader Endpoint 
+			It helps with connection of load balancing with Aurora read replicas
+				So everytime client make connect to Read endpoint, it will load balance to read replica
+	Features
+		Automatic failover
+		Backup and Recovery
+		Isolation and security
+		Industry compliance
+		Push-button scaling
+		Automated Patching with Zero Downtime
+		Advanced Monitoring 
+		Routine Maintenance
+		Backtrack: restore data at any point of time without using backups
+	
+	

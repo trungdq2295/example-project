@@ -1,0 +1,32 @@
+Amazon RDS - Relational Database Service
+	Its a managed DB service for DB use SQL as a query language
+	It allow you to create database in the cloud managed by AWS
+		Postgre
+		MySQL
+		MariaDB
+		Oracle
+		Microsoft SQL Server
+	Advantages of using RDS versus deploying DB to EC2 instance
+		RDS is managed service
+			Automated provisioning, OS patching
+			Continous backup and restore to specific timestamp (Point in time Restore)!
+			Monitoring dashboard
+			Read replicas for improve read perforamnce
+			Multi AZ set up for DR (Disater Recovery such as physical attack to server)
+			Maintenance windows for upgrades
+			Scaling ability (vertical and horizontal)
+			Storage backed by EBS (io1 or gp2)
+			But you cant' SSH to RDS instance
+	
+	RDS - Storage Auto Scaling
+		Helps when you increase storage on your RDS DB instance dynamically
+		When RDS detects you are running out of free database storage, it scales automatically
+		Avoid manually scaling your database storage
+		You have to set Maximum Storage Threshold (maximum limit for DB storage)
+		Automatically modify storage if:
+			Free storage is less than 10% allocated storage
+			Low-storage last at leasts 5 minutes
+			6 hours have passed since last modifications
+		Useful for applications with unpredictable workloads
+		Support for all RDS database engine (MariaDB, Oracle, Microsoft SQL Server, MySQL, Postgre)
+		

@@ -1,0 +1,37 @@
+RDS Read Replica
+	Up to 15 read replicas
+	Read replica can be within AZ, cross AZ or cross region
+	Replication is Async, so read eventually consistent
+	Replicas can be promoted to their own DB
+	Applications must update the connection string to leverage read replica
+	
+	Use cases
+		You have production database that is taking on normal load
+		You want to run a reporting application to run some analytics
+		You create  a Read replica to run  the new workload there
+		The production application is unaffected
+		Read replicas are used for SELECT (read) only kind statements ( not  INSERT, UPDATE, DELETE)
+	
+	Network Cost
+		In AWS, there's network cost when data goes from one AZ to anothe
+		For RDS Read Replica within the same regions, you don't pay that fee
+		Example: 
+			Data goes from DB main us-east-1a to DB read replicas us-east-1b (Same Region) = no cost
+			Data goes from DB main us-east-1a to DB read replicas us-west-1b  (Cross Region) = charge $$
+		
+	RDS Multi AZ (Disaster Recovery)
+		SYNC Replication
+		One DNS name - automatic app failover to standby
+			Mean: Client only need to care the DNS name to connect, AWS will proxy it to master db or to read replica if master db is down
+		Increase availability 
+		Failover in case of loss of AZ, loss of network, instance or storage failure
+		No need manual intervention of apps
+		Not used for scaling
+		The read replicas can be setup as Multi AZ for Disaster Recovery(DR)
+	
+	From Single AZ to multi AZ
+		Zero downtime operation ( no need to stop DB)
+		The following happens internally:
+			A snapshot is taken if the master DB is down
+			A new DB is restored  from the snapshot in a new AZ
+			Synchronization is established between 2 database
