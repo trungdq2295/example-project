@@ -1,0 +1,19 @@
+EBS Volume - Elastic Block Storage
+	one instance (except multi-attach io1/io2)
+	are locked at the AZ
+	gp2: IO increase if the disk size increase
+	io1: can increase IO independently
+	To migrate an EBS volume across AZ
+		Take a snapshot
+		Restore snapshot into another AZ
+		EBS backups use IO and you shoudn't run them while your application is handling a lot of traffic cuz it will impact performance
+	Root EBS Volumes of instances can be terminated by default if the Ec2 instance gets terminated ( can disable it)
+EFS - Elastic File System
+	Mounting up to 100s instances across AZ
+	EFS share website files(Wordpress)
+	Only for Linux instances
+	
+	EFS has a higher price point than EBS (the more space u use in EFS, the higher price is while EBS is fixed size)
+	Can leverage EFS-IA for cost savings ( move an unused file to IA EFS)
+	
+	

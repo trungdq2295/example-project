@@ -47,3 +47,18 @@ EBS Volume types
 	io1/io2 (SSD): Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads
 	st1 (HDD): Low cost HDD volume designed for frequently accessed, thorughput intensive workloads
 	sc1 (HDD): Lowest cost HDD volume deisgned for lesss frequently accessed workloads
+	
+	General purpose of SSD
+		Cost effective storage, low-latency
+		System boot volumes, Virtual Destops, Development and test environments
+		1Gb - 6 TB
+		gp3:
+			Baseline of 3,000 IOPS and throughput of 125MB/sc1
+			Can increase IOPS up to 16,000 and throughput up to 1,000 MB/s independently
+		gp2:
+			Small gp2 volumes can burst IOPS to 3,000
+			Size of the volume and IOPS are linked, max IOPS is 16,000
+			3 IOPS per GB, means at 5,334 GB we are at max IOPS
+Why gp3 is better than gp2
+	
+
