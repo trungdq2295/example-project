@@ -1,0 +1,3 @@
+Aurora Multi-master
+	In case you want immediate failover for writer node (high availability)
+	Every node does Read/Write -  vs promoting  a Read replica as the new master

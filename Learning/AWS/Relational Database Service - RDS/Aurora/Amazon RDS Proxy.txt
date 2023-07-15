@@ -1,0 +1,9 @@
+Amazon RDS Proxy
+	Fully managed DB proxy for RDS 
+	Allows apps to pool and share DB connection established with the DB 
+	Improving DB efficiency by reducing the stress on DB resources and minimize open connections(and time outs) 
+	serverless, autoscaliing, highly available (multi-AZ) 
+	Reduce RDS & Aurora failover time by up 66% 
+	Suppports RDS and Aurora 
+	No code changes required for most apps 
+	Enforce IAM Authentication for DB, and securely store credentials iiin AWS Secrets manager RDS Proxy is never publicly accessible (must be accessed from VPC)

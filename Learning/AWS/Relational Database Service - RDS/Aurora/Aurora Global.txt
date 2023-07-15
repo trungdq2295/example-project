@@ -1,0 +1,12 @@
+Global Aurora
+	Aurora Cross Region Read Replicas:
+		Useful for disater recovery
+		Simple to put in place
+	Aurora Global Database (recommended)
+		1 Primary Region (read/write)
+		Up to 5 secondary (read-only) regions, replication lag is less than 1 second
+		Up to 16 Read Replica per regions
+		Helps for decreasing latency
+		Promoting another region (for disaster recovery) has an RTO of < 1minute
+		Typical cross-region replication take less than 1 second
+	

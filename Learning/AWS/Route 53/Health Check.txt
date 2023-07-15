@@ -1,0 +1,27 @@
+Rout 53 - Health Check
+    HTTP Health check are only for public resources 
+    Health Check => Automated DNS Failover: 
+        1. Health checks that monitor and endpoint (application, server, other AWS resource) 
+        2. Health checks that monitor other health check (Calculated Health Checks) 
+        3. Health checks that monitor CloudWatch Alarms(full control!) - e.g: throttles of DynamoDB, alarms on RDS, custom metrics ... (helpful for private resources)
+Health check - Monitor an Endpoint
+    About 15 global Health checkers will check the endpoint health 
+        Healthy/Unhealthty Threshold - 3 (default) 
+        Interval - 30 sec (can set to 10 sec -higher cost) 
+        Supported protocol: HTTP, HTTPS and TCP 
+        If >18% of health checkers report the endpoint is healthy, Route 53 considers it Healthy. otherwise, it's unhealthy 
+        Ability to choose which locations you want Route 53 to use 
+    Health Checks pass only when the endpoint responds with the 2xx and 3xx status codes 
+    Health Checks can be setup to pass/ failed based on the text in the first 5120 bytes of the response 
+    Configure your router/firewall to allow incoming requests from Route 53 Health Checkers
+Health Check - Calculated Health Check
+    Combine the results of multiple health check into single health check
+        Example: You have 3 EC2 instane and each instance has each own Health Check. There will be a parent Health check to combine result those Health check to check healthy or unhealthy
+    You can use AND, OR, or NOT
+    Can monitor up to 256 Child Health Checks 
+    Specify how many of the health checks need to pass to make the parent pass 
+    Usage: perform maintenance to your website without causing all health to checks to fail
+Health Check - Private Hosted Zone
+    Rotue 53 health checkers are outside the VPC 
+    They cant access private endpoints (private VPC or on-premises resource) 
+    You can create a CloudWatch Metric and associate a CloudWatch Alarm, then create a Health Check that checks the alarms itself

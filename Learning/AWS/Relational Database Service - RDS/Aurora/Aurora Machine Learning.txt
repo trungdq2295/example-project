@@ -1,0 +1,8 @@
+Aurora Machine Learning
+	Enables you to add ML-based prediction to your applications via SQL
+	Simple, Optimized and secure integration between Aurora and ML AWS
+	Supported Services
+		Amazon SageMaker(use with any ML model)
+		Amazon Comprehend( for sentiment analysis)
+	You don't need to have ML experience.
+	Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations

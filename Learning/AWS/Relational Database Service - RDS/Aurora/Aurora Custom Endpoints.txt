@@ -1,0 +1,6 @@
+Aurora Custom Endpoints 
+	Define a subset of Aurora instances  as a custom endpoint
+		Example: there're some read replicas which has higher resource than other and we want our client to read data from them so we create a custom endpoint to access it
+	
+	The reader endpoint is generally not used after defining custom endpoint
+	

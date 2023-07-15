@@ -1,0 +1,28 @@
+CName & Alias
+    AWS Resources (CloudFont, EC2, Load Balancer ... ) expose an AWS hostname and you want to map it to another hostname:
+        lb1-1234.us-east-2.elb.amazonaws.com and you want myapp.mydomain.com 
+    You can use:
+    CNAME: 
+        Points a hostname to any other hostname. (app.mydomain.com => blahblah.anything.com) 
+        ONLY FOR NON ROOT DOMAIN (aka: something.mydomain.com, not working: mydomain.com)
+    Alias: 
+        Points a hostname to an AWS Resource (app.mydomain.com => blabla.amazonaws.com)
+        Workds for ROOT DOMAIN and NON ROOT DOMAIN (aka: mydomain.com and something.mydomain.com)
+
+    Route 53- Alias Records
+        Maps a hostname to an AWS resource 
+        An extension to DNS functionality 
+        Automatically recognizes changes in hte resource's IP address 
+        Unlike CNAMe, It can be used for the top node of a DNS namespace(Zone APEX), e.g: example.com 
+        Alias Record is awlays of type A/AAAA for AWS resources(IPv4/IPv6) 
+        You cant' set the TTL
+    Route 53- Alias Records Target
+        ELB
+        CloudFont Distributions 
+        API Gateway 
+        Elastic Beanstalk environment 
+        S3 Website 
+        VPC Interface Endpoints 
+        Global Accelerator accelerator 
+        Route 53 record in the same hosted zone 
+        You cannot set an Alias record for an EC2 DNS name

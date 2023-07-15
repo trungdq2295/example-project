@@ -1,0 +1,10 @@
+Aurora Serverless
+	Automated Database instantiation and auto-scaling based on usage
+	Good for infrequent, intermitten or unpredictable workload
+	No capacity planning needed
+	Per per second, can be more cost-effective
+
+
+
+Why we need it ?
+    Your software development and QA teams are using databases during work hours, but don't need them on nights or weekends. With Aurora Serverless v1, your database automatically shuts down when not in use, and starts up much more quickly when work starts the next day.

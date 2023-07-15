@@ -1,0 +1,62 @@
+Amazon S3
+	Amazon S3 is one of the main buidling blocks of AWS 
+	It's advertised as "infinitely scaling" storage 
+	Many websute use Amazone S3 as backbone 
+	Many AWS services use Amazon S3 as an integration as well
+	
+Use cases:
+	Backup and Storage 
+	Disaster Recovery 
+	Archive 
+	Hybrid Cloud Storage 
+	Application Hosting 
+	Data lakes & big data analytics 
+	Software delivery 
+	Statis website
+	
+Buckest 
+	Amazon S3 allows people to storage objects (files) in "buckets" (directories) 
+	Buckets must have a globally unique name (across all regions all accounts) 
+	Buckets are defined at the region level 
+	S3 looks like a global service but buckets are created in a region 
+	Naming Convetion 
+		No uppercase,
+		No underscore, 
+		3-63 characters long, 
+		Not an IP, 
+		Must start with lowercase letter or number, 
+		Must not start with the prefix xn-- 
+		Must not end with the suffix-s3alias
+		
+Objects
+	Objects (files) have a key 
+	The key is a the full patch 
+		Example :
+			s3://my-bucket/my_file.txt  ( Key is my_file.txt)
+			s3://my-bucket/another_folder/my_file.txt  ( Key is another_folder/my_file.txt)
+	The key is composed of prefix + object name 
+		Example: 
+			s3://my-bucket/my_folder/another_filder/my_file.txt 
+				Prefix: my_folder/another_filder/
+				Object name: my_file.txt
+	There's no concept of "directories" within buckets (although the UI will trick you to think otherwise)
+	Just keys with very long names that contains slashes ("/")
+	
+	Object values are the content of the body: 
+		Max Object Size is 5TB(5000GB) 
+		If uploading more than 5GB, must use "multi-part upload" mean split into small pieces 
+		Metadata (list of text key/ value paris - system or user metadata) 
+		Tag (Unicode key/ value par - up to 10) - useful for security /lifecycle 
+		Version ID (if versioning is enabled)
+Security
+	User-Based 
+		IAM Policies - which API calls should be allowed for a specific user from IAM 
+	Resource-Based 
+		Bucket Policies - bucket wide rules from the S3 console - allows cross account 
+		Object Access control List (ACL) - finer grain ( can be disaled) 
+		Bucket Access Control List (ACL) - less common ( can be disabled) 
+	Note: 
+		an IAM principal can access an S3 object if 
+			THe user IAM permissions ALLOW it OR the resource policy ALLOWS it 
+			And there's no explicit deny 
+	Encryption: encrypt objects in Amazon S3 using encryption keys

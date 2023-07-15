@@ -1,0 +1,28 @@
+S3 Bucket Policies
+	JSON based Policies
+		Resource: buckets and objects 
+		Effect: Allow/Deny 
+		Actions: Set of API to Allow or Deny 
+		Principal: The aaccount or user to apply the poclity to 
+	Example:
+		{
+		  "Version": "2012-10-17",
+		  "Statement": [
+			{
+			  "Sid": "PublicRead",
+			  "Effect": "Allow",
+			  "Principal": "*",
+			  "Action": [
+				"s3:GetObject"
+			  ],
+			  "Resource": [
+				"arn:aws:s3:::examplebucket/*"
+			  ]
+			}
+		  ]
+		}
+	Use S3 bucket for policty to: Grant public access to the bucket Force objects to be encrypted at upload Grant access to another account (Cross Account)
+	
+	These settings was created to prevent data leak
+	
+	
