@@ -1,0 +1,14 @@
+Kinesis Data Firehose
+	Fully Managed Service, no administration, automatic scaling, serverless
+		AWS: Redshift/ Amazon S3 / OpenSearch
+		3rd party partner: Splunk/ MongoDB/ DataDog/ New Relic/ ...
+		Custom: send to any HTTP endpoint
+	Pay for data going through Firehose
+	Near real time
+		60 seconds latency minimum for non full batches
+		Or minimum 1 Mb of data at a time
+	Supports many data formats, conversions, transformations, compression
+	Supports custom data transformations using AWS Lambda
+	Can send failed or all data to a backup S3 bucket
+	
+	

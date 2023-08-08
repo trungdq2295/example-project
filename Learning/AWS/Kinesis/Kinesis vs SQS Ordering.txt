@@ -1,0 +1,13 @@
+Kinesis vs SQS Ordering
+	Let's assume 100 trucks, 5 kinesis shards, 1 SQS FIFO
+	Kinesis Data Streams
+		On average you'll have 20 trucks per shards
+		Trucks will have their data ordered within each shards
+		The maximum amount of consumers in parallel we can have is 5
+		Can receive up to 5MB/s of data
+	SQS FIFO
+		You only have 1 SQS FIFO queue
+		you will have 100 group ID
+		you can have up to 100 consumers(due to the 100 group ID)
+		You have up to 300 messages per second  ( or 3000 if using batching)
+		
