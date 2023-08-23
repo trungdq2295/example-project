@@ -1,0 +1,24 @@
+Customization at the Edge
+	Many modern applications execute some form of the logic at the edge
+	Edge Function:
+		A code that you write and attach to CloudFront distributions
+		Runs close to your users to minimize latency
+	CloudFront provides two types: CloudFront functions & Lambda@Edge
+	You don't have to manage servers, deployed globally
+	
+	Use case: Customize the CDN content
+	Pay only for what you use
+	Fully serverless
+	
+CloudFront Functions & Lambda@Edge Use cases
+	Website Security and Privacy
+	Dynamic Web Application at the Edge
+	Search Engine Optimization (SEO)
+	Intelligently Route Across Origins and Data Centers
+	Bot Mitigation at the Edge
+	Real-time Image Transformation
+	A/B Testing
+	User Authentication and Authorization
+	User Prioritization
+	User Tracking and analytics
+	

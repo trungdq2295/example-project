@@ -1,0 +1,16 @@
+Lambda@Edge
+	Lambda functions written in NodeJS or Python
+	Scales to 1000s of requests/second
+	Used to change CloudFront request and response
+		Viewer requests: after CloudFront receives a request from a viewer
+		Origin request: before CloudFront forwards the request to the origin
+		Origin response: after CloudFront receives response from the origin
+		Viewer responses: before CloudFront forwards the response to the viewer
+	Author your functions in one AWS Region (us-east-1), then CloudFront replicates to its locations
+
+Use cases:
+	Longer execution (several ms)
+	Adjustable CPU or memory
+	Your code depends on a 3rd libraries (e.g AWS SDK to access other AWS services)
+	Network access to use external services for processing
+	File system access or access to the body of HTTP request

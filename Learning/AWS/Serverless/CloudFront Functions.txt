@@ -1,0 +1,18 @@
+CloudFront Functions
+	Lightweight functions written in javascript
+	For high-scale, latency-sensitive CDN customizations
+	Sub-ms startup times, ,illions of requests/second
+	Used to change viewer requests and responses
+		Viewer requests: after CloudFront receives a request from a viewer
+		Viewer responses: before CloudFront forwards the response to the viewer
+	Native feature of CloudFront (manage code entirely with CloudFront)
+
+Use cases
+	Cache key normalization
+		Transform request attributes (headers, cookies, query strings, URL) to create an optimal Cache Key
+	
+	Header manipulation
+		Insert/ modify/ delete HTTP headers in the request or response
+	URL rewrites or redirects
+	Request authentication & authorization
+		Create and validate user-generated toknes (e.g JWT) to allow/deny requests

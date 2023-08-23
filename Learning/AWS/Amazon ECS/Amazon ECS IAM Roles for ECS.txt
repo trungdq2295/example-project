@@ -1,0 +1,13 @@
+Amazon ECS IAM Roles for ECS
+	EC2 Instance Profile ( EC2 Launch Type Only)
+		Used by the ECS agent
+		Makes API calls to ECS service
+		Send container logs to CloudWatch Logs
+		Pull Docker image from ECR
+		Reference sensitive data in Secrets Manager or SSM Parameter Store
+		
+	ECS Task Role:
+		Allows each task to have a specific role
+		Use different roles for the different ECS Service you run
+		Task Role is defined in the task definition
+		

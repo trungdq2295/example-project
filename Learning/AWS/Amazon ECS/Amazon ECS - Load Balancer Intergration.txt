@@ -1,0 +1,4 @@
+Amazon ECS - Load Balancer Intergration
+	Application Load Balancer supported and works for most use cases
+	Network Load Balancer recommended only for high throughput/ high performance use cases, or to pair it with AWS Private Link
+	Classic Load Balancer supported but not recommended(no advanced features- no Fargate)
