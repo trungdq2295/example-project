@@ -1,0 +1,12 @@
+Amazon RDS - Summary
+	Managed PostgreSQL/ MySQL/ Oracle/ SQL Server/ MariaDB/ Custom
+	Provisioned RDS Instance Size and EBS Volume Type & Size
+	Auto-scaling capability for Storage
+	Support for Read Replicas and Multi AZ
+	Security through IAM, Security Groups, KMS, SSL in transit
+	Automated Backup with Point in time restore feature ( up to 35days)
+	Manual DB Snapshot for longer-term recovery
+	Managed and Scheduled maintenance ( with downtime)
+	Support ofr IAM Authentication, integration with Secret Manager
+	RDS Custom for access to and customize the underlying instance (Oracle & SQL Server)
+	Use cases: Store relational datasets (RDBMS/ OLTP), perform SQL queries, transactions

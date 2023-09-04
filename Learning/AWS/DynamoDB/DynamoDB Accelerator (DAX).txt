@@ -1,0 +1,6 @@
+DynamoDB Accelerator (DAX)
+	Fully-managed, ighly available, seamless in-memory cache for DynamoDB
+	Help solve read congestion by caching
+	Microseconds latency for cached data
+	Doesn't require applicaiton logic modification (compatible with existing DynamoDB APIs)
+	5 minutes TTL for cache ( default)

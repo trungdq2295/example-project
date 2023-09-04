@@ -1,0 +1,8 @@
+Amazon DocumentDB
+	Auroria is an "AWS-Implementation" of PostgreSQL / MySQL/ ...
+	DocumentDB is the same for MongoDB (which is NoSQL database)
+	MonogDB is used to store, query, and index JSON database
+	Similar deployment concept as Aurora
+	Fully Managed, highly available with replication across 3 AZ
+	DocumentDB storage automatically grows in increment of 10B, up to 64TB
+	Automatically scales to workloads with millions of request per seconds

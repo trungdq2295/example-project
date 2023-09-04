@@ -1,0 +1,14 @@
+DynamoDB - Integration with Amazon S3
+	Export to S3 (must enable PITR)
+		Works for any point of time in the last 35days
+		Doesn't affect the read capacity of your table
+		Perform data nalysis on top of DynamoDB
+		Retain snapshots for auditin
+		ETL on top of S3 data before importing back into DynamoDB
+		Export in DynamoDB JSON or ION format
+	
+	Import from S3 
+		Import CSV, DynamoDB JSON or ION format
+		Doesn't consume any write capacity
+		Creates a new table
+		Import errors are logged in CloduWatch logs

@@ -1,0 +1,8 @@
+Amazon QLDB	
+	QLDB stands for "Quantum Ledge Database"
+	A ledge is a book recording financial transactions
+	Fully managed, serverless ,high available, replication across 3AZ
+	Used to review history of all the changes made to your application data over time
+	Immutable system: no entry can be removed or modified, cryptographically verifiable
+	2-3x better performance than common ledge blockchain frameworks, manipulate data using SQL
+	Difference with Amazon Managed bLockchain: no decentralization compponent, in accordance with financial regulation rules

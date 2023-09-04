@@ -1,0 +1,11 @@
+DynamoDB - Backups for disaster recovery
+	Continuous backups using point-in-time recovery (PITR)
+		Optionally enabled for the last 35 days
+		Point-in-time recovery to any time within the backup window
+		The recovery process reates a new table
+		
+	On-demand backups
+		Full backups for long-term retention, until explicitely deleted
+		Doesn't affect performance or latency
+		Can be configured and managed in AWs Backup (enable cross-region copy)
+		The recovery process creates a new table

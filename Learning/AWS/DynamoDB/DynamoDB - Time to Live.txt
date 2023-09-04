@@ -1,0 +1,3 @@
+DynamoDB - Time to Live (TTL)
+	Automatically delete items after an expire timestmap
+	Use cases: reduced storage data by keeping only current items, adhere to regulatory obligations, web session handling ...

@@ -1,0 +1,5 @@
+DynamoDB Global Tables
+	Make a DynamoDB table accessible with low latency in multiple-regions
+	Active-ACtive Replication
+	Applicaitons can READ and WRTITE to the table in any region
+	Must enable DynamoDB Streams as a pre-requisite
