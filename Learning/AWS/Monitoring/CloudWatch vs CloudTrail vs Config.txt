@@ -1,0 +1,26 @@
+CloudWatch vs CloudTrail vs Config
+	CloudWatch
+		Performance Monitoring (metrics, CPU, network, etc...) & dashboards
+		Events & Alerting
+		Log Aggregation & Analysis
+	
+	CloudTrail
+		Record API calls made within your Account by everyone
+		Can define trails for specific resources
+		Global Service
+	Config
+		Record configuration changes
+		Evaluate resources agianst compliance rules
+		Get timeline of changes and compliance
+
+Example: Monitoring Elastic Load Balancer
+	CloudWatch
+		Monitoring Incomnig connections metrics
+		Visualize error codes as a & over time
+		Make a dashboard to get an idea of your load balancer performance
+	Config
+		Track security group rules for the Load Balancer
+		Track configuration changes for the Load Balancer
+		Ensure an SSL certificate is always assigned to the Load Balancer (compliance)
+	CLoudTrail 
+		Track woh made any hanges to the Load Balancer with API calls 

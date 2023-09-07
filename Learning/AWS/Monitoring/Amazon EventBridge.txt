@@ -1,0 +1,23 @@
+Amazon EventBridge (formerly CloudWatch Events)
+	Schedule: Cron jobs ( schedules scripts)
+	Event Pattern: Event rules to react to a service doing something 
+		Example: You want to get notification such as email when someone is logging in with Root account
+	Trigger Lambda functions, send SQS/SNS message
+	
+	You can send event to AWS Partner such as Zendesk, datadog and outside AWS
+	
+	You can send event to EventBridge from your own application
+	
+	Event buses can be accessed by other AWS Account using Resource-based Policy
+	You can archive event (all/filter) sent to an event bus (indefinitely or set period)
+	Ability to replay archived event
+
+Schema Registry
+	EnvetBridge can analyze the events in your bus and infer the schema
+	The Schema Registry allows you to generate code for your application, that will know in advance how data is structure in the evnet bus
+	Shema can be versioned
+
+Resource-based Policy
+	Manage permissions for a specific Event Bus
+	Example: allow/deny events from another AWS account or AWS regions
+	Use cases: aggregate all events from your AWs Organization in a single AWS account or AWS regions

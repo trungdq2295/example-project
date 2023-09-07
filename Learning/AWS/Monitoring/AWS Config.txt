@@ -1,0 +1,33 @@
+AWS Config
+	Helps with auditing and recording compliance of your AWS resources
+	Helps record configurations and changes over time
+	Questions that can be solved by AWS Config:
+		Is there unrestricted SSH access to my security groups
+		Do my buckets have any public access?
+		How has my ALB configuration changed over time?
+	You can receive alerts (SNS notifications) for any changes
+	AWS Config is a per-region services
+	Can be aggregated across regions and accounts
+	Possibility of storing the configuration data into S3 (analyzed by Athena)
+
+Config Rules
+	Can use AWS Managed config rules (over 75)
+	Can make custom config rules (must be defined in AWS Lambda)
+		ex: evaluate if each EBS disk is of type gp2
+		ex: evaluate if each Ec2 instance is t2.micro
+	Rules can be evaluated /triggered
+		For each config change
+		And / or : at regular time intervals
+	AWS Config rules does not prevent acitons from happening (no deny)
+	Pricing: no free tier, $0.003 per configuration item recorded per region, $0.001 per config rule evaluation per region
+	
+	Remdeiations
+		Automated remediation of non-compliant  resources using SSM Automation Documents
+		Use AWS-Managed Automation Documents or create custom Automation Documents
+			Tip:  you can create custom Automation Documents that invokes Lambda function
+		You can set Remediation Retries if the resource is still non-compliant after auto remediation
+		Example: When an IAM Access Key expired, the AWS Config wil trigger auto-remediation action to deactive that expired IAM Access KEy
+	
+	Notifications
+		Use EventBridge to trigger notifications when AWS resources are non-compliant
+		Ability to send Configuration chnages and compliacen state notifications to SNS (all events - use SNS Filtering or filter at client-side)
