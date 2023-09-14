@@ -1,0 +1,46 @@
+AWS KMS (Key Management Service)
+	Anytime you hear "encryption" for an AWS Service, it's most likely KMS
+	AWS manages encryption keys for us
+	Fully integrated with IAM for authorization
+	Easy way to control access to your data
+	Able to audit KMS Key usage using CloudTrail
+	Seamlessly integrated into most AWS services (EBS, S3, RDS, SSM...)
+	Never ever store your secrets in plaintext, especially in your code
+		KMS Key Encryption also available through API calls (SDK, CLI)
+		Encrypted secrets can be stored in the code / environment variables
+		
+KMS Key Types
+	KMS Keys is the new name of KMS Customer Master Key
+	2 type encryption
+		Symmetric (AES-256 keys)
+			Single encryption key that is used to Encrypt and Decrypt
+			AWS services that are integrated with KMS use Symmetric CMKs
+			you never get access to the KMS Key unencrypted (must call KMS API to use)
+		Asymmetric (RSA & ECC key pairs)
+			Public Key (Encrypt) and Private Key (Decrypt)
+			Used for Encrypt/Decrypt, or Sign/Verify operations
+			The public key is downloadable, but you can't access the Private Key unencrypted
+			Use case: encryption outside of the AWS by users who can't call the KMS API
+	
+	Types of KMS keys:
+		AWS Owned Keys (free): SSE-S3, SSE-SQS, SSE-DDB (defualt key)
+		AWS Managed Key: free (aws/service-name, example: aws/rds or aws/ebs)
+		Customer managed key created in KMS: $1/month
+		Customer managed keys imported (must be symmetric key): $1/month
+		pay for API call to KMS ($.003 / 10.000 calls)
+	
+	Automatic Key rotation:
+		AWS-managed KMS Key: automatic every 1 year
+		customer-managed KMs KEy: (must be enalbed) automatic every 1 year
+		Imported KMS Key: only manual rotation possible using alias
+
+KMS Key Policies
+	Control access to KMS keys, "similar" to S3 bucket policies
+	Difference: you cannot control access without them
+	Default KMS Key Policy:
+		Created if you don't provide a specific KMS Key policy
+		COmplete access to the key to the root user = entire AWS account
+	Custom KMS Key Policy:
+		Define users, roles that can access the KMS KEy
+		Define woh can administer the key
+		Useful for cross-account access of your KMS key

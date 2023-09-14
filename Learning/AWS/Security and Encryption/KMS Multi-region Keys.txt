@@ -1,0 +1,11 @@
+KMS Multi-region Keys
+	Identicla KMS keys in different AWS Regions that can be used interchangeably
+	Multi-Region keys have the same Key ID, key material, automatic rotation..
+	Encrypt in one Region and decrypt in other Regions
+	No need to re-encrypt or making cross-Region API calls
+	
+	KMS Multi-Region are not global (Primary + Replicas)
+	Each Multi-Region key is managed independently
+	
+	Use cases: global client-side encryption, encryption on Global DynamoDB, Global Aurora
+

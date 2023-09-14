@@ -1,0 +1,22 @@
+AWS IAM Identity Center (successor to AWS Single Sign-ON)
+	On login (single sign-on) for all your
+		AWS accounts in AWS Organizations
+		Business cloud application (e.g. Saleforces, Box, Microsoft 365, ..)
+		SAML2.0-enabled applicaitons
+		EC2 Window Instances
+	
+	Identity providers
+		Built-in identity store in IAM Identity Center
+		3rd party: Active Directory (AD), OneLogin, Okta
+	
+	Fine-grained Permissions and Assignments
+		Multi-Account Permissions
+			Manage access across AWS accounts in your AWs Organizations
+			Permission Sets - a collection of one or more IAM Policies assigned to users and groups to define AWS access
+		Applicaiton Assignments
+			SSO access to many SAML 2.0 business applications (Salesforce, Box, Microsoft 365, ...)
+			Provide required URLs, certificates, and metdata
+		Attribute-Based Access Control (ABAC)
+			Fine-grained permissions based on user's attributes stored in IAM Identity Center Identity Store
+			Example: cost center; title, locale...
+			Use case: Define permissions once, then modify AWS access by changing attributes

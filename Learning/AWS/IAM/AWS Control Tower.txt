@@ -1,0 +1,16 @@
+AWS Control Tower
+	Easy way to set up and govern a secure and compliant multi-account AWS environment based on best practices
+	AWS Control Tower uses AWS Organizations to create account
+	Benefits:
+		Automate the set up of your environment in a few clicks
+		Automate ongoing policy management using guardrails
+		Detect policy violations and remediate them
+		Monitor compliance through an interactive dashboard
+	
+	Guardrails
+		Provides ongoing voernance for your COntrol Tower environment (AWS Accounts)
+		Preventive Guardrails - using SCPs
+			For example: restrict Regions across all your account
+				Like hey, you should only perate in the us-east-1 or in the eu-west-2 regions
+		Detective Guardrails - using AWS Config
+			For example: dentify untagged resources

@@ -1,0 +1,11 @@
+IAM Policies 
+	IAM for S3
+		s3:ListBucket permission applies to
+			arn:aws:s3:::test
+			=> bucket level permission (here is test)
+		s3:GetObject, s3:PutObject, s3:DeleteObject applies to
+			arn:awn3:s3:::test/*
+			=> object level permission
+	
+	Resource Policies & aws:PrincipalOrgID
+		aws:PricipalOrgID can be used in any resource policies to restirct access to accounts that are member of an AWS Organization
