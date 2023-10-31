@@ -1,0 +1,12 @@
+NAT Gateway
+	AWS-managed NAT, higher bandwidth, high availability, no administration
+	Pay per hour for usage and bandwidth
+	NATGW is created in a specific Availability Zone, uses an Elastic IP
+	Can't be used by EC2 instance i nthe same subnet (only from other subnets)
+	Requires an IGW ( Private Subnet => NATGW => IGW)
+	5 Gbps of bandwidth with automatic scaling up to 100 Gbps
+	No security groups to managed /required
+	
+	NAT Gateway is resilient within a single availability zone
+	Must create multiple NAT gateway in multiple AZs for fault-tolerance
+	There is no cross-AZ fail over needed because if an AZ goes down it doesn't need NAT

@@ -1,0 +1,23 @@
+Spring scope
+	Singleton: This is the default scope. The Spring IoC container creates exactly one instance of the object defined by that bean definition. This single instance is stored in a cache of such singleton beans, and all subsequent requests and references for that named bean return the cached object.
+	Prototype: A single bean definition has any number of object instances. A new instance will be created each time a request for that specific bean is made.
+	Request: This scope is valid only in a web-aware Spring ApplicationContext. The bean is scoped at the HTTP request level. For each HTTP request, a new instance of the bean is created.
+	Session: This scope is also valid only in a web-aware Spring ApplicationContext. The bean is scoped at the HTTP session level. For each HTTP session, a new instance of the bean is created.
+	Global Session: This is a custom scope that is used to scope beans at the global HTTP session level. It is typically used in a portlet context.
+	Application: Scopes a single bean definition to the lifecycle of a ServletContext. Only valid in the context of a web-aware Spring ApplicationContext.
+	WebSocket: Scopes a single bean definition to the lifecycle of a WebSocket. Only valid in the context of a web-aware Spring ApplicationContext.
+
+Prototype Scopes
+	The prototype scope in Spring is used when you want the Spring IoC container to produce a new instance of the bean every time a request for that bean is made. This is in contrast to the singleton scope, where the same instance is returned for each request.
+	You should use prototype scope when:
+		Each request needs a unique instance of the bean: If the bean holds state that is specific to each request and should not be shared across requests, then prototype scope is a good choice.
+		The bean has heavy resources: If the bean encapsulates resources that are heavy to create and you want to control when these resources are created and destroyed, you might choose prototype scope.
+		The bean is not thread-safe: If multiple threads are going to access the bean and the bean is not designed to be thread-safe, then you should use prototype scope to ensure that each thread gets its own instance of the bean.
+
+Singleton and Application 
+	Khi nao nen xai Singleton
+		Khi bean không duy trì trạng thái: Singleton bean nên là stateless, nghĩa là chúng không nên có bất kỳ trạng thái nào có thể thay đổi. Điều này đảm bảo rằng chúng có thể được sử dụng an toàn bởi nhiều luồng và yêu cầu mà không cần lo lắng về các vấn đề về đồng bộ hóa.
+		Khi bean cung cấp các dịch vụ không thay đổi: Singleton bean thường được sử dụng để cung cấp các dịch vụ không thay đổi, như các dịch vụ cấu hình, dịch vụ kết nối cơ sở dữ liệu, hoặc các dịch vụ khác mà không cần duy trì trạng thái giữa các lần gọi.
+		Khi bạn muốn giảm bộ nhớ và tăng hiệu suất: Vì chỉ có một thể hiện của một singleton bean được tạo ra, việc sử dụng singleton bean có thể giúp giảm bộ nhớ và tăng hiệu suất bằng cách tránh việc tạo ra nhiều thể hiện của cùng một bean.
+
+		Tuy nhiên, nếu bean của bạn cần duy trì trạng thái hoặc nếu bạn cần một thể hiện mới của bean cho mỗi yêu cầu hoặc phiên làm việc, bạn nên xem xét việc sử dụng các phạm vi khác như prototype, request hoặc session.
