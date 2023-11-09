@@ -1,0 +1,11 @@
+Mediator
+    A component that facilitates communication between other components without them necessarily being aware of each other or having direct (reference) access to each other
+
+Mediator means you create a component and everyone communicates through that component
+
+Summary
+    Create the mediator and have each object in the system refer to it
+    Mediate engages in bidirectional communication with its connected components
+    Mediator has functions the components can call
+    Components have functions the mediator can call
+    Event processing( Java Reactive)

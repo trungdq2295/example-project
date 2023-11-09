@@ -1,0 +1,7 @@
+Memento
+    A token/handle representing the system state. Lets us roll back to the state when the token was generated. May or may not directly expose state information.
+
+Summary
+    Used to rollback state arbitrarily
+    is not required to expose directly the states to which it reverts the system
+    CAn be used to implement undo/redo

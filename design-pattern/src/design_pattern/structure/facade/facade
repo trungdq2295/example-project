@@ -1,0 +1,4 @@
+Facade
+    Provides a simple, easy to understand/ user interface over a large and sophisticated body of the code
+    May wish to (optionally) expose internals through the facade
+    May allow users to escalate to use more complex APIs if they need to

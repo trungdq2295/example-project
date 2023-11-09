@@ -1,0 +1,12 @@
+Flyweight
+    Motivation
+        Avoid redundancy when storing data
+            EG: MMORPG
+                Plenty of users with identical first/ last names
+                No sense in storing same first/last name over and over again
+                Store a list of names and pointers to them
+            EG: bold or italic text in the console
+                Don't want each character to have a formatting character
+                Operate on ranges (e.g, line number, start/end position)
+
+    A space optimization technique that let us use less memory by sotring externally the data associated with similar object
