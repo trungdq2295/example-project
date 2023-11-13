@@ -1,4 +1,4 @@
-package design_pattern.behavior.responsibility;
+package design_pattern.behavior.chain.of.responsibility;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,0 +1,20 @@
+Motivation
+    Unethical behavior by an employee; who takes the blame?
+        Employee
+        Manager
+        CEO
+    You click a graphical element on a form
+        Button handles it, stops furthere processing
+        Underlying group box
+        Underlying window
+    CCG Computer game
+        Creature has attack and defense values
+        Those can be boosted by other cards
+
+Chain of Responsibility
+    A chain of components who all get a chance to process a command or a query, optionally having default processing implementation and an ability to terminate the processing chain
+
+Summary
+    Chian of Responsibility can be implemented as a chian of references or a centralized construct
+    enlist objects in the chain, possibly controlling their order
+    Object removal from chain (e.g., in AutoCloseable's close())

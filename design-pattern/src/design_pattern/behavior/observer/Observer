@@ -11,3 +11,9 @@ Motivation
 
  Observer
     is an object that wishes to be informed about events happening in the system. THe entity generating the events is an observable
+
+Summary
+    Observer is an intrusive approach: an observable must provide an event to subscribe to
+    Special care must be taken to prevent issues in multithreaded scenarios
+    Rx uses
+        Observer<T>/Observable<T>

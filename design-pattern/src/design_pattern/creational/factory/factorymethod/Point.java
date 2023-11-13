@@ -1,4 +1,4 @@
-package design_pattern.creational.factorymethod;
+package design_pattern.creational.factory.factorymethod;
 
 public class Point {
 

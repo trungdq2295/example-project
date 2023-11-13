@@ -1,0 +1,11 @@
+Motivation
+    Algorithms can be decomposed into common parts + specific
+    Strategy pattern does this through composition
+        High-level algorithm uses an interface
+        Concrete implementations implement the interface
+    Template Method does the same thing through inheritance
+        Overall algorithm makes uses of abstract member
+        Inheritors override the abstract members
+        Parent template method invoked
+Template Method
+    Allows us to define the skeleton of the algorithm, with concrete implementations defined in subclasses

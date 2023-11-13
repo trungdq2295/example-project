@@ -1,0 +1,15 @@
+Motivation
+    Many algorithms can be decomposed into higher- and lower-level parts
+    Example: Making tea can be decomposed into
+        The process of making a hot beverage (boil water, pour into cup); and
+        Tea-specific things( put teabag into water)
+    The high-level algorithm can then be reused for making coffee or hot chocolate
+
+Strategy
+    Enables the exact of behavior of a system can be selected either at run-time(dynamic) or compile-time (statiC)
+    Also known as a policy
+
+Summary
+    Define an algorithm at a high level
+    Define the interface you expect each strategy to follow
+    Provide for either dynamic or static composition of strategy in the overall algorithm

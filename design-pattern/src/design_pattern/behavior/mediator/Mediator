@@ -1,3 +1,11 @@
+Motivation
+    Components may go in and out of a system at any time
+        Example: Chat room participant
+            Players in MMORPg
+    It makes no sense for them to have direct references to one another
+        Those references may go dead
+    Solution: have then all refer to some central component that facilitate communication
+
 Mediator
     A component that facilitates communication between other components without them necessarily being aware of each other or having direct (reference) access to each other
 

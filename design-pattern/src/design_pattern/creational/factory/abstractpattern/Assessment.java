@@ -1,4 +1,4 @@
-package design_pattern.creational.abstractpattern;
+package design_pattern.creational.factory.abstractpattern;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -1,4 +1,4 @@
-package design_pattern.behavior.responsibility;//package design_pattern.structure.chain.of.responsibility;
+package design_pattern.behavior.chain.of.responsibility;//package design_pattern.structure.chain.of.responsibility;
 //
 //public class MethodChainDemo {
 //
