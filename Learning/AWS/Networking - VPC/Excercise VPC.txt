@@ -1,0 +1,2 @@
+Excercise VPC
+	What does this CIDR 10.0.4.0/28 correspond to? /28 means 16 IPs (=2^(32-28) = 2^4), means only the last digit can change.

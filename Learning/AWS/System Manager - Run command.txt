@@ -1,0 +1,8 @@
+System Manager - Run command
+	Execute a document (=script) or just run a command
+	Run command across multiple instances (using resources groups)
+	No need to SSH
+	Command Output can be shown in the AWS console, sent to S3 bucket or CloudWatch Logs
+	Send notification to SNS about command status (In progress, success, failed, ...)
+	Integrated with IAM & CloudTrail
+	CAn be invoked using EventBridge

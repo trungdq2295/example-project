@@ -1,0 +1,15 @@
+AWS Applicaiton Discovery Service
+	Plan migration projects by gathering information about on-premises data center
+	Server utilization data and depedency mapping are important for migrations
+	Agentless Discovery (AWS Agentless Discovery Connector)
+		VM inventory, configuration, and performance history such as CPU, memory, and disk usage
+	Agent-based Discovery (AWS Application disovery Agent)
+		System configuration, system performance, running processes, and details of the network connections between systems
+	
+	Resulting data can be viewed within AWS migration hub
+	
+AWS Application Migration Service (MGN)
+	Lift-and-shift (rehost) solution which simplify migrating applicaitons to AWS
+	Convert your physical, virtual, and cloud-based servers to run natively on AWS
+	Supports wide range of platforms, OS, and database
+	Minimal downtime, reduced costs

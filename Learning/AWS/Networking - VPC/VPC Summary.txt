@@ -1,0 +1,26 @@
+VPC Summary
+	CIDR - IP Range
+	VPC - Virtual Private Cloud => we define a list of IPv4 & IPv6 CIDR 
+	Subnets - tied to an AZ, we define a CIDR 
+	Internet Gateway - at the VPC level ,provide IPv4 & IPv6 Internet public access 
+	Route Tables - must be edited to add routes from subnets to the IGW, VPC Peering Connections, VPC Endpoints,.. 
+	Bastion Host - public EC2 instance to SSH into, that has SSH connectivity to EC2 instances in private subnets 
+	NAT Instances - gives  Internet access to EC2 Instances in private subnets, Old, must be setup in a public usbnet, disable Source/ Destination check flag 
+	NAT Gateway - managed by AWS, provide scalable Internet acess to private EC2 instances, IPv4 only
+	
+	NACL - stateless, subnet rules for inbound and outbound, dont' forget Ephemeral 
+	Security Groups - stateful, operate at the EC2 instance level (inbound and outbound has same rule) 
+	VPC Peering- connect TWO VPCs with non overlapping CIDR, non-transitive
+	VPC Endpoint - provide private access to AWS SErvice (S3, DynaamoDB, CloudFormation, SSM) within a VPC VPC FLow Logs - can be setup at the VPC/Subnet/ENI Level, for ACCEPT and REJECT traffic, helps identifying attacks, analyze using Athena or CloudWatch Logs Insight 
+	Site-to-Site VPN - setup a Customer Gateway on  Data Center, a Virtual Private Gateway on VPC, and siteto-site VPN over public internet AWS 
+	VPN CloudHub - hub-and-spoke VPN model to connect your sites
+	Direct Connect - setup a Virtual Private Gateway on VPC, and establish a direct private connection to an AWS Direct Connect Location 
+	Direct Connect Gateway - setup a Direct Connect to many VPCs in differnet AWS regions 
+	AWS PrivateLink/ VPC Endpoint Services: 
+		Connect services privately from your esrvice VPC to customers VPC 
+		Doesn't need VPC Peering, public Internet, NAT Gateway, Route Tables
+		Must be used with Network Load Balancer & ENI
+	ClassLink - connect EC2-Classic EC2 instances privately to your VPC 
+	Transit Gateway - transitive peering connection for NPC, VPN & DX 
+	Traffic Mirroring - copy network traffic from ENIs for further analysis 
+	Egress-only Internet gateway - like a NAT GAteway, but for IPv6

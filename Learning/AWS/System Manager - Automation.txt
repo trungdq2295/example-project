@@ -1,0 +1,9 @@
+System Manager - Automation
+	Simplifies common maintenance and deployment tasks of EC2 instances and other AWS resources
+	Example: restart instances, create an AMI, create EBS snapshot
+	Automation Runbook- SSM Documents to define actions performed on your EC2 instances or AWS resources( pre-defined or custom)
+	Can be triggered using
+		Manually using AWS Console, AWS CLI or SDK
+		Amazon EventBridge
+		On a schedule using Maintenance WIndows
+		By AWS Config for rules remediations

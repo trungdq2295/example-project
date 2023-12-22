@@ -1,0 +1,10 @@
+Amazon Pinpoint
+	Scalable 2-way(outbound/inbound) marketing communication service
+	Supports email, SMS, push, voice, and in-app messaging
+	Ability to segment and personalize messages with the right content to customer
+	Possibility to receive replies
+	Scales to billions of messages per day
+	Use cases: Run campaigns by sending marketing, bulk, transactional SMs messages
+	Versus Amazon SNS or Amazon SES
+		in SNS & SES, you managed each message's audience, content, and delivery schedule
+		In Amazon Pinpoint: you create message templates, delivvery schedules, highly-targeted segments, and full campaigns

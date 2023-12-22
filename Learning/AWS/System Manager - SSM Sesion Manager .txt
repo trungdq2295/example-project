@@ -1,0 +1,6 @@
+System Manager - SSM Sesion Manager 
+	Allows you to start a secure shell on your EC2 and on-premises servers
+	No SSH access, bastion hosts, or SSH key needed
+	No port 22 needed (better security)
+	Supports Linux, macOS, and Windows
+	Send session log data to S3 or CloudWatch Logs

@@ -1,0 +1,14 @@
+Transferring large amount of data into AWS
+	Example: Transfer 200TB of data in the cloud and we have only 100Mbps internet connection
+	Solutions: 
+		Over the internet/ Site-to-Site VPN
+			Immediate set up
+			Will take 200 (TB) *1000(GB)*1000(MB)*8(b)/ 100 Mbps  = 16,000,000 = 185days
+		Over direct connect 1Gbps
+			Long for the one-time setup(over a month)
+			Will take 200 (TB) *1000(GB)*1000(MB)*8(b)/ 1 Gbps  = 1,600,000 = 18.5days
+		Over Snowball:
+			Will take 2 to 3 snowballs in parallel
+			Takes about 1 week for the end-to-end transfer
+			Can be combined with DMS
+		For on-going replication/ transfer: Site-to-Site VPN or Dx with Snowball or DataSync

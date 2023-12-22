@@ -1,0 +1,43 @@
+DMS - DAtabase Migration Service
+	Quickly and securely migrate databses to AWS, resilient, self healing
+	The source databases remians available during the migration
+	Supports:
+		Homogeneous migiraiton: ex Oracle to Oracle
+		Heterogeneous migraitons: ex Microsoft SQL Server to Aurora
+	Continuous Data Replicaiton using CDC
+	You nust create an EC2 instance to perform the replication tasks
+
+DMS Sources and Target
+	Sources
+		On-Premises and EC2 instances databases: Oracle, MS SQ Server, MySQL, MariaDB, PostGreSQL, MongoDB, SAP, DB2
+		Azure: Azure SQL DAtabase
+		Amazon RDS: all including RDS Aurora
+		Amazon S3
+		Document DB
+	Target
+		On-Premises and EC2 instances databases: Oracle, MS SQL Server, MySQL, MariaDB, PostGreSQL, SAP
+		Amazon RDS
+		Redshift, DynamoDB, S3
+		OpenSearch Service
+		Kinesis Data Streams
+		Apache Kafka
+		DocumentDB & Amazon NEptune
+		Redis & Babelfish
+
+
+AWS Schema Conversion Tool (SCT)
+	Convert your Database's Schema from one engine to another
+	Example: OLTP: (SQL server or Oracle) to my SQL, PostGreSQL, Aurora
+	Example OLAP: (Teradata or Oracle) to Amazon Redshift
+	
+	You do not need to use SCT if you are migrating the same DB engine
+	
+
+DMS - Continuous 
+
+AWS DMS - Multi AZ - Deployment
+	When Multi-Az Enabled, DMs provision and maintains a synchronously stand replica in a differnet AZ
+	Advantages:
+		Provides Data Redundancy
+		Eliminates I/O freezes
+		Minimizes latency spikes

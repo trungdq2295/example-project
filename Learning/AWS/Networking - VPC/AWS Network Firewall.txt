@@ -1,0 +1,22 @@
+AWS Network Firewall
+	Protect your entire Amazon VPC
+	From Layer 3 to LAyer 7 protection
+	Any direction, you can inspect
+		VPC to VPC traffic
+		Outbound to internet
+		Inbonud from internet
+		To/from Direct Connec & Site-to-Site VPN
+	
+	Internally, the AWS Network firewall uses the AWS Gateway Load Balancer
+	Rules can be centrally managed cross-account by AWs Firewall Manager to apply to many VPcs
+
+Network firewall- fine Grained Controls
+	Supports 1000s of rules
+		IP & Ports - example: 10,000s of IP filtering
+		Protocol - example: block the SMB protocol/ HTTP protocol or even STP protocol for outbound communications
+		Stateful domain list rule groups: example: only allow outbound traffic to *.myexample.com or third-party software repo
+		General pattern matching using regex
+	
+	Traffic filtering: Allow, drop, or alert for the traffic that matches the rules
+	Active flow inspection to protect against network threats with intrusion-prevention capabilities( like Gateway Load Balancer, but all managed by AWS)
+	Send logs of rule matches to Amazon S3, CloudWatch Logs, Kinesis DataFirehose

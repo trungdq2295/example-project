@@ -1,0 +1,8 @@
+Amazon Appflow
+	Fully managed integration service that enables you to securely transfer data betweeen Software-as-a-Service (Saas) applications and AWS
+	Sources: Saleforce, SAP, Zendesk, Slack, and ServiceNow
+	Destination: AWs services likes Amazon S3, Amazon Redshift or non-AWS such as Snowflake and Saleforce
+	Frequence: on a schedule, in response to event,s or on demand
+	Data transformation capabilities like filtering and validation
+	Encrypted over the public internet or privately over AWs PrivateLink
+	don't spend time writing the integrations and leverage APIs immediately

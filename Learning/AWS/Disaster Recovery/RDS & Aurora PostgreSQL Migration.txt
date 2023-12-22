@@ -1,0 +1,9 @@
+RDS & Aurora PostgreSQL Migration
+	RDS PostgreSQL to Aurora PostgreSQL
+		Option 1: DB Snapshots from RDS MYSQL restore as a MySQL Aurora ( got downtime from RDS MYSQL due to stop it to make snapshots)
+		Option 2: Create an Aurora Read Replica from your RDS MySQL, and when the replication lag is 0, promote it as its own DB cluster(can take time and cost $)
+	External PostgreSQL to Aurora PostgreSQL	
+		Create a backup and put it in Amazon S3
+		Import it using the aws_s3 Aurora extension
+	Use DMS if both databases are up and running
+			

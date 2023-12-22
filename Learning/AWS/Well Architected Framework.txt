@@ -1,0 +1,18 @@
+Well Architected Framework 
+	Stop guessing your capacity needs
+	Tests systems at production scale
+	Automate to make arcihtectural experimentation easier
+	Allow for evolutionary architectures
+		Design based on changing requirements
+	Drive architectures using data
+	Improve through game days
+		Simulate applicaitons for flash sale days
+	
+6 Pillars
+	Operationla Excellence
+	SEcurity
+	Reliability
+	PErfroamcne Efficiency
+	Cost Optimization
+	Sustainability
+	

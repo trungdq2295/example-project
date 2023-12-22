@@ -1,0 +1,22 @@
+AWS Trusted Advisor
+	No need to install anything- high level AWS account assessment
+	Analyze your AWS accounts and proivdes recommendation on 5 categories
+		Cost optimization
+		PErformance
+		SEcurity
+		Fault tolerance
+		Service limits
+
+Supports Plans
+	7 core checks - Basic & Developer Support plan
+		S3 Bucket Permissions
+		Security groups - specific ports unrestricted
+		IAM use (one IAM user minium)
+		Multi Factor on Root Account
+		EBS Public Snapshot
+		RDS Public Snapshot
+		Service Limit
+	Full checks - Business & Enterprise Support plan
+		Full checks available on the 5 categories
+		Ability to set CloudWatch alarm when reaching limits
+		Programmatic Access using AWS Support API

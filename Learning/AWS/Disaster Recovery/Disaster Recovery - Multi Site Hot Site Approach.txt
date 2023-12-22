@@ -1,0 +1,4 @@
+Disaster Recovery - Multi Site Hot Site Approach
+	Very low RTO (minutes or seconds) - very expensive
+	Full Production Scale is running AWS and On Premise
+	

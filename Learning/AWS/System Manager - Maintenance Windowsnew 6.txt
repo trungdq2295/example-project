@@ -1,0 +1,8 @@
+System Manager - Maintenance Windows
+	Defines a schedule for when to perform acitons on your instances
+	Maintenance Windows contains
+		Schedule
+		Duration
+		SEt of registered instances
+		Set of registered tasks
+	

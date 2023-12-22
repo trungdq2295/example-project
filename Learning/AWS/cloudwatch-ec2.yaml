@@ -1,0 +1,7 @@
+Resources:
+  MyInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      AvailabilityZone: ap-southeast-2
+      ImageId: ami-a4c7edb2
+      InstanceType: t2.micro

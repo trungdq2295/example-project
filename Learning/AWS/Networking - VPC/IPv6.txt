@@ -1,0 +1,19 @@
+IPv6
+	Ipv4 deisgned to provide 4.3 Billion addresses (they'll be exhausted soon) 
+	IPv6 is the successor of Ipv4 
+	IPv6 is designed to provide 3.4 * 10^38 unique IP addresses 
+	Every IPv6 addresses is public and internet-routable ( no private range) 
+	Format -> x.x.x.x.x.x.x.x
+
+Ipv6 in VPC
+	IPv4 cannot be disabled for your VPC and subnets 
+	You can enable IPv6 (they're public IP addresses) to operate in dual-stack mode 
+	Your EC2 instancces will get a least a private internal Ipv4 and a public IPv6  
+	THey can communicate using either Ipv6 or Ipv6 to the internet through an Interget Gateway
+
+IPv6 Troubleshooting VPC
+	IPv4 cannot be disabled for your VPC and subnets 
+	So, if you can not launch an EC2 instance in your subnet 
+		It's not because it cannot acquire an Ipv6 ( the space is veryr large) 
+		It's because there are no available IPv4 in your subnet 
+	Solution: create new Ipv4 CIDR in your subnet

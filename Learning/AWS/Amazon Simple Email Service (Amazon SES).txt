@@ -1,0 +1,9 @@
+Amazon Simple Email Service (Amazon SES)
+	Fully managed service to send emails securely gobally and at scale
+	Allows inbound/outbound emials
+	Reputation dashboard, performance insights, anti-spam feedback
+	Provides statistics such as email deliveries, bounces, feedback loop result, email open
+	Supports DomainKeys Identified Mail (DKIM) and Sender policy Framework (SPF)
+	Flexible IP deployment: shared, dedicated, and customer-owned IPs
+	Send emials using your application using AWS COnsole, APIs, or SMTP
+	Use cases: transactional, marketing and bulk email communications

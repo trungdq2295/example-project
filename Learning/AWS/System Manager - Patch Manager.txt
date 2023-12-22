@@ -1,0 +1,7 @@
+System Manager - Patch Manager
+	Automated the process of patching managed instances
+	OS updates, applicaitons updates, security updates
+	SUpported EC2 instances and on-premises servers
+	Supports Linux, macOS, and Windows
+	Patch on-demand or on a schedule using Maintenance WIndows
+	SCan instances and generate patch compliance report(missing patches)

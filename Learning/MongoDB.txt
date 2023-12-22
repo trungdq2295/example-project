@@ -1,0 +1,6 @@
+MongoDB
+	Document based NoSQL
+	Structure is Database > Collection > Document
+	Can be real time DB
+	
+On Listener real time , MongoDB has resume token 

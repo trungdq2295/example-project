@@ -1,0 +1,4 @@
+Egress-only Internet Gateway
+	Used for Ipv6 only (similar to a NAT gateway but for IPv6) 
+	Allows instances in your VPC outbound connections over IPv6 wihle preventing the internet to initiate an IPv6 connection to your instances 
+	You must update the Route Tables

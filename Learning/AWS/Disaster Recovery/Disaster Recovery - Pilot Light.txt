@@ -1,0 +1,5 @@
+Disaster Recovery - Pilot Light
+	A small version of the ap pis always running in the cloud
+	Useful for the critical core(pilot light)
+	Very similar to Backup and Restore
+	Faster than Backup and Restore as critical systems are already up

@@ -1,0 +1,3 @@
+AWS Amplify - web and mobile applications
+	A set of tools and services that helps you develop and deploy scalable fullstack web and mobile applications
+	
