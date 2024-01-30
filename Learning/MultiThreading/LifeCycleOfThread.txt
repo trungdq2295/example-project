@@ -1,0 +1,8 @@
+Life Cycle Thread: New -> Runnable -> Blocked > Waiting  > Time waiting > Terminated
+New : Khởi tạo
+Runnable: là bắt đầu chạy (running)
+ hoặc là đợi cpu cấp resource để chạy (runnable)
+blocked: là bị blocked lại ví dụ là truy cập 1 synchronize resource
+waiting: là chờ 1 thread khác
+time waiting:  cũng chờ 1 thread khác nhưng mà có timeout
+terminated: kết thúc

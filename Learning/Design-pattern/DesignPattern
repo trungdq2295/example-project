@@ -1,0 +1,49 @@
+Creation
+	Factory Method: Tạo ra method,
+	Factory Abstract: Tạo ra class
+	Builder: Giảm độ phức tạp trong việc tạo instance có nhiều property,
+	Singleton: Tạo ra 1 instance duy nhất,
+	Prototype: cách Clone 1 object - 2 loại là shallow và deep
+		Shallow: 1 instance khác name nhưng mà point tới cùng bộ nhớ từ object nó clone ra
+		Deep copy: 1 instance mới hoàn toàn và nằm ở bộ nhớ khác với object nó clone ra
+Structural
+	Adapter:  Giúp kết nối giữa 2 system không tương thích với nhau
+		ví dụ 1 thằng xài xml và 1 thằng json và 2 chúng nó muốn communicate với nhau thì cần adapter the convert JSON thành XML và ngược lại
+	Bridge: Tách class ra thành những class abstract và implementation nhỏ
+		ví dụ: Class vẽ hình Tứ giác thì sẽ có hình vuông, hình chữ nhật. mỗi loại sẽ có 1 api để vẽ => class Tứ giác sẽ có nhiều function để vẽ mỗi loại
+		Bridge sẽ tách ra thằng 1 interface vẽ hình và class tứ giác sẽ thành abstract class và có 1 property là vẽ hình
+		Tuỳ thuộc mong muốn của mình sẽ truyền vào interface vẽ hình thông qua constructor
+	Decorator: Wrapper class- có thể thêm chức năng mà không ảnh hưởng đến các class hiện tại
+		Ví dụ:
+	Facade: Tạo ra 1 cái gateway cho system mình để communicate với system bên ngoài, mục đích là giấu đi độ complex của system
+		Ví dụ:
+	Composite: Đệ quy - giống như cây nhị phân - mối quan hệ cha và con có cùng property
+		Ví dụ: hệ thống file và folder trong OS
+	Flyweight: Là 1 value lặp đi lặp nhiều lần => tốn dung lượng để lưu value đó => Thay vì duplicate nó thì sẽ tạo ra 1 nơi để store value đó và map value đó với người cần
+		Ví dụ: là tên của người có thể lặp lại nhiều lần
+		=> tạo ra 1 cái map có key là id và value là cái tên
+		=> những chỗ nào cần chỉ cần store cái id đó và khi láy chỉ cần get key từ cái map
+	Proxy: Tạo ra 1 cổng đứng trước 1 class/system để kiểm soát truy cập hoặc là logging từ các class/system bên ngoài vào hệ thống mcủa mình
+Behavior Pattern
+	Interpreter: Thông dịch viên
+		Ví dụ: Token sẽ là 1 chuỗi unreadable thì interpreter sẽ giúp chúng ta convert và đọc được điều đó
+	Template method: Tạo ra 1 template thực hiện các step (function) mà mình mong muốn
+		Ví dụ: analyze data ở file PDF, word và CSV gồm các step read(),format, analyze()
+			- Tạo ra 1 function analyzeData gồm read(),format(), analyzed,...
+			- những class con PDF, word,CSV sẽ implement các function read(),format(), analyzed(), ...
+			- user chỉ cần pass đúng class và call function analyzeData() là được
+	Chian of Responsibility: 1 chuỗi công việc giống nhau
+		Ví dụ là việc approve để mua 1 mon đồ trong cty ( từ teamlead => manager > head)
+	Observer: observer sự thay đổi của 1 instance sẽ trigger những event(function) tương ứng
+	State: Lưu lại trạng thái của 1 instance
+		ví dụ: user sẽ có trạng thia active, deactive, suspend
+	Strategy: Tập hợp các function có ý nghĩa giống nhau
+		Ví dụ: Shipping thì sẽ có ship bằng xe máy, xe lửa, xe hơi. Linh hoạt trong việc thay đổi việc ship
+	Visitory: Thêm 1 chức năng mà không muốn thay đổi code
+			Visitor khác decorator ở chỗ là visitor sẽ tạo ra 1 interface vistor và bao gồm những chức năng và client sẽ call đến interface đó
+			Còn decorator là tạo ra 1 interface chung và có những class implement interface đó và client sẽ call đến những class đó
+	Iterator: Loop 1 array
+	Mementor: Khôi phục lại trạng thái cũ của 1 instance mà không affect đến trạng thái hiện tại
+		Ví dụ: undo/redo
+	Mediator: Cổng kết nối chung giữa các component với nhau
+		Ví dụ: chat room

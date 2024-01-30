@@ -1,5 +1,4 @@
 Networkings
-	
 	Elastic ÍP
 		When  you stop and then start EC2 instanc, it can change its public IP
 		If you need to have a fixed public IP for your instance, you need an Elastic IP
@@ -12,7 +11,6 @@ Networkings
 		Try to avoid using Elastic IP
 			Reflect poor architectural decisions
 			Instead, use a random public IP and register DNS name to it
-
 Placement Groups
 	Cluster
 		All EC2 instances are on same hardware

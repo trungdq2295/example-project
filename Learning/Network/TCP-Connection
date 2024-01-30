@@ -1,0 +1,9 @@
+TCP Connection
+Khi client kết nối tới server thì sẽ thực hiện 3 way handshake
+	+ Client send SYN tới server
+	+ Server nhận được SYN và gửi SYN/ACK tới client
+		- Ở đây kernel sẽ là người nhận được SYN và bỏ vào SYN queue connection của clietn đó và response SYN/ACK về client
+	+ Client nhận ACK và gửi ACK tới server
+		- kerner nhận được ACK và remove khỏi SYN queue và bỏ vào accept queue
+		- BE sẽ call function accept() để lấy connection từ accpet queue đó và remove nó ra khỏi accept queue
+Lúc này giữa server và client đã tạo thành công TCP connection

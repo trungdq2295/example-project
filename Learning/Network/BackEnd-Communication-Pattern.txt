@@ -1,0 +1,10 @@
+Backend Communication with client
+	Request Response
+	Push: client và server sẽ tạo 1 bidirectional communication và server đẩy response tới client liên tục mà không cần client request
+	polling: client sẽ request tới server liên tục và server chưa xử lý xong response vẫn trả về và client sẽ request tiếp
+	long polling: client sẽ request tới server và server chờ cho đến khi server xử lý xong response mới request tiếp
+	server sent event: client request tới server và server response liên tục
+	Pub/Sub
+	Multiplexing and demultiplexing:
+		Multiplexing: là gôm nhiều request trong 1 connection thay vì nhiều TCP connection
+		Demultiplexing: là tách các request trong 1 connection thành nhiều TCP connection

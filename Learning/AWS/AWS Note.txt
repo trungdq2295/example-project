@@ -1,0 +1,184 @@
+AWS VPN Cloudhub là cổng kết nối chung cho các site-to-site-vpn ở nhiều region hay az
+
+Muốn setup Internet Gateway cần setup public subnet của NAT gateway
+
+Nếu mà object size nhỏ hơn 1 GB thì dùng CloudFront, còn lớn hơn thì dùng Amazon S3 Transfer Acceleration để improve latency  trong S3
+
+Instance storre không support auto recover
+
+Configure the Internet Gateway of the VPC to be accessible to the private subnet resources by changing the route tables - Internet Gateway cannot be used directly with a private subnet. It is not possible to set up this configuration, without a NAT instance or a NAT gateway in the public subnet.
+
+aws:RequestedRegion là target của api call nghĩa là resource thuộc target region nào đó
+
+Amazon Kinesis Data Firehose is a fully managed service for delivering real-time streaming data to destinations such as Amazon Simple Storage Service (Amazon S3), Amazon Redshift, Amazon OpenSearch Service, Splunk, and any custom HTTP endpoint or HTTP endpoints owned by supported third-party service providers, including Datadog, Dynatrace, LogicMonitor, MongoDB, New Relic, and Sumo Logic.
+
+Firehose cannot directly write into a DynamoDB table, so this option is incorrect.
+
+ELB phạm vi hoạt động là region
+
+path routing ALB
+static IP NLB
+
+Edge elà nằm ngoài region
+
+
+Tại sao lại xài sql
+
+	Dễ report
+	workload tốt
+
+	Dễ là do mình đi học đại học chỉ dạy SQL
+
+Vì hồi xưa việc storage rất khó vfi thế xin ra sql để hỗ trợ
+Vì consistent
+
+Thực tế cần horizontal scailing mà sql khum hỗ trợ được, chỉ hỗ trợ vertical scaling
+
+DB2 cho dòng ADM
+
+Aurora rất là mạnh
+
+DynamoDB NoSQL Serverless
+
+fraud detection, recommdation > neptune
+
+QLDB >> centrail blockchain
+blockChainDB >>> blockchain
+
+S3 lưu object storage
+
+không quá 5TB
+và mỗi bucket thuộc region
+
+S3 Cấu hình nằm ngoài VPC và EFS nằm trong VPC
+
+Những ứng dụng hay thay đổi không phù hợp với S3 (override số lượng file lớn)
+
+block storage là ebs
+file system : efs, fsx,
+object storage: s3
+
+EBS là thuộc về AZ nên từ AZ khác không truy suất được
+
+EFS >> cho linux
+FSx >> cho Windows
+
+On premise có thể kết nối đến EFS được
+
+IGW giúp connect ra ngoài internet
+
+Nat gateway nằm trong public subnet
+
+nat gateway chỉ đi ra ngoài internet chứ không từ internet đi vô trong được
+IGW thì 2 chiều
+
+NACL bảo vệ ở tầng subnet
+
+SG cấu hình ở network interface (instace)
+
+peering là kết nối đơn giản giữa 2 VPC
+
+VPN connection 1,25GB/s => security
+Direct connect thông qua AWS Partner (1G, 10G, 100GB)
+	Direct connect không có mã hoá
+	>> cấu hình openvpn direct connect để có mã hAWSoá
+
+2 partner của
+	CMC
+	FPT
+
+transit gateway
+
+1vpc thuộc về regionZone
+
+1 subnet nằm trong 1 az
+
+1 Available  sẽ nằm trong nhiều data center
+
+infrastructure Càng đơn giản >>> càng tốn tiền
+infrastructure Càng ít tốn tiền >>>> càng tốn nhiều effort để optimized
+
+Ở đâu càng nhiều người sử dụng thì chi phí càng rẻ
+
+MT Dev sẽ đẩy sang nhưng region có chi phí rẻ
+Mt prod sẽ đẩy sang những region có latency thấp ( khả năng cost cao)
+
+CloudFront caching front end
+Global Accelerator caching back end
+
+Chống DDos là AWS shield
+
+Fsx dành cho window
+
+scale up scale down >> vertical scailing
+scale out scale down >> horizontal scailing
+
+Chạy StoreProcedure sẽ tốn resource hơn
+
+Vertical scaling sẽ có down time
+
+Tạo ra 2 template, 1 template chạy cấu hình cao, 1 template chạy cấu hình thấp
+và chọn template dựa vào yêu cầu của mình
+
+EC2
+    CPU
+    RAM
+    Networking
+
+Chip  Gravition AWS là chip đời mới
+
+m7g.2xlarge = > instance good cho việc sử dụng medium đời 7, chip gravition
+m7in.2xlarge => instance good cho việc sử dụng medium đời 7, chip intell
+
+ec2 global view cho mình coi số lượng instance trong tài kho
+
+firehose không thể insert data vào DynamoDB
+Firehose insert data vào redshift và s3
+
+Database cloning chỉ có ở aurora
+còn amazon rds thì không
+
+Amazon Simple Queue Service FIFO (First-In-First-Out) queues aren't supported as an Amazon S3 event notification destination. To send a notification for an Amazon S3 event to an Amazon SQS FIFO queue, you can use Amazon EventBridge.
+
+There are no standby instances in Aurora. Aurora performs an automatic failover to a read replica when a problem is detected
+
+cognito userr pool không intergrate directly với cloudfront được
+
+iam permission boundary chỉ apply ở iam user hay là role, không có apply ở iam group được
+
+RDS can't be clone
+Auroa can be cloned
+
+Amazon Redshift uses a four-tier, key-based architecture for encryption.
+
+http for layer 7 => ALB
+SSH for layer 4 => NLB
+
+geoproximity routing là route traffic tới server dựa trên vị trí của client. Có thể setup route more traffic hay ít hơn
+geolocation cho phép mình lựa chọn server nào sẽ phục vụ client khi có traffic vào
+
+
+Same domain name thì dùng wildcard Secure Sockets Layer certificate (SSL certificate)
+Khác domain name thì dùng Secure Sockets Layer certificate (SSL certificate) with SNI
+
+Amazon Quicksight không dùng Kinesis DataStream là source được
+Athena không phân tích data real time được
+
+Network Load Balancer là region bound >> nhiều region cần nhiều NLB
+
+VPn Cloudhub: a hub for aws site-to-site vpn
+
+
+Disaster Recovery
+
+	Backup and Restore: longest recvoery time
+	Pilot Light: slower than warn standby
+	Warm Standy: Sao lưu toàn bộ data để có thể backup khi cần thiết, thời gian recovery nhanh chậm hơn multi-site
+	Multi-site: Fastest recovery time
+
+Aurora Không có standby instance
+
+Kinesis Data Stream có thể có nhiều consumer
+Kinesis Dâta Firehose thì không
+
+Bảo vệ Ec2 khỏi crypto thì dùng GuardDuty
