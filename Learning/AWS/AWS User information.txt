@@ -1,12 +1,3 @@
-Console sign-in URL
-
-User name
-trungnguyenAWS
-
-Console password
-
-Account allias
-https://trung-nguyen-qn.signin.aws.amazon.com/console
 
 It better to use Iam user account than root account
 
