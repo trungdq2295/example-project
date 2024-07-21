@@ -1,0 +1,3 @@
+Flux
+	A publisher can publish 0,1...N items
+	Never complete 

@@ -1,0 +1,17 @@
+4 rules to choose a DB Engine when you want to develop your DB
+	1) Which type of data you want to store in your DB
+		- SQL thường dành cho data luôn có fixed structure, ví dụ là thông tin của 2 sản phẩm
+		- NoSQL thường dành cho data có dynamic structure, ví dụ Mobile sẽ có thông số về CPU, RAM nhưng mà quần áo thì không có cái đó
+	2) Cost
+		- License 
+		- Sau này mở rộng thì có tốn cost không
+		- Know - How: Example: 
+						+ Đào tạo nhân viên để đào tạo nhân viên cách sử dụng DB mới
+						+ Thuê chuyên gia đẻ giúp tuning DB
+	3) Limited of each DB Engine
+		- Cần phải biết mỗi DB có điểm hạn chế là gì. Ví dụ:
+			+ Những bug tiềm ẩn
+	4) Strong community
+		- Để biết khi gặp bug còn có người support
+				
+	

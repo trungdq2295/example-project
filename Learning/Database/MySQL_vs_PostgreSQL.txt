@@ -1,0 +1,81 @@
+Case Study:
+	ID Name 	Salary 	Add
+	1	Huy		1000	HN
+	2	An		50		ND
+	3	Binh	800		HCM
+	
+	Và có index ở column Name, Salary ( index luôn được lưu dưới dạng sort ASC)
+
+Write Case
+	PostgreSql
+		Sẽ tự động gắn thêm 1 cái cột để map data khi lưu trong disk
+			CTID 	ID Name 	Salary 	Add
+			A		1	Huy		1000	HN
+			B		2	An		50		ND
+			C		3	Binh	800		HCM
+		Index sẽ được map theo column được sinh ra của PostgreSql
+		=>  của Name sẽ được lưu như thế này: An -> B,
+											Binh -> C,
+											Huy -> A
+		=>  của Salary sẽ được lưu như thế này: 50 -> B,
+											800 -> C,
+											1000 -> A							
+		Trường hợp, khi update dữ liệu thì postgre nó không sửa vào dữ liệu gốc mà nó tạo thêm 1 dòng data trong disk
+		Ví dụ, mình sẽ update salary của ông Huy từ 1000 -> 15000. Table mới sẽ như này
+			CTID 	ID Name 	Salary 	Add
+			A		1	Huy		1000	HN
+			B		2	An		50		ND
+			C		3	Binh	800		HCM
+			D		1	Huy		1500	HN
+		Vì mình có thể rollback trong quá trình update nên postgre cần tạo thêm 1 cột để biết data rollback về. Table sẽ như thế này:
+		Ref			CTID 	ID Name 	Salary 	Add
+		Null		A		1	Huy		1000	HN
+		Null		B		2	An		50		ND
+		Null		C		3	Binh	800		HCM
+		A			D		1	Huy		1500	HN
+		Không chỉ thể, postgre cũng làm tương tự là thêm 1 dòng dữ liệu cho các index
+		Index Salary => 50 -> B, 			Index Name => An -> B,
+						800 -> C,							Binh -> C,
+						1000 -> A,							Huy -> A,
+						1500 -> D							Huy -> D
+		Và Primary Key cũng bị affect: 1 -> A,
+										2 -> B,
+										3 -> C,
+										4 -> D
+		Và khi chúng ta commit, thì row CTID A sẽ bị clean đi bởi 1 feature của postgresql được gọi là Vacumm. Nó sẽ được chạy auto và định kì clean đi những row không cần thiết
+		Vậy trường hợp, table chỉ có 5000 rows và khi chúng ta update/insert thì table sẽ lên tới 10k hay 15k row và trước khi những row đó cần được clean đi bởi Vacumm. Và vì vacum clear data trên table chính, nó sẽ ảnh hưởng đến hiệu năng của table đó
+	MySQL
+		Khi update, MySQL không insert thêm data vào table như postgre. Cơ chế của nó là tạo ra 1 bảng undo. 
+		Vậy khi chúng ta update salary từ 1000 -> 1500, MySQL sẽ insert data cũ (1000) vào table undo và data mới (1500) sẽ được update trong table chính
+		=> Vậy khi người update, họ select ra sẽ thấy được data mới là 1500 và những người không cùng transaction, sẽ đọc data từ table undo (1000)
+		Về index, Index name sẽ không bị affect, vẫn là An -> B,
+														Binh -> C,
+														Huy -> A
+		Còn index salary sẽ affect, nó sẽ xoá đi data cũ => 50 -> B,
+															800 -> C,
+															1000 -> A => 1500 -> A
+		MySQL cũng cần có 1 function để clear đi những data nằm trong table undo. Nhưng vì nó là clear data ở 1 table khác, nó sẽ không affect đến table hiện tại
+	Kết luận:
+		Khi hệ thống có lượng TPS nhiều vào 1 table có nhiều index, postgre sẽ chậm hơn so với mysql
+
+Read case:
+	Khi run 1 câu query, sẽ gồm những bước sau
+		1) Syntax
+		2) Algebrizer: check if the name of table/column name is valid name in your database, or you have permission to query that column/table
+		3) Query Optimization: Usually to check if the query is already executed before, if it is, it run instantly. If not, we moved to the next step
+		4) Execution Plan Generation: Create the most efficient plan to execute the query with cost based execution ( minimum the cost of query) - Th
+		5) Query Execution: The DBMS executes the plan, retrieving, updating, or deleting the data as specified by the query.
+		6) Result Generation: The DBMS generates the result se
+
+	Case study: 1 query bao gồm sub query
+			
+		PostgreSql: 
+			PHân tích chi tiết nhiều hơn, và dùng nhiều yếu tố hơn để đánh giá cost của 1 câu lệnh
+			Đồi với case study, postgresql sẽ đánh giá và tự chuyển đổi thành câu join
+		MySQL:
+			Đối với case study, mysql sẽ chạy câu lệnh sub query trước, rồi đến câu query chính
+	Kết Luận:
+		Những hệ thống 
+			+ có câu query đơn giản, mysql và postgre sẽ không có sự khác biệt
+			+ Câu query phức tập, postgre sẽ nhanh hơn so với mysql
+		
