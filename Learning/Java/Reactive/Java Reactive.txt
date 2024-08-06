@@ -1,0 +1,38 @@
+Java reactive
+Memory
+	Heap
+		Stored the object value
+	Stack 
+		Stored the local variable, object references, function, thread
+	
+Problem
+	CPU is very expensive in context switch in multi threading 
+	
+Why java reactive and not virtual thread (VT)
+	If it's simple request/response, then VT is goods
+	But for streaming, VT's still a blocking operation, it jsut requires less resource than the OS thread which make the long-running or continous I/O operation not good
+	
+
+Publisher - Subscriber Communication
+	Step 1: Subscriber want to connect to Publisher
+		- Publisher has interface subscribe which accept sbuscriber as parameter
+	Step 2: Publisher accept the connection with method onSubscribe
+		- Publisher handover Subscription to the Subscriber 
+	Step 3: The connect between Publisher and Subscriber established and they used Subscription to coomunicate
+	Step 4: Subscriber request for some data with request method on Subscription 
+			and publisher pushes data to Subscriber via onNext method
+	Step 5: Subscriber call onComplete method as the data is done being sent and the publisher won't be send any data to Subscriber
+			and Subscription's over
+	Step 6: While processing the request, The publisher might get any error and it will invoke onError method to subscriber
+	
+	onNext can be invoked zero time or many times based on the amount of data.onComplete/onError can be invoke once only
+	Publisher won't do anything after invoke onComplete/onError eventhought the subscription send request or cancel.
+
+Important Note:
+	Publisher -> Subscriber
+	For example: Our services and DB
+	So for the case CREATE/UPDATE/DELETE, DB will be subscriber and our services will be publisher since DB request data for CUD action, and our services will give DB the data to do it
+	for the case READ/Search, it's opposite, our services will request data from DB => DB is publisher and our services is subscriber
+	
+	
+	

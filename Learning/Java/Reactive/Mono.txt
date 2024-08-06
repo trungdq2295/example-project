@@ -1,0 +1,10 @@
+Mono - a Publisher
+	It emits 0 or 1 item
+		Example: The subscriber can request 3 or more records, but the producer provide 0 or 1 item only
+		
+	onErrorDropped happend when there's an exception but there's no handler for error so the publisher will call operator called default onErrorDropped
+	
+	
+	"Mono.just" method is to use when there's available data ( for example: in your memory)
+	"Mono.fromSupplier" method is to use when you don't have any subscriber yet, it will invoke if only there's subscriber ( lazy - loading)
+	"Mono.fromCallaber" is similar to fromSupplier but you can throw Exception, and supplier you have to handle exception 
