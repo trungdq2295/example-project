@@ -1,0 +1,8 @@
+Java 
+	Java Compilation Process
+		SourceCode.java -> javac (java compile) -> SourceCode.class -> java -> JVM
+		
+	Comment Type
+		Single line commnet  - //
+		Multi line Comment  - /* */
+		Java Doc - /** */

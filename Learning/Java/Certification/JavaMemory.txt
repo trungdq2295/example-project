@@ -1,0 +1,10 @@
+Java Memory
+	Stack
+		Contains primitive values, local variable and reference to the object and It's Last In First Out
+		Clear the memory when execution method is done and go back to the calling method and space become available for the next execution
+	Heap 
+		Dynamic method allocation for Java object
+		
+		
+	For Integer;
+		It has a Integer pool contains value from -128 to 127. So if the reference variable point to the value less than 127, it will be there. But if the object value  is not in the range of the pool, it will create new object for it 

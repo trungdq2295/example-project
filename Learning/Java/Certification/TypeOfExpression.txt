@@ -1,0 +1,7 @@
+Type Of Expression in Java
+	byte + byte always return int, It's the same for short + short or short + byte + int or + char
+	However, if smaller data type + larger datatype, it always return a larger data type 
+	for example:
+		int + long = long
+		long + float = float 
+		float + double = double

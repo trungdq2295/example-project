@@ -1,0 +1,20 @@
+Operators
+	Unary Operators
+		- là phương phác l àm toán trên 1 số thôi 
+		- VD: ++x, +x, ++5, -6,...
+	Binary Operators
+		- Là phương pháp làm toán giữa nhiều số với nhau ( +,-, * ,/, ...) và từ trái sang phải, sau đó trả về value 
+		- VD: x+5 ,5 +6 , x+y, ...
+	Assignment Operation
+		- Là phương pháp gán giá trị. Ví dụ là x =5 là đem giá trị 5 gán cho x  (use the right operand to asign to the left operand)
+	Relation Operation
+		- Dùng để so sánh giữa 2 biến (giá trị ) và trả về true/false
+	Logical Operator
+		- work with boolean value 
+		- Toán tử bitwise XOR (^) 
+			- Đối với boolean value 
+				- return true if one of value is true 
+				- return false if both value has the same value (either true or false)
+		
+	
+	Unary Ari

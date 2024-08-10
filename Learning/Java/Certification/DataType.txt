@@ -1,0 +1,35 @@
+Data Type in Java
+	2 types
+		Primitive Types - store the actual value
+		Reference Types - store the address of object they refer to
+		
+	Primitive
+		Integerers
+			byte 	- 1 bytes 				-  -128 to 127 
+			short 	- 2 bytes 				- -2^15 to 2^15-1
+			int 		- 4 bytes 				- -2^31 to 2^31-1
+			long 	- 8 bytes 				- -2^63 to 2^63-1
+		Float
+			flaot 	- 4 bytes 
+			double - 8 bytes
+		Boolean
+			boolean - depend machine - can be bit (1/0) or character  (true/false)
+		Characters
+			char 	- 2 bytes				 -  0 to 65,535
+		
+	Variable
+		is a piece of memory that can contains a data value 
+		is strongly typed language: each variable a  type 
+		is defined by the combination of identifier and a type 
+		can declare by "var" keyword - data type will be defined by java compiler 
+		has a scope, which defines their visibility
+		can't give a name to a variable of java keyword
+		
+		You can't convert from larger data type to smaller since it require more memory allocation 
+		You can convert from smaller data type to larger smaller since larger type has enough memory allocation for it 
+		
+		Compiler will read the literaly value during compilation process to see if the value is in range of data type 
+		
+		Autoboxing is to  convert wrapper class into primitive type ( Integer to int)
+		Unboxing is convert primitive type to wrapper class (int to Integer)
+		
