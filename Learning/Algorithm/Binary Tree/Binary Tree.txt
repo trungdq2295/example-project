@@ -1,0 +1,48 @@
+Binary Tree
+	Full Binary Tree
+		Each node can have either 2 or - children
+		each children will be left or right
+		
+		Starting from root, we call it level 0, and so on
+		Each level i, the tree has at most total 2^i nodes
+			For example: at level 0 (root node) you can have at most 2^0 = 1 node
+						at level 1, you can have at most 2^1 = 2 nodes ( exclude root node)
+					
+
+
+	Complete Binary Tree
+		Is a type of binary tree that all levels, except possibily the last, are completely filled, and all nodes as far left as possible 
+		Example :
+				   1
+				 /   \
+				2     3
+			   / \   / \
+			  4   5 6   7
+				   1
+				 /   \
+				2     3
+			   / \   / 
+			  4   5 6   
+		This is not complete binary tree since the 7 is not on the left of node 3
+				   1
+				 /   \
+				2     3
+			   / \     \
+			  4   5     7
+
+
+	The length of binary is the longest path from the root to any nodes( usually the node at the highest level)
+	=> Maximum number of nodes = 2^0 + 2^1 + 2^2 +... + 2^(h)
+								= 2^(h+1) - 1
+								with h is the length of binary tree
+								
+	Maximum height: n - 1 ( because each node will have 1 child, either left or right)
+	Minium height: log2(n) ( because each node will have 2 child)
+		with n is the number of the node
+
+
+Balanced Binary Tree
+	Difference between height of left and right sub tree for every node is not more than k(mostly 1)
+	Height of an empty tree = 0
+	height of the tree with 1 node = 0
+	The difference between height and left subtree can be calculated: |leftHeight - rightHeight|

@@ -1,0 +1,14 @@
+String
+	Essential whitespace là whitespace khi remove sẽ ảnh hưởng đến String
+	Ví dụ "Hello World", khi remove whitespace sẽ thành "HelloWorld"
+	Trailing whitespace is whitespace at the end of line
+
+Math
+	Math.ceil return double
+	Math.max/min return the type of paramêtrr
+	Math.pow return double
+	
+Date
+	Day Light Saving
+		On March, it will skip from 2 am to 3am ( it mean when hour reach 1:59 am, it immediately turn into 3am) and the offset also change (increase by 1), 
+		

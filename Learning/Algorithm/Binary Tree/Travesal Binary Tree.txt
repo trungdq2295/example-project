@@ -1,0 +1,8 @@
+Travesal Binary Tree
+	Breadth-first
+		Loop by level ordered, from left to right
+	Depth-first
+		3 strategies
+		Preorder: Root node -> left sub tree -> right sub-tree - 
+		Inorder: left sub-tree -> root -> right subtree
+		Postoder: left sub-tree -> right sub-tree -> root

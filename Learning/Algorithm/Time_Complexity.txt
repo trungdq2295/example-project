@@ -1,0 +1,14 @@
+n: is the total element
+O(n)
+	is to scan all the element ( you have n element => you scan n element)
+O(log n) 
+	Important: In computer science, log n is refer to the log n to the base 2, not to the base 10 like in mathematic
+	every time you scan, you scan half of it
+		1st scan: you scan n/2 element,
+		2nd scan: you scan n/4 element, 
+		...
+	So the time you scan will be equal to the heigh of binary tree,
+		=> height = n/(2^x)
+		=> x = log (n) to the base 2
+		
+		

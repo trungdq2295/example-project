@@ -1,0 +1,32 @@
+Block Escalation
+	Việc lock 1 row lại khi update row đó, tốn rất nhiều resource cho việc này. Vậy nên khi quá nhiều row bị lock  lại, 1 số Database dùng block escalation ( block cả table) để tiết kiệm reosurce cho việc đó
+	=> những row không update vẫn bị block vì điều này
+	=> OracleDB không có block escalation
+	=> SQL Server sẽ bị block escalation
+
+
+
+Partition
+	Thường DB sẽ support partition để giải quyết vấn đề Data quá lớn ( hơn 100tr rows chẳng hạn)
+	Oracle support Sub Partition
+		Ví dụ: bạn partition theo updated date nhưng mà câu query có filter theo name nữa, Oracle sẽ support sub partition theo name.
+			Nghĩa là sau khi DB xác định sẽ lấy DB trên partiotion của updated date nào, thì nó sẽ tiếp tục xác định sub parition teho name
+
+Index
+	Oracle support index tốt hơn. Ví dụ là index dạng bitmap trong trường hợp với những dữ liệu có ít value khác nhau ( ví dụ nam, nữ, )
+
+Parallel
+	Oracle support parallel ở câu select và DML,
+	SqlServer support parallel ở câu select
+Report Performance
+	Oracle có report đầy đủ thông tin về performance ( time execute,  cpu used, ...
+
+Flashback
+	Khi bạn gõ nhầm câu lệnh ( ví dụ là delete without where)
+	Vì bản chât Oracle store data vào 1 table Undo để tránh trường hợp query bị block khi có 1 transaction đang update row đó, thì khi bạn gõ nhầm câu lệnh, bạn có thể vào undo để restore data lại
+	Trong SQL Server cần phỉa vào backup để lây lại dữ liệu đó
+OS
+	Sau 2017, SQL Server mới support cho OS khác như Linuxx. Trước đó chỉ support WindowOS
+	Oracle support trên mọi OS
+format type
+	ASM của Oracle không có OS nào đọc được

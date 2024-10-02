@@ -3,4 +3,54 @@ MongoDB
 	Structure is Database > Collection > Document
 	Can be real time DB
 	
-On Listener real time , MongoDB has resume token 
+On Listener real time , MongoDB has resume token
+
+
+MongoDB
+	Type of instances
+		Standalone
+		Replication
+		Sharding
+
+Mô hình:
+	Standalone
+		Advantages: Dễ dùng
+		Disadvantages: Not high availability, Too many read/write can cause high latency
+	Replication
+		Là mô hình primary - secondary ( giống slave-master trong RDBMS)
+		Advantages: High Availability
+		Disadvantages: Still perform read/write in single server ( primary or secondary when primary failed)
+	Sharding
+		Là mô hình chia DB ra thành nhiều phần nhỏ
+		Advantages:
+			High Availability
+			Can scale horizontally by adding more shard
+		Disadvantages
+			Complexity
+
+Deployment:
+	Cloud:
+		MongoDB - Atlas ( Free for 512MB)
+	On premise
+
+Architecture
+	Thường mỗi database sẽ có 1 DB memory đẻ cache lại data và persist data xuống file,
+	và hầu như db nào cũng call đến memory trước, nếu không cso thì mới call xuống file để lấy data
+
+	And in MongoDB, it has storage engine and each storage engine has it owns pros and cons
+		+ MMAPv1 (old storage engine)
+		+ WiredTiger Storage Engine
+			- Good for most use cases
+		+ In-memory storage engine ( only available in MongoDB enterprise version)
+
+
+
+Storage Engine
+	WiredTiger
+
+
+Optimize performance in MongoDB
+	- Index on column
+		When we use composite index, the first column index is very important, you need to create index on the first column which the query used to filter
+		Example: the query  filter by  name and your index is on age and name then your index won't work since the first column indexed is age and the query doesnt filter by it
+			=> Need to create index (name,age)
