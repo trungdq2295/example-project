@@ -1,0 +1,15 @@
+Binary Search  Tree
+	A binary tree in which for each node, value of all the nodes in the left sub tree is lesser or equal to root and value of all the nodes in right subtree is greater
+	Example :
+		   15
+		 /   \
+		10    20
+	   / \   / \
+	  8  12 17   25
+	This is not binary search tree since 16 is on the left and it's higher than root node (15)
+	Example:
+		   15
+		 /   \
+		10    20
+	   / \   /  \
+	  8  16 17   25

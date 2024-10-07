@@ -1,7 +1,7 @@
 Travesal Binary Tree
-	Breadth-first
+	Breadth-first ( also call level-order traversal)
 		Loop by level ordered, from left to right
-	Depth-first
+	Depth-first 
 		3 strategies
 		Preorder: Root node -> left sub tree -> right sub-tree - 
 		Inorder: left sub-tree -> root -> right subtree
