@@ -10,5 +10,21 @@ Math
 	
 Date
 	Day Light Saving
-		On March, it will skip from 2 am to 3am ( it mean when hour reach 1:59 am, it immediately turn into 3am) and the offset also change (increase by 1), 
-		
+		On March, it will skip from 2 am to 3am ( it mean when hour reach 1:59 am, it immediately turn into 3am) and the offset also change (increase by 1),
+	Instant Time
+		return time at GMT + 0 (no time zone)
+	Period
+		take the last chain as the value
+			Example: Period.ofYear(1).ofMonth(6).ofDay(3)
+				Value is 3 day not 1 year 6 month 3 day
+
+Sealed Class
+	Permit clause is optional if class in the same file with sealed class
+	Can only be extended with final, sealed, non-sealed class
+
+
+Records
+	Can not be extend the class, but can implement interface
+	Compact constructor is concise form of constructor. Can be used to validate or modify the values of property. It will run after record instantiated
+
+Static
