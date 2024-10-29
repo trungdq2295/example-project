@@ -1,0 +1,52 @@
+Before we started:
+	In Tree data structure, if we have N nodes -> we have (n-1) edges. One edge for each parent-child relationship
+Graph
+	There's are no rule for connections in graph
+	A graph G is an ordered pair of a set V of vertices and a set E of edges
+		G = (V, E)
+	ordered pair: (a,b) # (b,a) if a#b
+	
+	Edges:
+	Directed
+		For example: from node u to v 
+			So we call the origin is u and the destination is v. It's an ordered pair so you cant switch from v to u. It's 1 way 
+	Undirected
+		For example: from node u to v and node v to u
+			It's 2 ways and it represents as an un-order paired
+	
+	Weighted Graph
+		is where each edge between vertices has a value called a weighted, which can represent information such as distance, cost, time or any measure
+		Example: A road network where cities are vertices, and roads between cities are edges. The weight on each edge might represent the distance or time required to travel between the cities.
+			   5
+			A --- B
+			|     |
+			3     2
+			|     |
+			C --- D
+			  4
+		Adjacency Matrix
+			A 2D array to represent a graph
+			For example:
+							A	B	C	D
+						A	0	1	0	0
+						B	0	0	1	1
+						C	0	1	0	0
+						D	0	0	0	1
+				This mean we have directed from origin A to B with the value is 1, and there's on edge between A and C or D, the same for the rest
+				Advantages: Time Complexity O(1) since we know the index, we can the value directly from array
+				Disadvantages: Space complexity O(n^2) since we need to store all the edges
+		Adjacency List
+			an array or array list of linkedlist
+			
+				Advantages: Time Complexity O(n) since it's a linkedlist, it loop from left to right
+				Disadvantages: Space complexity O(V * E), we only need to store the node pointer to the next destination
+		
+		
+	Unweighted Graph
+		is where the edges (connections) between vertices do not have weight. it simply represent connections between vertices without any additional information
+		Example:  A social network where users are vertices, and friendships are edges, but we don’t care about how strong those friendships are.
+			A - B - C
+
+	
+		
+			
