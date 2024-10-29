@@ -22,9 +22,69 @@ Sealed Class
 	Permit clause is optional if class in the same file with sealed class
 	Can only be extended with final, sealed, non-sealed class
 
-
 Records
-	Can not be extend the class, but can implement interface
+	Can not extend the class, but can implement interface
 	Compact constructor is concise form of constructor. Can be used to validate or modify the values of property. It will run after record instantiated
+	It is implicit final -> can extend sealed class
 
-Static
+Class
+    First line of constructor is either this() or super()
+    Sub class extend variable must be covariant
+    When instantiate an object, static block run (only once, if it has run before then wont run again) -> block run -> constructor
+    Abstract class can have constructor, but can't be instantiated directly, need subclass
+    When override a method, new or broader exception can't be declare
+Enum
+    Enum constructor is private
+    It's legal to change value of enum (not recommend)
+Var
+    var must be used for all variable in lambda expression
+        (var a, b) -> ... //This is not valid
+Exception
+    When we have multiple catch block, and only 1 catch  block can catch the exception at a time, even when inside that catch block throw exception, it won't run into another catch
+    close() method in Closeable can not throw exception, autocloseable can
+    Exception in close() method will be supressed (overridden) by other exception in try with resources
+    Exception in catch block will be overridden by exception thrown in finally
+        Example
+            try{
+
+            } catch( FileNotFoundException e){
+
+            } finally{
+                throw IOException
+            }
+            FileNotFound will be overridden by IOException
+    -g:vars is used to debug but for the left only
+        Example: int x = (Integer) null; // It doesn't help here since Integer null is on the right
+            Integer x = (Integer) null;
+            x.intValues() // help to trace the exception nullpointer point to variable x
+    try with resources
+        The flow will be -> try -> close() ( in reverse order) -> catch -> finally
+
+Array & Collection
+    The wildcard ? shouldn't be used when instantiate collection
+    In set, element are unordered so it doesn't have index like Array, ArrayList
+    Hashset does not commit order. It works like HashMap
+    When you create array, make sure to add size when creating without braces
+        Example: String[] a = new String[5] ;// This is correct
+            String[] a = new String[] ; This is not correct
+            String[] a = new String[] {"abc"}; //This is correct
+    Comparator.reverseOrder() does not implement Comprator interface
+
+Stream
+    IntStream convert to parallelStream should be using boxed().parallel()
+    PartitioningBy will return a map with key true and false even when it has no value in key
+    Parallel Stream
+        Shouldn't represent stateful operation. For example: edit a value such as Collection
+    flatMapToInt require IntStream as function parameter
+    Reduction
+        One-argument reduce() return Optional
+        concurrent reduction need to be performed on parallel stream
+    forEachOrdered() only applied at the end so the intermediate operation will still take advantages of parallel stream
+    Deferred Execution mean the lambda expression will not be evaluated until runtime, but it still compiles
+    SplitIterator will split a stream into a half at the middle
+    findFirst() always returns the first element in ordered stream and parallel stream. but it's free to return anything in unordered stream
+
+Function
+    Parameter and return type has the same data type ( the same as IntFunction, LongFunction, DoubleFunction)
+    IntFunction take an int parameter and return int value
+    When UnaryOperator is used without generic argument, the provided type will be Object

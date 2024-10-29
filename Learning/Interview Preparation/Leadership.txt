@@ -3,13 +3,13 @@ The Leadership Principle
 	See in Action
 	Try out yourself and see what works and doesn't work
 	Ask question about
-	Something you have to practice alot 
+	Something you have to practice a lot
 	
 	Customer Obsession
 		Cost Optimize for customers where they can save money so customer can redeploy that money in the future
-		All the things thaty make it work for customers
+		All the things that make it work for customers
 			What problem are we trying to solve?
-			What will customes care most about?
+			What will customers care most about?
 			What would they be most disappointed about if we launch new feature?
 			What will they love most?
 		If a competitor builds something that customers love, we should be aware of it, and we should be inspired by it and think about how can we improve our own customer experience with what we learn from what competitors have done
@@ -20,8 +20,8 @@ The Leadership Principle
 			Sifting through the noise
 			Finding the signal
 			What really matters for customers
-		Best possible answer for customer, whoever's idea it is
-		Question your closely held beliefs // Đặt câu hỏi cho bản thân ngay cả khi mình có niềm tin sâu sắc về nó
+		Best possible answer for customer, whosoever idea it is
+		Question your closely held beliefs // Question yourself even when you have strong beliefs in it
 			Are they really right?
 			IS there another way to think about it?
 			Get the right people involved in giving feedback
@@ -31,21 +31,21 @@ The Leadership Principle
 		Constantly inventing and reinventing
 		Always going to shade on what we think customer want most
 	Think Big
-		All of us have to be looking around cornres
+		All of us have to be looking around corners
 			We cannot be content with where we are
 			What are the next big breakthroughs for customers?
 			What is a customer problem that needs solving?
 		If you want to build a company that lasts over 100 years and outlast all of us, you cannot run the same playbook for decades at a time.
-		Bold initiatives that aree not simple to do, and these types of initiatives require thinking big, and it's what you do if you want to serve customer better. 
-	Dive Deeep
-		Be great at gtting details
+		Bold initiatives that are not simple to do, and these types of initiatives require thinking big, and it's what you do if you want to serve customer better.
+	Dive Deep
+		Be great at getting details
 		The details of any idea are what matters most. That's what people actually see, what customeers actually see
 		Good leaders
 			Find mechanism to inspect
 			Audit the details
 			Understand anecdotes
 	Insist on the highest standards
-		Having high standas is one of the most critical underpinnings for the teams
+		Having high standards is one of the most critical underpinnings for the teams
 		Higher expectation leads to better results
 		In the meeting you're in
 			Set the expectations
@@ -62,7 +62,7 @@ The Leadership Principle
 		Have the right mindset and the right urgency about decisions
 			Don't take weeks to be done a task that can be done in days or hours
 		You want to show up every day, every week, thinking: When I leave this week, will my customer be better off than when I started the week?
-		Be fast while still having high standads
+		Be fast while still having high standards
 			Think of ourselves as the world's biggest startup
 			Keep asking ourselves why can't we move faster for customer?
 	Ownership
@@ -88,7 +88,7 @@ The Leadership Principle
 		Once we make a decision
 	Earn Trusts
 		Leader listens attentively, speak candidly and treat other respectfully
-		Being honest, straighforward
+		Being honest, straightforward
 		If you want to earn trust
 			Deliver it
 			Speak up
