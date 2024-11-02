@@ -82,9 +82,67 @@ Stream
     forEachOrdered() only applied at the end so the intermediate operation will still take advantages of parallel stream
     Deferred Execution mean the lambda expression will not be evaluated until runtime, but it still compiles
     SplitIterator will split a stream into a half at the middle
+        Example: 1,2,3,4
+            split => (1,2) and (3,4)
     findFirst() always returns the first element in ordered stream and parallel stream. but it's free to return anything in unordered stream
+    In Stream, it will convert to Object value unlike primitive stream
+    Primitive Stream
+        Doesn't have get() but getAsDouble() or getAsLong()
+    When use Stream.concat(), we need to use stream not primitive stream
 
 Function
     Parameter and return type has the same data type ( the same as IntFunction, LongFunction, DoubleFunction)
     IntFunction take an int parameter and return int value
     When UnaryOperator is used without generic argument, the provided type will be Object
+
+Lambda & Method references
+    We can use variable effective final as method reference
+        Example: var s = "abc";
+            Predicate<String> predicate = s::contains (valid)
+
+Module
+    A service consists of the interfaces, any classes the interfaces reference, and a way to look up implementation
+    A named module must be on module path and contains module-info.java
+    An automatic module must be on module path but doesn't have module-info.java
+    An unnamed module must be on class path
+    "exports" should reference package name not module name
+    "requires" references module name
+    When a module is on module path without module-info, all packages are exported
+    module on module path can't access anything in classpath
+    java.lang is package
+    java.base is available for all modules
+    When running a  module ( with java cmd), module name should be before package name and then class
+        Example: com.eu/com.eu.test.Example
+    Migration
+        The module from the top depends on the  module which is under them
+        => top-down migration is to start from the module at top which has no module depend on, to the btm
+        => bottom-down migration is to start from the module at bottom which has module depend, to the top module which has no module depend on
+        Top-down migration will move all the module to the module path, all of them will be automatic module
+        and then move 1 by 1 to a named module
+
+    Service provider interface, service provider, consumer, service locator
+                W -->X
+                 \ / ^
+                 /\ |
+                Y <-- Z
+        X = Service provider interface
+        Z = Service locator
+        Y = Service Provider
+        W = Consumer
+        All parts of modules depend on service provider interface
+        Consumer depends on service provider and service locator
+            => 2 requires in module-info
+        Service locator depends on service provider interface directly and service provider indirectly, contains load methods
+            => contains 3 parts: exports, requires, uses
+            => requires the service provider interfaces and export the packages with the locator
+            =>  "uses" specifies the service provider interfaces it references
+        Service provider depend on service provider interface
+            => 1 require and 1 provides
+
+    Command
+        -d = describle module
+        -m = -module
+        -s = --sumary
+        --output flag provides desired destination to output file in PC
+        jmod command: create ,extract, describe, list, hash
+        jlink use to create java image
