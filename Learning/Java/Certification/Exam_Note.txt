@@ -144,5 +144,32 @@ Module
         -m = -module
         -s = --sumary
         --output flag provides desired destination to output file in PC
-        jmod command: create ,extract, describe, list, hash
+        jmod command: create, extract, describe, list, hash
         jlink use to create java image
+        javac take command -p not -m
+        jdeps command output : requires mandated java.base
+            without any command, jdeps list packages and modules dependencies.
+            With -s, it provides a summary and omit the package name
+
+Concurrent
+    Thread.run() make the program run single threaded
+    Callable define call() not run()
+    Live lock is special case of resource starvations
+    Need to read CyclicBarrier, Lock/Reentrant lock
+    ConcurrentSkipListsSet and ConcurrentSkipListMap is sorted concurrent collections
+    Runnable can return null for return type void
+    synchronized in function block need to have an object so it can lock
+        Example:
+        public void abc(){
+            synchronized (this){ // Compile
+
+            }
+
+        }
+        public void abc(){
+            synchronized{// not compile
+
+            }
+
+        }
+    Synchronize on class level and on object level are not the same
