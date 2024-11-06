@@ -154,7 +154,7 @@ Module
 Concurrent
     Thread.run() make the program run single threaded
     Callable define call() not run()
-    Live lock is special case of resource starvations
+    Live lock is special case of resource starvation
     Need to read CyclicBarrier, Lock/Reentrant lock
     ConcurrentSkipListsSet and ConcurrentSkipListMap is sorted concurrent collections
     Runnable can return null for return type void
@@ -173,3 +173,27 @@ Concurrent
 
         }
     Synchronize on class level and on object level are not the same
+
+Java IO
+    File
+        doesn't have get() but of() method
+    Files
+        doesn't have of() but get() method
+        Should not copy to the existing Files/Directories ( can do if we have option override)
+        Files.readAllFiles() return a List<String>
+        Files.walk() return a Stream<String>
+        Files.isSameFile throw an exception if file is not existed
+        Files.list() iterate all files in a single directory
+    Console
+        Constructor new Console() is private. Should use Console c = System.console()
+    BufferWriter
+        require wrapper
+    Writer
+        is an abstract class not interface
+    p1.resolve(p2)
+        if p1 is relative path and p2 is an absolute path => return p2
+        if p1 is absolute path and p2 is an relative path => return p1 append p2
+        if p1 and p2 are absolute path => return p1 append p2
+    p1.relativize(p2)
+        both p1 and p2 should be either relative or absolute
+    If System.err is closed, no exception will be thrown evenwhen there's exception
