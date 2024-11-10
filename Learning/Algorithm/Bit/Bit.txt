@@ -3,3 +3,10 @@ Bit modification
         Example: A number with 5 maximum bit ~= 11111 bit (5 number 1)  = 31
         How to calculate it: (1<<n) - 1
             With n: the maximum bit
+
+    AND (&): Compares each bit of two numbers and returns 1 if both bits are 1, otherwise 0.
+        Example: 5 & 3 (0101 & 0011) results in 0001 (decimal 1).
+    OR (|): Compares each bit of two numbers and returns 1 if at least one bit is 1.
+        Example: 5 | 3 (0101 | 0011) results in 0111 (decimal 7).
+    XOR (^): Compares each bit of two numbers and returns 1 if the bits are different, otherwise 0.
+        Example: 5 ^ 3 (0101 ^ 0011) results in 0110 (decimal 6).
