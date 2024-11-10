@@ -1,0 +1,5 @@
+Bit modification
+    Maximum bit: is the number with the binary is all 1
+        Example: A number with 5 maximum bit ~= 11111 bit (5 number 1)  = 31
+        How to calculate it: (1<<n) - 1
+            With n: the maximum bit

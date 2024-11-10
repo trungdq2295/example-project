@@ -2,10 +2,28 @@ String
 	Essential whitespace là whitespace khi remove sẽ ảnh hưởng đến String
 	Ví dụ "Hello World", khi remove whitespace sẽ thành "HelloWorld"
 	Trailing whitespace is whitespace at the end of line
+	In text block, adding \ at the end will skip the line break
+	    \s mean to preserve all whitespace at the end of the line in addition to adding a space
+	    escape quotes is allowed but not required
+	    new line  = 1 whitespace
+
+Switch
+    the type which provide value, it uses yield not return
+
+Local variable
+    is not automatically instantiated the value
+    Class variable does
+    In the case, we have so many overloading function with similar type like long,int,short,Integer
+        Java pick the most specific method signature it can find in overloadding
+
+        promotion -> autoboxing -> datatype -> convert => so if we pass int value, it gonna be long function => Integer function => int function => short function
+
+Array
+    When converting from array to list, java use fix-length backed list. This means the list use an array implementation. updated value is allowed but removing or adding is not
 
 Math
 	Math.ceil return double
-	Math.max/min return the type of paramêtrr
+	Math.max/min return the type of parameter
 	Math.pow return double
 	
 Date
@@ -13,10 +31,19 @@ Date
 		On March, it will skip from 2 am to 3am ( it mean when hour reach 1:59 am, it immediately turn into 3am) and the offset also change (increase by 1),
 	Instant Time
 		return time at GMT + 0 (no time zone)
+		allow adding/removing time but for units of DAY or smaller
 	Period
 		take the last chain as the value
 			Example: Period.ofYear(1).ofMonth(6).ofDay(3)
 				Value is 3 day not 1 year 6 month 3 day
+
+Binary Search
+    If the array is not sorted, then the result can't be defined until runtime
+
+Class
+    instanceof apply to null always return false
+        Example: if(null instanceof A) /// gonna be false
+    Concrete class is a class that can be instantiated and used directly to create object unlike abstract or interface
 
 Sealed Class
 	Permit clause is optional if class in the same file with sealed class
@@ -43,6 +70,7 @@ Exception
     When we have multiple catch block, and only 1 catch  block can catch the exception at a time, even when inside that catch block throw exception, it won't run into another catch
     close() method in Closeable can not throw exception, autocloseable can
     Exception in close() method will be supressed (overridden) by other exception in try with resources
+    Exception in multi catch can't be subclassed of each other
     Exception in catch block will be overridden by exception thrown in finally
         Example
             try{
@@ -68,10 +96,11 @@ Array & Collection
         Example: String[] a = new String[5] ;// This is correct
             String[] a = new String[] ; This is not correct
             String[] a = new String[] {"abc"}; //This is correct
-    Comparator.reverseOrder() does not implement Comprator interface
+    Comparator.reverseOrder() does not implement Comparator interface
 
 Stream
     IntStream convert to parallelStream should be using boxed().parallel()
+        When using sum, it returns an int
     PartitioningBy will return a map with key true and false even when it has no value in key
     Parallel Stream
         Shouldn't represent stateful operation. For example: edit a value such as Collection
@@ -89,6 +118,10 @@ Stream
     Primitive Stream
         Doesn't have get() but getAsDouble() or getAsLong()
     When use Stream.concat(), we need to use stream not primitive stream
+
+Executor
+    scheduledWithFixedDelay and scheduledAtFixedRate required 4 parameter (runnable, initial delay long, period long, timeunit) and it required ScheduleExecutorService to run not ExecutorService
+
 
 Function
     Parameter and return type has the same data type ( the same as IntFunction, LongFunction, DoubleFunction)
@@ -146,16 +179,24 @@ Module
         --output flag provides desired destination to output file in PC
         jmod command: create, extract, describe, list, hash
         jlink use to create java image
+            generate a directory with folder for runtime image
+            includes the modules in --add-modules itself
         javac take command -p not -m
         jdeps command output : requires mandated java.base
             without any command, jdeps list packages and modules dependencies.
             With -s, it provides a summary and omit the package name
+            -jdkinternal/--jdk-internal includes table of suggestion if any internal API is used in JAR
 
 Concurrent
     Thread.run() make the program run single threaded
     Callable define call() not run()
     Live lock is special case of resource starvation
     Need to read CyclicBarrier, Lock/Reentrant lock
+    Cyclic Barrier
+        is to have the required number of thread to unlock and then run the callback. if the number of thread doesn't reach the required, it will be hanged ( cause deadlock)
+            Example: var cyclic = new CyclicBarrier(4, () -> System.out.println("abc")
+                Explain: after it reach 4 thread, it will run system.out
+
     ConcurrentSkipListsSet and ConcurrentSkipListMap is sorted concurrent collections
     Runnable can return null for return type void
     synchronized in function block need to have an object so it can lock
@@ -184,6 +225,7 @@ Java IO
         Files.walk() return a Stream<String>
         Files.isSameFile throw an exception if file is not existed
         Files.list() iterate all files in a single directory
+        Files.mismatch() compare case sensitive so h & H is not the same
     Console
         Constructor new Console() is private. Should use Console c = System.console()
     BufferWriter
@@ -197,3 +239,29 @@ Java IO
     p1.relativize(p2)
         both p1 and p2 should be either relative or absolute
     If System.err is closed, no exception will be thrown evenwhen there's exception
+    FileInput
+        doesn't have readLine-
+
+Database
+    You can use setNull but it required you to set datatype
+    Driver is responsible for getting connection to Database
+    if store procedure return value, should use execute()
+    It's ok to set param 1 and executeUpdate() 2 times
+        Example
+            var sql = "INSERT INTO abc(color,name) values (?,?)"
+            var st = conn.prepareStatement(sql)
+            st.setString(1,"234");
+            st.setString(2,"abc");
+            st.executeUpdate();
+
+            st.setString(1,"456");
+            st.executeUpdate(); /// still work with value 1 is 456 and 2 is abc
+   When in auto commit mode, the statement commit immediately evenwhen you set the auto commit to false before and then set it to true
+   ResultSet doesn't has hasNext() method but next() method
+   execute() return boolean unlike executeQuery() return ResultSet
+
+Localization
+    Resource Bundle
+        The resource gonna use request locale
+            If it have, it move from request locale -> requested language code -> default properties
+            IF it doesn't have, it move to default locale -> default language code locale -> default properties
