@@ -6,20 +6,24 @@ String
 	    \s mean to preserve all whitespace at the end of the line in addition to adding a space
 	    escape quotes is allowed but not required
 	    new line  = 1 whitespace
+	StringBuilder
+	    can set capacity by function ensureCapacity(100); // 100 character
 
 Switch
     the type which provide value, it uses yield not return
+    long, float, double, and boolean can never be used as a switch variable.
 
 Local variable
     is not automatically instantiated the value
     Class variable does
     In the case, we have so many overloading function with similar type like long,int,short,Integer
         Java pick the most specific method signature it can find in overloadding
-
         promotion -> autoboxing -> datatype -> convert => so if we pass int value, it gonna be long function => Integer function => int function => short function
 
 Array
     When converting from array to list, java use fix-length backed list. This means the list use an array implementation. updated value is allowed but removing or adding is not
+    Array.compare() will return a positive number and the number will be the same as the difference in the number of elements in both array
+    Arrays.mismatch() return a index which is not the same in 2 array
 
 Math
 	Math.ceil return double
@@ -36,14 +40,18 @@ Date
 		take the last chain as the value
 			Example: Period.ofYear(1).ofMonth(6).ofDay(3)
 				Value is 3 day not 1 year 6 month 3 day
+		Period.between
+		    Note that if the second date is before the first date, a minus sign is included in the output.
+	Remember
+	    Period and Durations differ in their treatment of daylight saving time when added to ZonedDateTime. Duration will add an exact number of second while Period tries to maintain the local time
+	    Example: consider adding a Period Day and a Duration Day to 18:00 on the evening before daylight saving
+	        => Period: will be 18:00
+	        => Duration: will be  19:00
+
+
 
 Binary Search
     If the array is not sorted, then the result can't be defined until runtime
-
-Class
-    instanceof apply to null always return false
-        Example: if(null instanceof A) /// gonna be false
-    Concrete class is a class that can be instantiated and used directly to create object unlike abstract or interface
 
 Sealed Class
 	Permit clause is optional if class in the same file with sealed class
@@ -56,10 +64,39 @@ Records
 
 Class
     First line of constructor is either this() or super()
+    When a programmer does not define ANY constructor, the compiler inserts one automatically, the access modifier of which is same as that of the class.
     Sub class extend variable must be covariant
+        Covariant mean type can be substituted by its subtype
     When instantiate an object, static block run (only once, if it has run before then wont run again) -> block run -> constructor
     Abstract class can have constructor, but can't be instantiated directly, need subclass
     When override a method, new or broader exception can't be declare
+    instanceof apply to null always return false
+            Example: if(null instanceof A) /// gonna be false
+        Concrete class is a class that can be instantiated and used directly to create object unlike abstract or interface
+        Inner class
+            You can't apply an access modifier to inner class inside a method
+    From sub class to super class, you don't a cast. However, you need if you convert from super class to class
+        Example:
+            B extend A
+            A a = new A();
+            B b = new B();
+            a = b; // ok
+            b = a; // no compile
+            => b = (b) a; will compile but can cause exception due to a is an actual object of A not B
+    Instance methods are overridden and variables (and static methods) are hidden. Which instance method is invoked depends on the class of th actual object, while which while field(and static method) is accessed depend on the datatype of the variable
+    Java decide that old code should work exactly as it used to work before boxing-unboxing become available
+        Example:
+            void probe(int... x) { System.out.println("In ..."); }  //1
+            void probe(Integer x) { System.out.println("In Integer"); } //2
+            void probe(long x) { System.out.println("In long"); } //3
+            void probe(Long x) { System.out.println("In LONG"); } //4
+            public static void main(String[] args){
+                Integer a = 4; new TestClass().probe(a); //5
+                int b = 4; new TestClass().probe(b); //6
+            }
+            For line 5, java will go to line 2
+            but for live 6, java will go to line 3 first. if line 3 is removed/commented out, then it will go to varargs - line 1
+
 Enum
     Enum constructor is private
     It's legal to change value of enum (not recommend)
@@ -97,6 +134,11 @@ Array & Collection
             String[] a = new String[] ; This is not correct
             String[] a = new String[] {"abc"}; //This is correct
     Comparator.reverseOrder() does not implement Comparator interface
+    ArrayDequeue work like Stack ( First In Last Out)
+    NavigableMap<K,V>
+        tailMap(K fromKey, boolean inclusive) returns a view of the portion of this map whose keys are greater than (or equal to, if inclusive is true) fromKey.
+    Collections.unmodifiableList
+        returns an unmodifiable view into the underlying List. It means if the root list is updated, the view point from unmodifiableList change too
 
 Stream
     IntStream convert to parallelStream should be using boxed().parallel()
@@ -118,10 +160,10 @@ Stream
     Primitive Stream
         Doesn't have get() but getAsDouble() or getAsLong()
     When use Stream.concat(), we need to use stream not primitive stream
+    average() return a optional => can throw NoSuchElementException
 
 Executor
     scheduledWithFixedDelay and scheduledAtFixedRate required 4 parameter (runnable, initial delay long, period long, timeunit) and it required ScheduleExecutorService to run not ExecutorService
-
 
 Function
     Parameter and return type has the same data type ( the same as IntFunction, LongFunction, DoubleFunction)
@@ -134,6 +176,8 @@ Lambda & Method references
             Predicate<String> predicate = s::contains (valid)
 
 Module
+    Modular JDK is helpful in improving performance of an application.
+    A module jar is no different from a regular jar. It contains classes in the same structure and so, it can be used as a regular jar in a non-modular application.
     A service consists of the interfaces, any classes the interfaces reference, and a way to look up implementation
     A named module must be on module path and contains module-info.java
     An automatic module must be on module path but doesn't have module-info.java
@@ -146,6 +190,7 @@ Module
     java.base is available for all modules
     When running a  module ( with java cmd), module name should be before package name and then class
         Example: com.eu/com.eu.test.Example
+        Remember that to run a module, you need --module-path and --module options.
     Migration
         The module from the top depends on the  module which is under them
         => top-down migration is to start from the module at top which has no module depend on, to the btm
@@ -154,9 +199,9 @@ Module
         and then move 1 by 1 to a named module
 
     Service provider interface, service provider, consumer, service locator
-                W -->X
-                 \ / ^
-                 /\ |
+                W --> X
+                 \ /  ^
+                 / \   |
                 Y <-- Z
         X = Service provider interface
         Z = Service locator
@@ -174,8 +219,9 @@ Module
 
     Command
         -d = describle module
-        -m = -module
+        -m = --module
         -s = --sumary
+        -p = --module-path
         --output flag provides desired destination to output file in PC
         jmod command: create, extract, describe, list, hash
         jlink use to create java image
@@ -224,6 +270,7 @@ Java IO
         Files.readAllFiles() return a List<String>
         Files.walk() return a Stream<String>
         Files.isSameFile throw an exception if file is not existed
+            It doesn't check the content of 2 files but the paths that 2 paths object resolve the same file or not
         Files.list() iterate all files in a single directory
         Files.mismatch() compare case sensitive so h & H is not the same
     Console
@@ -241,6 +288,9 @@ Java IO
     If System.err is closed, no exception will be thrown evenwhen there's exception
     FileInput
         doesn't have readLine-
+    Path
+        index star from 0
+    Constructor of the class for an object being deserialized is never invoked except for record classes. This is secure because record class can validate the values before assign them to field
 
 Database
     You can use setNull but it required you to set datatype
