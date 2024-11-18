@@ -139,6 +139,10 @@ Array & Collection
         tailMap(K fromKey, boolean inclusive) returns a view of the portion of this map whose keys are greater than (or equal to, if inclusive is true) fromKey.
     Collections.unmodifiableList
         returns an unmodifiable view into the underlying List. It means if the root list is updated, the view point from unmodifiableList change too
+    ArrayDeque
+        does have add() - add element to the end
+           push - add element to the top
+           remove - remove element at the top
 
 Stream
     IntStream convert to parallelStream should be using boxed().parallel()
