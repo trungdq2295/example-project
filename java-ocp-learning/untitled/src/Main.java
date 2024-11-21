@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -29,6 +31,19 @@ public class Main {
     }
 
     static class InvalidIncomeException extends Exception{
+
+    }
+}
+
+
+class A {
+    A() throws IOException{
+
+    }
+}
+
+class B extends A{
+    B() throws Exception {
 
     }
 }

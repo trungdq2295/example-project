@@ -1,0 +1,4 @@
+The idea is to use number = number & (number-1)
+    Explanation: This is to reduce bit 1 in the number until there's none
+    Example:
+        6 (binary is 110)
