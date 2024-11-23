@@ -15,6 +15,7 @@ String
                 starting """ followed by any number of white spaces and then a new line
 	StringBuilder
 	    can set capacity by function ensureCapacity(100); // 100 character
+	    Does has function append, replace, insert and they can append/replace/insert specific string at specific index like append("abc",0,8)
 	String, StringBuilder, and StringBuffer - all are final classes. so all the method of them are final method
 	reapeat, compareTo, transform
 
@@ -76,6 +77,7 @@ Binary Search
 Sealed Class
 	Permit clause is optional if class in the same file with sealed class
 	Can only be extended with final, sealed, non-sealed class
+	All permitted subtypes of a sealed type must either belong to the same package or to the same module
 
 Records
 	Can not extend the class, but can implement interface
@@ -126,19 +128,33 @@ Class
             }
             For line 5, java will go to line 2
             but for live 6, java will go to line 3 first. if line 3 is removed/commented out, then it will go to varargs - line 1
+    The static block will run if only the class is instantiated active but not run in passive case
+        Example:
+            class Super { static String ID = "QBANK"; }
+            class Sub extends Super{
+               static { System.out.print("In Sub"); }
+            }
+            public class Test{
+               public static void main(String[] args){
+                  System.out.println(Sub.ID); // In sub won't be printed because the ID is belong to Super class
+               }
+            }
 
 Enum
     Enum constructor is private
     It's legal to change value of enum (not recommend)
+    Every enum implements Comparable and the natural order of enums is hte order in which they are defined
+
 Var
     var must be used for all variable in lambda expression
         (var a, b) -> ... //This is not valid
 Exception
     When we have multiple catch block, and only 1 catch  block can catch the exception at a time, even when inside that catch block throw exception, it won't run into another catch
     close() method in Closeable can not throw exception, autocloseable can
-    Exception in close() method will be supressed (overridden) by other exception in try with resources
-    Exception in multi catch can't be subclassed of each other
-    Exception in catch block will be overridden by exception thrown in finally
+    Exception
+        in close() method will be supressed (overridden) by other exception in try with resources
+        in multi catch can't be subclassed of each other
+        in catch block will be overridden by exception thrown in finally
         Example
             try{
 
@@ -151,12 +167,11 @@ Exception
     -g:vars is used to debug but for the left only
         Example: int x = (Integer) null; // It doesn't help here since Integer null is on the right
             Integer x = (Integer) null;
-            x.intValues() // help to trace the exception nullpointer point to variable x
+            x.intValues() // help to trace the exception null pointer point to variable x
     try with resources
         The flow will be -> try -> close() ( in reverse order) -> catch -> finally
         Any exception that is thrown while closing a resource, is added to the list of suppressed exceptions of the exception thrown while opening a resource (or thrown from the try block.)
             Example console:
-
         Any exception that is thrown while closing a resource is added to the list of suppressed exceptions of the exception thrown while opening a resource (or thrown from the try block.)
 
 Array & Collection
@@ -180,6 +195,7 @@ Array & Collection
     Collection.sorts(collectionX) => in this case, class of objects contained in the collection must implement Comparable interface.
     Collection.sorts(collectionX, ComparatorX) => in this case, the ComparatorX implement interface Comparator is used
     List.of or Arrays.copy() doesn't support null so it will throw nullpointerexception if there's null element
+    Collection.replaceAll() require a UnaryOperator param
 
 Stream
     IntStream convert to parallelStream should be using boxed().parallel()
@@ -295,7 +311,7 @@ Module
             With -s, it provides a summary and omit the package name
             -jdkinternal/--jdk-internal includes table of suggestion if any internal API is used in JAR
             does not execute any classes/modules. It only inspects the code. Thus, it cannot find out dependencies that are created due classes loaded at run time using reflection API.
-            goes with command: -cp/-classpath/--class-path
+            goes with command: -cp/-classpath/--class-path: Used to include dependent non-modular jar file
 
 Concurrent
     Thread.run() make the program run single threaded
@@ -324,6 +340,7 @@ Concurrent
 
         }
     Synchronize on class level and on object level are not the same
+    HashMap supports adding null key as well as null values but ConcurrentHashMap does not.
 
 Java IO
     File
@@ -349,13 +366,16 @@ Java IO
                     OutputStream os = new FileOutputStream(name)
                     var pw = new PrintWriter(os);
                     pw.write(1);
+            none of the PrintWriter's method throw any I/O exception because they supress the errors in writing and set an internal flag for error status
     p1.resolve(p2)
         if p1 is relative path and p2 is an absolute path => return p2
         if p1 is absolute path and p2 is an relative path => return p1 append p2
         if p1 and p2 are absolute path => return p1 append p2
     p1.relativize(p2)
         both p1 and p2 should be either relative or absolute
-    If System.err is closed, no exception will be thrown evenwhen there's exception
+    p1.resolveSibling(p2)
+        This is good if the file you want to access is in the same directory of file in p1
+    If System.err is closed, no exception will be thrown even when there's exception
     FileInput
         doesn't have readLine-
     Path
@@ -366,7 +386,10 @@ Java IO
         all characters printed by System.out are converted into bytes using the given encoding or charset, or platform' default if not specific
     DirectoryStream<Path> ds = Files.newDirectoryStream(dir, "*.{gif,jpeg} // to read all the file with extension gif, jpeg
     Serialize/Deserialize
-        When deserialize a class which is a sub class of a class no implement Serialize, that upper class require no-argus constructor. If it doesn't has, when deserialize, program will throw InvalidClassException exception
+        When deserialize a class which is aio sub class of a class no implement Serialize, that upper class require no-argus constructor. If it doesn't has, when deserialize, program will throw InvalidClassException exception
+    substring(startIndex, endIndex)
+        The root (c: or d: ) is not considered as the beginning
+        The data at endIndex will be exclude
 
 Database
     You can use setNull but it required you to set datatype
