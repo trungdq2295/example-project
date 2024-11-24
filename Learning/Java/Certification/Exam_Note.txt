@@ -16,6 +16,7 @@ String
 	StringBuilder
 	    can set capacity by function ensureCapacity(100); // 100 character
 	    Does has function append, replace, insert and they can append/replace/insert specific string at specific index like append("abc",0,8)
+	    setLength() will automatically add whitespace for the exceed index
 	String, StringBuilder, and StringBuffer - all are final classes. so all the method of them are final method
 	reapeat, compareTo, transform
 
@@ -24,13 +25,15 @@ Switch
     Only String, byte, char, short, int, (and their wrapper classes Byte, Character, Short, and Integer), and enums can be used as types of a switch selector expression (aka switch condition/variable).
     boolean, long, float and double cannot be used.
     long, float, double, and boolean can never be used as a switch variable.
+    default cannot be combined with any case expression in arrow function
 
 Local variable
     is not automatically instantiated the value
     Class variable does
     In the case, we have so many overloading function with similar type like long,int,short,Integer
-        Java pick the most specific method signature it can find in overloadding
+        Java pick the most specific method signature it can find in overloading
         promotion -> autoboxing -> datatype -> convert => so if we pass int value, it gonna be long function => Integer function => int function => short function
+    Remember bit manipulation: x ^ ~x will always be -1.
 
 Array
     When converting from array to list, java use fix-length backed list. This means the list use an array implementation. updated value is allowed but removing or adding is not
@@ -89,6 +92,7 @@ Class
     When a programmer does not define ANY constructor, the compiler inserts one automatically, the access modifier of which is same as that of the class.
     Sub class extend variable must be covariant
         Covariant mean type can be substituted by its subtype
+        Remember: List<Integer> is not a subtype of List<Number> even though Integer is a subtype of Number.
     When instantiate an object, static block run (only once, if it has run before then wont run again) -> block run -> constructor
     Abstract class can have constructor, but can't be instantiated directly, need subclass
     When override a method, new or broader exception can't be declare
@@ -139,15 +143,23 @@ Class
                   System.out.println(Sub.ID); // In sub won't be printed because the ID is belong to Super class
                }
             }
+    Null reference maybe used to access a static variable without causing exception
 
 Enum
     Enum constructor is private
     It's legal to change value of enum (not recommend)
-    Every enum implements Comparable and the natural order of enums is hte order in which they are defined
+    Every enum implements Comparable and the natural order of enums is the order in which they are defined
+    Enum can implement interface but can not extend or be extended since it's an final class
+    You cannot override the clone method in an enum because java.lang.Enum makes it final
+    You can add field to enum without having constructor for it, the field will be default value (example: null for object)
+    ordinal() value start with 0 ( for the first enum)
 
 Var
     var must be used for all variable in lambda expression
         (var a, b) -> ... //This is not valid
+    are not allow in compound declaration
+        Example: var a = 10, b= 10; // no allow
+
 Exception
     When we have multiple catch block, and only 1 catch  block can catch the exception at a time, even when inside that catch block throw exception, it won't run into another catch
     close() method in Closeable can not throw exception, autocloseable can
@@ -171,8 +183,7 @@ Exception
     try with resources
         The flow will be -> try -> close() ( in reverse order) -> catch -> finally
         Any exception that is thrown while closing a resource, is added to the list of suppressed exceptions of the exception thrown while opening a resource (or thrown from the try block.)
-            Example console:
-        Any exception that is thrown while closing a resource is added to the list of suppressed exceptions of the exception thrown while opening a resource (or thrown from the try block.)
+        Once the resource is closed, calling the resource will throw ioexception
 
 Array & Collection
     The wildcard ? shouldn't be used when instantiate collection
@@ -196,6 +207,11 @@ Array & Collection
     Collection.sorts(collectionX, ComparatorX) => in this case, the ComparatorX implement interface Comparator is used
     List.of or Arrays.copy() doesn't support null so it will throw nullpointerexception if there's null element
     Collection.replaceAll() require a UnaryOperator param
+    Comparable has compareTo method
+    Comparator has compare method
+    TreeSet
+        If the object doesn't implement Comparable interface, it will throw ClassCastException
+    The sublist() return a view which is not affect the original list
 
 Stream
     IntStream convert to parallelStream should be using boxed().parallel()
@@ -219,6 +235,7 @@ Stream
     In Stream, it will convert to Object value unlike primitive stream
     Primitive Stream
         Doesn't have get() but getAsDouble() or getAsLong()
+        The average method of all numeric streams (IntStream, LongStream, DoubleStream) returns an OptionalDouble
     When use Stream.concat(), we need to use stream not primitive stream
     average() return a optional => can throw NoSuchElementException
     Collecting to Map
@@ -286,10 +303,12 @@ Module
             =>  "uses" specifies the service provider interfaces it references
         Service provider depend on service provider interface
             => 1 require and 1 provides
+            if service provider has public st atic provider() method then it is not required for the service provider to be a subtype of the service type. Only the provider method should return subtype of the service type
     Command
         -d = describle module
-        -m = --module
+        -m = --module foo.bar
             used to run or compiled only specific module
+            By using --module option, you are telling the compiler that you want to compile foo.bar module. It will look for foo.bar directory under the src and compile all the java files stored anywhere under the src/foo.bar directory
         -s = --sumary
         -p = --module-path
         -p = --module-path
@@ -343,6 +362,8 @@ Concurrent
     HashMap supports adding null key as well as null values but ConcurrentHashMap does not.
 
 Java IO
+    When you try to read an object from an ObjectInputStream using ObjectInputStream's readObject() method, it will check whether the class, which is being read, implements readObject method()
+        If it does, then the class's readObject will be invoked first
     File
         doesn't have get() but of() method
     Files
@@ -356,6 +377,7 @@ Java IO
         Files.mismatch() compare case sensitive so h & H is not the same
     Console
         Constructor new Console() is private. Should use Console c = System.console()
+        If your application is run in the background by a scheduler, then System.console() will return a null
     BufferWriter
         require wrapper
     Writer
@@ -367,8 +389,10 @@ Java IO
                     var pw = new PrintWriter(os);
                     pw.write(1);
             none of the PrintWriter's method throw any I/O exception because they supress the errors in writing and set an internal flag for error status
+        FileWriter
+            will create a new empty file if the file does not exist
     p1.resolve(p2)
-        if p1 is relative path and p2 is an absolute path => return p2
+        if p2 is an absolute path => return p2
         if p1 is absolute path and p2 is an relative path => return p1 append p2
         if p1 and p2 are absolute path => return p1 append p2
     p1.relativize(p2)
