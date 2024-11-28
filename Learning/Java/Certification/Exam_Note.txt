@@ -19,7 +19,7 @@ String
 	    setLength() will automatically add whitespace for the exceed index
 	String, StringBuilder, and StringBuffer - all are final classes. so all the method of them are final method
 	repeat, compareTo, transform
-	strip() remove whitespace present at the begining and at the end
+	strip() remove whitespace present at the beginning and at the end
 
 Switch
     the type which provide value, it uses yield not return
@@ -35,6 +35,8 @@ Local variable
         Java pick the most specific method signature it can find in overloading
         promotion -> autoboxing -> datatype -> convert => so if we pass int value, it gonna be long function => Integer function => int function => short function
     Remember bit manipulation: x ^ ~x will always be -1.
+    byte can hold the value from -128 to 127
+    Integer create a pool for value from -127 to 128, the value outside of that range will be created a new object reference
     All compound assignment operators internally do an explicit cast (+=, -=, *=, /=, ...)
         char c = 1;
         c += 1; // still cast the result to char
@@ -103,7 +105,7 @@ Records
 
 Class
     First line of constructor is either this() or super()
-    When a programmer does not define ANY constructor, the compiler inserts one automatically, the access modifier of which is same as that of the class.
+    When a programmer does not define ANY constructor, the compiler inserts one automatically, the access modifier of which is same as constructor of the class.
     Sub class extend variable must be covariant
         Covariant mean type can be substituted by its subtype
         Remember: List<Integer> is not a subtype of List<Number> even though Integer is a subtype of Number.
@@ -176,6 +178,25 @@ Class
             }
     Null reference maybe used to access a static variable without causing exception
 
+Interfaces
+    Java allow sub interface to override static function in super interface by convert the static to default but not allowed to sub interface override default method in super interface by using static method at sub interface
+        Example:
+            interface Measurement {
+                static int getBreadth() { return 0; } // Static method
+            }
+
+            interface Size extends Measurement {
+                default int getBreadth() { return 10; } // Valid: Redeclare static method as a default method
+            }
+
+            interface Measurement {
+                default int getLength() { return 0; } // Default method
+            }
+
+            interface Size extends Measurement {
+                static int getLength() { return 10; } // Error: Cannot override a default method with a static method
+            }
+
 Enum
     Enum constructor is private
     It's legal to change value of enum (not recommend)
@@ -215,6 +236,7 @@ Exception
         The flow will be -> try -> close() ( in reverse order) -> catch -> finally
         Any exception that is thrown while closing a resource, is added to the list of suppressed exceptions of the exception thrown while opening a resource (or thrown from the try block.)
         Once the resource is closed, calling the resource will throw ioexception
+    ClassNotFoundException and NoSuchFieldException are checked exceptions
 
 Array & Collection
     The wildcard ? shouldn't be used when instantiate collection
@@ -238,10 +260,14 @@ Array & Collection
     Collection.sorts(collectionX, ComparatorX) => in this case, the ComparatorX implement interface Comparator is used
     List.of or Arrays.copy() doesn't support null so it will throw nullpointerexception if there's null element
     Collection.replaceAll() require a UnaryOperator param
-    Comparable has compareTo method
-    Comparator has compare method
+    Comparable has compareTo(T t) method
+    Comparator has compare(T t1, T t2) method
     TreeSet
         If the object doesn't implement Comparable interface, it will throw ClassCastException
+        The subSet backed by original set. so if you insert or remove an element from the subset, the same will be reflected on the original set.
+            However, if the subset is created using a range (fromElement to toElement), the element that you are inserting must fall within that range. If no, then the IllegalArgumentException will be thrown
+                Example: TreeSet<Integer> sub = s.subSet(326, true, 328, true );
+                        sub.add(329); //this will throw IllegalArgumentException due to 329 is larger than 328
     The sublist() return a view which is not affect the original list
 
 Stream
@@ -270,7 +296,7 @@ Stream
     When use Stream.concat(), we need to use stream not primitive stream
     average() return a optional => can throw NoSuchElementException
     Collecting to Map
-        When collecting to map and there's a duplicated key, it will throw java.lang.IllegalStateException if you use Colector.toMap(Function<T> f1, Function<T> f2)
+        When collecting to map and there's a duplicated key, it will throw java.lang.IllegalStateException if you use Collector.toMap(Function<T> f1, Function<T> f2)
         If you expect a duplicate source, you should use Collectors.toMap(Function, Function, BinaryOperator)
             Example:IntStream.range(0, tickers.size())
                         .boxed()
@@ -285,7 +311,7 @@ Executor
     Remember in Executors.newCachedThreadPool()
         Runnable and Callable will use submit() not execute
 
-Function
+Functional Interface
     Parameter and return type has the same data type ( the same as IntFunction, LongFunction, DoubleFunction)
     IntFunction take an int parameter and return int value
         avoid additional associated cost of boxing/unboxing
@@ -295,6 +321,7 @@ Lambda & Method references
     We can use variable effective final as method reference
         Example: var s = "abc";
             Predicate<String> predicate = s::contains (valid)
+    The variable which used in lambda & method references should be final or effective final
 
 Module
     Modular JDK is helpful in improving performance of an application.
@@ -310,6 +337,7 @@ Module
     module on module path can't access anything in classpath
     java.lang is package
     java.base is available for all modules
+        Remember java.util is not a module but a package which is inside java.base
     If a package is available in a jar on the classpath as well as in another jar on the module-path, the one on the classpath is ignored
     When running a  module ( with java cmd), module name should be before package name and then class
         Example: com.eu/com.eu.test.Example
@@ -347,7 +375,6 @@ Module
             By using --module option, you are telling the compiler that you want to compile foo.bar module. It will look for foo.bar directory under the src and compile all the java files stored anywhere under the src/foo.bar directory
         -s = --sumary
         -p = --module-path
-        -p = --module-path
             used to specify the paths where java or javac will look for module definitions
             The path can be a directory where jar files and exploded module classes are stored. It can also be a path to individual jar files that contain module files.
             Example: java -p c:\modules\movies.jar
@@ -356,6 +383,7 @@ Module
         --output flag provides desired destination to output file in PC
         jmod command: create, extract, describe, list, hash
             used to package module file into jmod archives
+            describe: use to identify class and module dependencies
         jlink use to create java image
             generate a directory with folder for runtime image
             includes the modules in --add-modules itself
@@ -420,6 +448,10 @@ Java IO
     BufferWriter
         require wrapper
         Does not have writeUTF method
+    BufferReader
+        can be created by using
+            + new BufferedReader(new FileReader(fullFilePath));
+            + new BufferedReader(new FileReader( new File(fullFilePath)));
     Writer
         is an abstract class not interface
         PrintWriter
@@ -431,6 +463,8 @@ Java IO
             none of the PrintWriter's method throw any I/O exception because they supress the errors in writing and set an internal flag for error status
         FileWriter
             will create a new empty file if the file does not exist
+        OutputStream
+            write(int i) method of various stream based classed such as FileOutputStream take an int parameter but write only low 8bit (1 byte)) of that integer
     p1.resolve(p2)
         if p2 is an absolute path => return p2
         if p1 is absolute path and p2 is an relative path => return p1 append p2
@@ -459,10 +493,14 @@ Java IO
         all characters printed by System.out are converted into bytes using the given encoding or charset, or platform' default if not specific
     DirectoryStream<Path> ds = Files.newDirectoryStream(dir, "*.{gif,jpeg} // to read all the file with extension gif, jpeg
     Serialize/Deserialize
-        When deserialize a class which is aio sub class of a class no implement Serialize, that upper class require no-argus constructor. If it doesn't has, when deserialize, program will throw InvalidClassException exception
+        When deserialize a class which is aio sub class of a class no implement Serialize, that upper class require no-argus constructor.
+            If it doesn't has, when deserialize, program will throw InvalidClassException exception
     substring(startIndex, endIndex)
         The root (c: or d: ) is not considered as the beginning
         The data at endIndex will be exclude
+    RandomAccessFile
+        var raf = new RandomAccessFile("c:\\temp\\test.txt", "rwd");
+        If the file test does not exist, an attempt will be made to create it.
 
 Database
     You can use setNull but it required you to set datatype
@@ -530,3 +568,9 @@ Reference
 
 Number
     Division by zero in int value will result as Exception but in Float, it result as  Float.POSITIVE_INFINITY or Float.NEGATIVE_INFINITY (or Double.POSITIVE_INFINITY or Double.NEGATIVE_INFINITY
+
+Pattern Variable
+    When use this, you must use a subtype on the right hand side. If you use same type, the  code won't be compiled
+
+Operand
+    Java parses an expression from left to right. Once it realizes that the left operand of a conditional "or" operator has evaluated to true, it doesn't even try to evaluate the right side
