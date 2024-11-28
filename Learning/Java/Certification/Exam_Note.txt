@@ -18,7 +18,8 @@ String
 	    Does has function append, replace, insert and they can append/replace/insert specific string at specific index like append("abc",0,8)
 	    setLength() will automatically add whitespace for the exceed index
 	String, StringBuilder, and StringBuffer - all are final classes. so all the method of them are final method
-	reapeat, compareTo, transform
+	repeat, compareTo, transform
+	strip() remove whitespace present at the begining and at the end
 
 Switch
     the type which provide value, it uses yield not return
@@ -34,11 +35,21 @@ Local variable
         Java pick the most specific method signature it can find in overloading
         promotion -> autoboxing -> datatype -> convert => so if we pass int value, it gonna be long function => Integer function => int function => short function
     Remember bit manipulation: x ^ ~x will always be -1.
+    All compound assignment operators internally do an explicit cast (+=, -=, *=, /=, ...)
+        char c = 1;
+        c += 1; // still cast the result to char
+    Boolean operator (==, !=) has more precedence than =
 
 Array
     When converting from array to list, java use fix-length backed list. This means the list use an array implementation. updated value is allowed but removing or adding is not
     Array.compare() will return a positive number and the number will be the same as the difference in the number of elements in both array
+        will print -1 if the first array element is smaller than the second array element
     Arrays.mismatch() return a index which is not the same in 2 array
+        return -1 if no mismatch is found
+
+Optional
+    if you use Optional.of(null), it will throw NullPointerException
+    if you call get() on an empty Optional, it will throw NoSuchElementException
 
 Math
 	Math.ceil return double
@@ -73,6 +84,7 @@ Date
 	        => Duration: will be  19:00
 	All the classes in packages java.time are immutable and thread-safe
 	DateTimeFormatter in java.time.format
+	    parse() method in DateFormat and Numberformat() throws java.text.ParseException so it must either be declared in throws clause or catch exception
 
 Binary Search
     If the array is not sorted, then the result can't be defined until runtime
@@ -85,7 +97,9 @@ Sealed Class
 Records
 	Can not extend the class, but can implement interface
 	Compact constructor is concise form of constructor. Can be used to validate or modify the values of property. It will run after record instantiated
-	It is implicit final -> can extend sealed class
+	It is implicit final -> can extend sealed interface
+	If no constructor is provided, canonical constructor will be provided automatically
+	have toString, equal method
 
 Class
     First line of constructor is either this() or super()
@@ -98,7 +112,23 @@ Class
     When override a method, new or broader exception can't be declare
         java allow covariant return types, which means that an overriding method can have its return type as any subclass of the return type of the overridden method
         Overriding method is allowed to make the overridden method more accessible (from default to protected/public)
-        Overriding method can remove throw exception clause
+        Overriding method can remove throw exception clause but when instantiate an object point to super class which throw exception, you need to handle it
+            Example:
+                class Game{
+                  public void play() throws Exception{
+                    System.out.println("Playing...");
+                  }
+                }
+
+                public class Soccer extends Game{
+                   public void play(){
+                      System.out.println("Playing Soccer...");
+                   }
+                   public static void main(String[] args){
+                       Game g = new Soccer();
+                       g.play(); // you need to handle the Exception here, either use try/catch or declare throws Exception at main method
+                   }
+
     default constructor calls the no-args constructor of the super class.
         sub class's constructor couldn't throw exception which is sub class of exception of upper class
             Example:
@@ -120,6 +150,7 @@ Class
             b = a; // no compile
             => b = (b) a; will compile but can cause exception due to a is an actual object of A not B
     Instance methods are overridden and variables (and static methods) are hidden. Which instance method is invoked depends on the class of th actual object, while which while field(and static method) is accessed depend on the datatype of the variable
+        Static method are never overridden
     Java decide that old code should work exactly as it used to work before boxing-unboxing become available
         Example:
             void probe(int... x) { System.out.println("In ..."); }  //1
@@ -246,9 +277,13 @@ Stream
                         .collect(Collectors.toMap(i -> tickers.get(i),
                                          i -> 1.0/ratio.get(i),
                                          (x, y) -> x+y)) // this line is to define what we gonna do if the key is duplicated. In this case, we will get the sum of 2 values
+        Collectors.groupingBy expects all keys to be non-null. If there's a null, it will throw NullPointerException
+            Should use Optional.ofNullable for the case null key, and can use maps.get(Optional.empty()) to retrieve data from that key
 
 Executor
     scheduledWithFixedDelay and scheduledAtFixedRate required 4 parameter (runnable, initial delay long, period long, timeunit) and it required ScheduleExecutorService to run not ExecutorService
+    Remember in Executors.newCachedThreadPool()
+        Runnable and Callable will use submit() not execute
 
 Function
     Parameter and return type has the same data type ( the same as IntFunction, LongFunction, DoubleFunction)
@@ -275,6 +310,7 @@ Module
     module on module path can't access anything in classpath
     java.lang is package
     java.base is available for all modules
+    If a package is available in a jar on the classpath as well as in another jar on the module-path, the one on the classpath is ignored
     When running a  module ( with java cmd), module name should be before package name and then class
         Example: com.eu/com.eu.test.Example
         Remember that to run a module, you need --module-path and --module options.
@@ -364,22 +400,26 @@ Concurrent
 Java IO
     When you try to read an object from an ObjectInputStream using ObjectInputStream's readObject() method, it will check whether the class, which is being read, implements readObject method()
         If it does, then the class's readObject will be invoked first
+        readObject() throws ClassNotFoundException so it has to be caught by catch block or throws by method
     File
         doesn't have get() but of() method
+        A file or directory doesn't need exist to create a File object
     Files
         doesn't have of() but get() method
         Should not copy to the existing Files/Directories ( can do if we have option override)
         Files.readAllFiles() return a List<String>
         Files.walk() return a Stream<String>
-        Files.isSameFile throw an exception if file is not existed
+        Files.isSameFile throw an exception if file is not
             It doesn't check the content of 2 files but the paths that 2 paths object resolve the same file or not
         Files.list() iterate all files in a single directory
         Files.mismatch() compare case sensitive so h & H is not the same
+        Files.line(Paths.get(filePAth)) // Files.line require a Path
     Console
         Constructor new Console() is private. Should use Console c = System.console()
         If your application is run in the background by a scheduler, then System.console() will return a null
     BufferWriter
         require wrapper
+        Does not have writeUTF method
     Writer
         is an abstract class not interface
         PrintWriter
@@ -397,6 +437,7 @@ Java IO
         if p1 and p2 are absolute path => return p1 append p2
     p1.relativize(p2)
         both p1 and p2 should be either relative or absolute
+        If not or different root, then it will throw IllegalArgumentException
     p1.resolveSibling(p2)
         This is good if the file you want to access is in the same directory of file in p1
     If System.err is closed, no exception will be thrown even when there's exception
@@ -404,6 +445,14 @@ Java IO
         doesn't have readLine-
     Path
         index star from 0
+        if getName() method with the index is larger than the actual length, it will throw illegalArgumentException
+    Paths
+        getRoot() will return root component of the path
+            For example :
+                Path p1 = Paths.get("c:\\main\\project\\Starter.java")
+                String root = p1.getRoot().toString() // this return c:\
+                Path p2 = Paths.get("Starter.java")
+                String root = p2.getRoot().toString() // this return null
     Constructor of the class for an object being deserialized is never invoked except for record classes. This is secure because record class can validate the values before assign them to field
     System.out
         never throw IOException when data's written to it
