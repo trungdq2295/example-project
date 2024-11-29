@@ -52,6 +52,9 @@ Array
 Optional
     if you use Optional.of(null), it will throw NullPointerException
     if you call get() on an empty Optional, it will throw NoSuchElementException
+    You cannot change the content of Optional object after creation
+        Example: Optional<String> grade = Optional.empty();
+                    grade.of("FAIL"); // not work, grade still an empty optional
 
 Math
 	Math.ceil return double
@@ -130,6 +133,9 @@ Class
                        Game g = new Soccer();
                        g.play(); // you need to handle the Exception here, either use try/catch or declare throws Exception at main method
                    }
+        Check the method signature (method name and parameter list) if it's a valid overriden
+        Overriding method is allowed to erase the generic type, but is not allowed to add generic type if overridden method doesnt have. And the reverse is not valid
+            Example: if the overridden method has Set<Integer>, then the overriding method can use Set or Set<Integer>. But if overridden method has a Set, then the overriding method must also have Set (Set<Integer> is not valid)
 
     default constructor calls the no-args constructor of the super class.
         sub class's constructor couldn't throw exception which is sub class of exception of upper class
