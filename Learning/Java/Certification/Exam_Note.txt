@@ -19,7 +19,25 @@ String
 	    setLength() will automatically add whitespace for the exceed index
 	String, StringBuilder, and StringBuffer - all are final classes. so all the method of them are final method
 	repeat, compareTo, transform
-	strip() remove whitespace present at the beginning and at the end
+	strip() remove whitespace present at the beginning and at the end (spaces, tabs, newlines, and other whitespace characters).
+	indent(n) is to add n whitespace at each line of text block and add linebreak at last line if it doesn't end with linebreak
+    stripIndent() remove common indent whitespace at the begining
+        Example:
+            String text = """
+                               line 1
+                          line 2
+                       line 3
+                    """;
+            String strippedText = text.stripIndent();
+            System.out.println(strippedText);
+            Output will be:
+            line 1
+            line 2
+            line 3
+            If we don't use indent it will be
+                        line 1
+                    line 2
+                line 3
 
 Switch
     the type which provide value, it uses yield not return
@@ -70,7 +88,6 @@ Date
 		allow adding/removing time but for units of DAY or smaller
 	Period
 	    start with P
-
 		take the last chain as the value
 			Example: Period.ofYear(1).ofMonth(6).ofDay(3)
 				Value is 3 day not 1 year 6 month 3 day
@@ -202,6 +219,7 @@ Interfaces
             interface Size extends Measurement {
                 static int getLength() { return 10; } // Error: Cannot override a default method with a static method
             }
+    Static method of an interface are not inherited in the same way by an implementing class.
 
 Enum
     Enum constructor is private
@@ -224,7 +242,7 @@ Exception
     Exception
         in close() method will be supressed (overridden) by other exception in try with resources
         in multi catch can't be subclassed of each other
-        in catch block will be overridden by exception thrown in finally
+        in catch block will be overridden by exception thrown in finally //n no suppressed exception in this try,catch
         Example
             try{
 
@@ -243,6 +261,7 @@ Exception
         Any exception that is thrown while closing a resource, is added to the list of suppressed exceptions of the exception thrown while opening a resource (or thrown from the try block.)
         Once the resource is closed, calling the resource will throw ioexception
     ClassNotFoundException and NoSuchFieldException are checked exceptions
+    DateTimeException extend from RuntimeException so you don't need to handle it
 
 Array & Collection
     The wildcard ? shouldn't be used when instantiate collection
@@ -311,11 +330,15 @@ Stream
                                          (x, y) -> x+y)) // this line is to define what we gonna do if the key is duplicated. In this case, we will get the sum of 2 values
         Collectors.groupingBy expects all keys to be non-null. If there's a null, it will throw NullPointerException
             Should use Optional.ofNullable for the case null key, and can use maps.get(Optional.empty()) to retrieve data from that key
+    Collectors.joining(",", "-", "+")
+        In this case, it has 3 parameter. It means it separates each character with , and start with - and end with +
+    We do have Collector.filtering(Predicate, mapping function here)
 
 Executor
     scheduledWithFixedDelay and scheduledAtFixedRate required 4 parameter (runnable, initial delay long, period long, timeunit) and it required ScheduleExecutorService to run not ExecutorService
     Remember in Executors.newCachedThreadPool()
         Runnable and Callable will use submit() not execute
+    Even if a thread receive an InterruptedException, it is still in Runnable state. The state will be terminated once it's over
 
 Functional Interface
     Parameter and return type has the same data type ( the same as IntFunction, LongFunction, DoubleFunction)
@@ -371,6 +394,7 @@ Module
             => contains 3 parts: exports, requires, uses
             => requires the service provider interfaces and export the packages with the locator
             =>  "uses" specifies the service provider interfaces it references
+            Remember ServiceLoader implement java.lang.Iterable
         Service provider depend on service provider interface
             => 1 require and 1 provides
             if service provider has public st atic provider() method then it is not required for the service provider to be a subtype of the service type. Only the provider method should return subtype of the service type
@@ -387,6 +411,8 @@ Module
         --show-module-resolution
             show all the dependencies of a module and how they are resolved while execution of a class
         --output flag provides desired destination to output file in PC
+        --module-source-path require output directory
+            Example: javac --module-source-path src -d out --module foo.bar
         jmod command: create, extract, describe, list, hash
             used to package module file into jmod archives
             describe: use to identify class and module dependencies
@@ -401,6 +427,7 @@ Module
             -jdkinternal/--jdk-internal includes table of suggestion if any internal API is used in JAR
             does not execute any classes/modules. It only inspects the code. Thus, it cannot find out dependencies that are created due classes loaded at run time using reflection API.
             goes with command: -cp/-classpath/--class-path: Used to include dependent non-modular jar file
+            --list-deps: will list all the modules on which module depends and it will show an error if module requires any other application module
 
 Concurrent
     Thread.run() make the program run single threaded
@@ -447,7 +474,8 @@ Java IO
             It doesn't check the content of 2 files but the paths that 2 paths object resolve the same file or not
         Files.list() iterate all files in a single directory
         Files.mismatch() compare case sensitive so h & H is not the same
-        Files.line(Paths.get(filePAth)) // Files.line require a Path
+        Files.line(Paths.get(filePAth)) return a Stream<String>// Files.line require a Path
+        Files.readAllLines(Paths.get(filePath)) return a List<String>
     Console
         Constructor new Console() is private. Should use Console c = System.console()
         If your application is run in the background by a scheduler, then System.console() will return a null
@@ -458,6 +486,7 @@ Java IO
         can be created by using
             + new BufferedReader(new FileReader(fullFilePath));
             + new BufferedReader(new FileReader( new File(fullFilePath)));
+        Can be used to read String by using readLine() method
     Writer
         is an abstract class not interface
         PrintWriter
@@ -471,6 +500,8 @@ Java IO
             will create a new empty file if the file does not exist
         OutputStream
             write(int i) method of various stream based classed such as FileOutputStream take an int parameter but write only low 8bit (1 byte)) of that integer
+    FileReader
+        required file to be existed if not, it will throw FileNotFoundException
     p1.resolve(p2)
         if p2 is an absolute path => return p2
         if p1 is absolute path and p2 is an relative path => return p1 append p2
@@ -524,6 +555,7 @@ Database
             st.executeUpdate(); /// still work with value 1 is 456 and 2 is abc
     When in auto commit mode, the statement commit immediately evenwhen you set the auto commit to false before and then set it to true
     ResultSet doesn't has hasNext() method but next() method
+        ResultSet have absolute(n) method to skip the read to line n
         When we get the result from ResultSet, and use it to update the value in DB which's in result set, the data won't be affect
             Example:
                 Connection c = ds.getConnection(); //assume that ds refers to a DataSource
@@ -546,6 +578,7 @@ Database
     p.setProperty("user", userid);
     p.setProperty("password", pwd);
     Connection c = DriverManager.getConnection(dburl, p)
+
 
 Localization
     Resource Bundle
@@ -580,3 +613,4 @@ Pattern Variable
 
 Operand
     Java parses an expression from left to right. Once it realizes that the left operand of a conditional "or" operator has evaluated to true, it doesn't even try to evaluate the right side
+    Ternary Expression is ( ? :)
