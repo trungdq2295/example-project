@@ -40,7 +40,8 @@ String
                 line 3
 
 Switch
-    the type which provide value, it uses yield not return
+    the type which provide value, it uses yield to return value not "return" keywords
+        It ok to have break in new switch type. It's just redundant
     Only String, byte, char, short, int, (and their wrapper classes Byte, Character, Short, and Integer), and enums can be used as types of a switch selector expression (aka switch condition/variable).
     boolean, long, float and double cannot be used.
     long, float, double, and boolean can never be used as a switch variable.
@@ -55,6 +56,9 @@ Local variable
     Remember bit manipulation: x ^ ~x will always be -1.
     byte can hold the value from -128 to 127
     Integer create a pool for value from -127 to 128, the value outside of that range will be created a new object reference
+        Integer.parseInt(string, 2)
+            The second parameter is to use which format to parse this String. Here is binary String
+            if Integer.parseInt(string, 10), then it will use decimal, 16 for hexical
     All compound assignment operators internally do an explicit cast (+=, -=, *=, /=, ...)
         char c = 1;
         c += 1; // still cast the result to char
@@ -63,7 +67,7 @@ Local variable
 Array
     When converting from array to list, java use fix-length backed list. This means the list use an array implementation. updated value is allowed but removing or adding is not
     Array.compare() will return a positive number and the number will be the same as the difference in the number of elements in both array
-        will print -1 if the first array element is smaller than the second array element
+        will print negative number if the first array element is smaller than the second array element
     Arrays.mismatch() return a index which is not the same in 2 array
         return -1 if no mismatch is found
 
@@ -201,6 +205,10 @@ Class
             }
     Null reference maybe used to access a static variable without causing exception
     Remember, java will throw java.lang.ExceptionInInitializerError if init class is having exception (evenwhen it's not java.lang.ExceptionInInitializerError)
+    Field are not overridden but shadowing ( mean hide the field from the super class when you redeclare that field in subclass)
+    Any class is extend from super class mean its data type is the superclass
+        Example: class ABC {} class BCD extends ABC{}
+         => BCD is-a ABC
 
 Interfaces
     Java allow sub interface to override static function in super interface by convert the static to default but not allowed to sub interface override default method in super interface by using static method at sub interface
@@ -221,6 +229,7 @@ Interfaces
                 static int getLength() { return 10; } // Error: Cannot override a default method with a static method
             }
     Static method of an interface are not inherited in the same way by an implementing class.
+    Sub Interfaces can redeclare the method from super interface
 
 Enum
     Enum constructor is private
@@ -244,10 +253,11 @@ Exception
         in close() method will be supressed (overridden) by other exception in try with resources
         in multi catch can't be subclassed of each other
         in catch block will be overridden by exception thrown in finally //n no suppressed exception in this try,catch
+        the exception in catch block is implicit final so you can't assign to new value
         Example
             try{
 
-            } catch( FileNotFoundException e){
+            } catch( FileNotFoundException e){ // e is implicit final, you can't assign e to new value such as e = New Exception(), this will cause compilation error
 
             } finally{
                 throw IOException
@@ -298,6 +308,8 @@ Array & Collection
                 Example: TreeSet<Integer> sub = s.subSet(326, true, 328, true );
                         sub.add(329); //this will throw IllegalArgumentException due to 329 is larger than 328
     The sublist() return a view which is not affect the original list
+    HashMap
+        computeIfPresent() take BiFunction and will replace the value with that key
 
 Stream
     IntStream convert to parallelStream should be using boxed().parallel()
@@ -317,6 +329,13 @@ Stream
     SplitIterator will split a stream into a half at the middle
         Example: 1,2,3,4
             split => (1,2) and (3,4)
+        When you split a Spliterator, the first half goes to the resulting ( new spliterator) while the remaining half remain with the origin one
+            Example:
+                 List<Integer> li = List.of(3, 7, 2, 1, 4, 6, 5, 8);
+                 Spliterator<Integer> sit1 = li.spliterator();
+                 Spliterator<Integer> sit2 = sit1.trySplit()
+                    sit1 will be 4658
+                    sit2 will be 3721
     findFirst() always returns the first element in ordered stream and parallel stream. but it's free to return anything in unordered stream
     In Stream, it will convert to Object value unlike primitive stream
     Primitive Stream
@@ -368,6 +387,7 @@ Module
     If a request is made from an automatic module to load a type whose package is not defined in any known module then the module system will attempt to load it from the classpath.
     When a module is on module path without module-info, all packages are exported
     module on module path can't access anything in classpath
+    You can't have more than 1 provides in module
     java.lang is package
     java.base is available for all modules
         Remember java.util is not a module but a package which is inside java.base
@@ -417,6 +437,7 @@ Module
         --output flag provides desired destination to output file in PC
         --module-source-path require output directory
             Example: javac --module-source-path src -d out --module foo.bar
+            It will create class filed under the out path
         jmod command: create, extract, describe, list, hash
             used to package module file into jmod archives
             describe: use to identify class and module dependencies
@@ -481,6 +502,10 @@ Java IO
         Files.mismatch() compare case sensitive so h & H is not the same
         Files.line(Paths.get(filePAth)) return a Stream<String>// Files.line require a Path
         Files.readAllLines(Paths.get(filePath)) return a List<String>
+        Files.find(Path start, int maxDepth, BiPredicate matcher, options)
+            uses to find a Files in a Path
+            Can go inside directory as much as maxDepth
+            return a Stream<Path>
     Console
         Constructor new Console() is private. Should use Console c = System.console()
         If your application is run in the background by a scheduler, then System.console() will return a null
@@ -636,3 +661,10 @@ Pattern Variable
 Operand
     Java parses an expression from left to right. Once it realizes that the left operand of a conditional "or" operator has evaluated to true, it doesn't even try to evaluate the right side
     Ternary Expression is ( ? :)
+
+Important Note on Casting
+    public void saveObject(List e ){
+         prevObject = e ;
+         i++ ;
+    }
+    Then datatype of e should be List or subclass of List
