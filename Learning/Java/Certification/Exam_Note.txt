@@ -200,6 +200,7 @@ Class
                }
             }
     Null reference maybe used to access a static variable without causing exception
+    Remember, java will throw java.lang.ExceptionInInitializerError if init class is having exception (evenwhen it's not java.lang.ExceptionInInitializerError)
 
 Interfaces
     Java allow sub interface to override static function in super interface by convert the static to default but not allowed to sub interface override default method in super interface by using static method at sub interface
@@ -258,10 +259,12 @@ Exception
             x.intValues() // help to trace the exception null pointer point to variable x
     try with resources
         The flow will be -> try -> close() ( in reverse order) -> catch -> finally
-        Any exception that is thrown while closing a resource, is added to the list of suppressed exceptions of the exception thrown while opening a resource (or thrown from the try block.)
+        Any exception that is thrown while closing a resource, is added to the list of suppressed exceptions to the exception thrown while opening a resource (or thrown from the try block.)
+            Remember that, if method always caught/throws exception which throws in try, catch,finally block
         Once the resource is closed, calling the resource will throw ioexception
     ClassNotFoundException and NoSuchFieldException are checked exceptions
     DateTimeException extend from RuntimeException so you don't need to handle it
+    When you declare checked exception in catch block, then your method need to have possibility of throwing that exception. If not, code won't be compiled
 
 Array & Collection
     The wildcard ? shouldn't be used when instantiate collection
@@ -283,6 +286,7 @@ Array & Collection
            remove - remove element at the top
     Collection.sorts(collectionX) => in this case, class of objects contained in the collection must implement Comparable interface.
     Collection.sorts(collectionX, ComparatorX) => in this case, the ComparatorX implement interface Comparator is used
+        If the comparatorX is null, then it use natural sort
     List.of or Arrays.copy() doesn't support null so it will throw nullpointerexception if there's null element
     Collection.replaceAll() require a UnaryOperator param
     Comparable has compareTo(T t) method
@@ -457,7 +461,8 @@ Concurrent
         }
     Synchronize on class level and on object level are not the same
     HashMap supports adding null key as well as null values but ConcurrentHashMap does not.
-
+    Intrinsic lock is a  synchronization which is built around an internal entity
+    A thread is said to own the intrinsic lock between the time it has acquired the lock and released the lock. As long as a thread owns an intrinsic lock, no other thread can acquire it. Other thread will block when it attempts to acquire the lock
 Java IO
     When you try to read an object from an ObjectInputStream using ObjectInputStream's readObject() method, it will check whether the class, which is being read, implements readObject method()
         If it does, then the class's readObject will be invoked first
@@ -495,7 +500,10 @@ Java IO
                     OutputStream os = new FileOutputStream(name)
                     var pw = new PrintWriter(os);
                     pw.write(1);
-            none of the PrintWriter's method throw any I/O exception because they supress the errors in writing and set an internal flag for error status
+            none of the PrintWriter's method throw any I/O exception because they suppress the errors in writing and set an internal flag for error status
+            Doesn't have write<Primitive> method
+            It does have write(String), write(int), write(char[]) methods.
+            It also has write(char[] buf, int off, int len) and write(String buf, int off, int len) methods that let you write a portion of the input buf
         FileWriter
             will create a new empty file if the file does not exist
         OutputStream
@@ -578,6 +586,17 @@ Database
     p.setProperty("user", userid);
     p.setProperty("password", pwd);
     Connection c = DriverManager.getConnection(dburl, p)
+    Remember
+        callableStatement.setString("NAME", "john",java.sql.Types.VARCHAR); //valid
+        callableStatement.setString(1, "john",java.sql.Types.VARCHAR); //valid, //because it is inherited from PreparedStatement
+
+        preparedStatement.setString("NAME", "john",java.sql.Types.VARCHAR); //will NOT compile
+        preparedStatement.setString(1, "john",java.sql.Types.VARCHAR); //valid
+    Statement's enquoteLiteral method returns a String enclosed in single quotes. Any occurrence of a single quote within the string will be replaced by two single quotes. This prevents SQL injection attacks
+        Example:
+            String qr = "SET SESSION sql_mode = '"+mode+"';"
+            can replace with
+                String qr = "SET SESSION sql_mode = "+stmt.enquoteLiteral(mode)+";";
 
 
 Localization
@@ -585,6 +604,7 @@ Localization
         The resource gonna use request locale
             If it have, it move from request locale -> requested language code -> default properties
             IF it doesn't have, it move to default locale -> default language code locale -> default properties
+            If there's any properties match the request and default, it will throw exception once you call getBundle()
     Oracle defines locales as geographical, political, cultural region
     CompactNumberFormat round number to nearest
     Properties file
@@ -596,6 +616,8 @@ Localization
                 String s = " abc yyyy MM dd" // Exception in runtime when format
     Style.Short => Thousand = K, Million = M
     The option is to use for formatting text is Category.FORMAT
+    You can use this method
+        String[] vals =rb.getStringArray("key2");
 
 Reference
     A declared reference variable exists regardless of whether a reference value (i.e. an object) has been assigned to it or not.

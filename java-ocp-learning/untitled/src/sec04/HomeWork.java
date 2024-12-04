@@ -12,7 +12,8 @@ public class HomeWork {
         var text = """
                 ant antelope \s \n
                 cat "kitten"
-                "seal sea lion"\s""";
+                "seal sea lion"\s
+                """;
 
         var date = LocalDate.of(2022, Month.FEBRUARY, 28);
         System.out.println(text);
