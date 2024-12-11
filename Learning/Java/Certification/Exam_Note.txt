@@ -485,6 +485,8 @@ Concurrent
     Intrinsic lock is a  synchronization which is built around an internal entity
     A thread is said to own the intrinsic lock between the time it has acquired the lock and released the lock. As long as a thread owns an intrinsic lock, no other thread can acquire it. Other thread will block when it attempts to acquire the lock
 Java IO
+    OutputStream
+
     When you try to read an object from an ObjectInputStream using ObjectInputStream's readObject() method, it will check whether the class, which is being read, implements readObject method()
         If it does, then the class's readObject will be invoked first
         readObject() throws ClassNotFoundException so it has to be caught by catch block or throws by method
@@ -496,7 +498,7 @@ Java IO
         Should not copy to the existing Files/Directories ( can do if we have option override)
         Files.readAllFiles() return a List<String>
         Files.walk() return a Stream<String>
-        Files.isSameFile throw an exception if file is not
+        Files.isSameFile throw an exception if file is not exists
             It doesn't check the content of 2 files but the paths that 2 paths object resolve the same file or not
         Files.list() iterate all files in a single directory
         Files.mismatch() compare case sensitive so h & H is not the same
@@ -524,7 +526,8 @@ Java IO
             Example:
                     OutputStream os = new FileOutputStream(name)
                     var pw = new PrintWriter(os);
-                    pw.write(1);
+                    pw.write(1);.
+
             none of the PrintWriter's method throw any I/O exception because they suppress the errors in writing and set an internal flag for error status
             Doesn't have write<Primitive> method
             It does have write(String), write(int), write(char[]) methods.
@@ -561,7 +564,7 @@ Java IO
     System.out
         never throw IOException when data's written to it
         all characters printed by System.out are converted into bytes using the given encoding or charset, or platform' default if not specific
-    DirectoryStream<Path> ds = Files.newDirectoryStream(dir, "*.{gif,jpeg} // to read all the file with extension gif, jpeg
+    DirectoryStream<Path> ds = Files.newDirectoryStream(dir, "*.{gif,jpeg}") // to read all the file with extension gif, jpeg
     Serialize/Deserialize
         When deserialize a class which is aio sub class of a class no implement Serialize, that upper class require no-argus constructor.
             If it doesn't has, when deserialize, program will throw InvalidClassException exception
