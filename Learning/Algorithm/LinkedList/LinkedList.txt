@@ -1,0 +1,6 @@
+LinkedList
+    doesn't have index like ArrayList
+    It works like node links to other nodes
+    O(1) if we add new node at the beginning or the end
+    O(1) if we remove node at the beginning
+    O(n) if we remove node at the end, because we have to iterate all the node to know which is the last node after remove the last one

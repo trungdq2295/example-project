@@ -1,0 +1,6 @@
+ArrayList
+    dynamic size of an array
+    O(1) when we add item at the end
+    O(1) when we get the value by the index
+    O(n) when we add item at any index in the array
+    O(n) when we do linearSearch
