@@ -1,70 +1,51 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Graph {
+  private Map<String, ArrayList<String>> adjList = new HashMap<>();
 
-    ArrayList<Node> nodes;
-    int[][] matrix;
 
-    Graph(int size) {
-        nodes = new ArrayList<>();
-        matrix = new int[size][size];
+  public boolean addVertex(String vertex) {
+    if (!adjList.containsKey(vertex)) {
+      adjList.put(vertex, new ArrayList<>());
+      return true;
     }
+    return false;
+  }
 
-    public void addNode(Node node) {
-        nodes.add(node);
+  public void printGraph() {
+    System.out.println(adjList);
+  }
+
+  public boolean addEdge(String vertex, String edge) {
+    if (adjList.get(vertex) == null || adjList.get(edge) == null) {
+      return false;
     }
+    adjList.get(vertex).add(edge);
+    adjList.get(edge).add(vertex);
+    return true;
+  }
 
-    /*
-        Source will be the row and destination will be the column in 2D Array
-     */
-    public void addEdge(int source, int destination) {
-        matrix[source][destination] = 1;
+  public boolean removeVertex(String vertex) {
+    if (adjList.containsKey(vertex)) {
+      List<String> edges = adjList.get(vertex);
+      edges.forEach(key -> adjList.get(key).remove(vertex));
+      adjList.remove(vertex);
+      return true;
     }
+    return false;
+  }
 
-    public boolean checkEdge(int src, int dst) {
-        return matrix[src][dst] == 1;
+  public boolean removeEdge(String vertex1, String vertex2) {
+    if (adjList.get(vertex1) == null || adjList.get(vertex2) == null) {
+      return false;
     }
-
-    public void print() {
-
-        for (Node node : nodes) {
-            System.out.print(node.data + " ");
-        }
-        System.out.println();
-
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.println(nodes.get(i).data + " ");
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-
-    public static void main(String[] args) {
-        Graph graph = new Graph(5);
-
-        graph.addNode(new Node('A'));
-        graph.addNode(new Node('B'));
-        graph.addNode(new Node('C'));
-        graph.addNode(new Node('D'));
-        graph.addNode(new Node('E'));
-
-        graph.addEdge(0, 1);
-        graph.addEdge(1, 2);
-        graph.addEdge(1, 4);
-        graph.addEdge(2, 3);
-        graph.addEdge(2, 4);
-        graph.addEdge(4, 0);
-        graph.addEdge(4, 2);
-
-        graph.print();
-
-        System.out.println(graph.checkEdge(3, 2));
-
-
-    }
+    adjList.get(vertex1).remove(vertex2);
+    adjList.get(vertex2).remove(vertex1);
+    return true;
+  }
 }

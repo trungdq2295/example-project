@@ -1,4 +1,4 @@
-package binary.tree;
+package historylearning;
 
 public class TreeNode {
     public int val;

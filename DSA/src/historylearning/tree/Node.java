@@ -1,4 +1,4 @@
-package binary.tree.search.tree;
+package historylearning.tree;
 
 public class Node {
 }

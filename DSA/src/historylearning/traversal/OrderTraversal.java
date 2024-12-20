@@ -1,6 +1,6 @@
-package binary.tree.traversal;
+package historylearning.traversal;
 
-import binary.tree.TreeNode;
+import historylearning.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

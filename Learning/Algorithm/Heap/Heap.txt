@@ -1,0 +1,22 @@
+Heap
+    Is a complete binaryTree but starting from root it will be the minimum/maximum value
+    So every time, we iterate each level, the next level node's value will always lower/higher than the previous value level
+    There's no requirement between the node in the same level as long as the previous level is lower/higher than them
+    Min-Heap
+            5
+          /   \
+        10     15
+       /  \
+     20   30
+    Max-Heap
+            30
+          /   \
+        20     15
+       /  \
+     10    5
+
+
+    How to store it
+        We can use array list, starting from root and move left to right
+            => leftChild = 2 * parentIndex
+               rightChild = 2 * parentIndex + 1

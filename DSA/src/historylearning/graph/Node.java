@@ -1,4 +1,4 @@
-package graph;
+package historylearning.graph;
 
 public class Node {
 
