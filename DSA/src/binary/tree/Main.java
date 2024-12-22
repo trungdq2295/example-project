@@ -13,7 +13,7 @@ public class Main {
     bst.insert(27);
     System.out.println(bst.root.left.right.value);
 
-    System.out.println(bst.contains(48));
+    System.out.println(bst.contains(27));
 
   }
 }
