@@ -99,4 +99,39 @@ public class BinarySearchTree {
     }
     return currentNode;
   }
+
+  private Node deleteNode(Node currentNode, int value) {
+    if (currentNode == null) { // The case when value is not present in the tree
+      return null;
+    }
+    if (value < currentNode.value) {
+      currentNode.left = deleteNode(currentNode.left, value);
+    } else if (value > currentNode.value) {
+      currentNode.right = deleteNode(currentNode.right, value);
+    } else {
+      if (currentNode.left == null && currentNode.right == null) { // The case when value we delete is a leaf node ( no child)
+        return null;
+      } else if (currentNode.left == null) { // The case when value has right child
+        currentNode = currentNode.right;
+      } else if (currentNode.right == null) { // The case when value has left child
+        currentNode = currentNode.left;
+      } else { // The case when value has both left and right child. We need to move the minimum of the right child to the node we want to delete and put replace the deleted node with that
+        int subTreeMin = minimumValue(currentNode.right);
+        currentNode.value = subTreeMin;
+        currentNode.right = deleteNode(currentNode.right, subTreeMin);
+      }
+    }
+    return currentNode;
+  }
+
+  public void deleteNode(int value) {
+    deleteNode(root, value);
+  }
+
+  private int minimumValue(Node currentNode) {
+    while (currentNode.left != null) {
+      currentNode = currentNode.left;
+    }
+    return currentNode.value;
+  }
 }

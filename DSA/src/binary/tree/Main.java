@@ -12,7 +12,8 @@ public class Main {
     bst.insert(82);
     bst.insert(27);
     System.out.println(bst.root.left.right.value);
-
+    System.out.println(bst.contains(27));
+    bst.deleteNode(27);
     System.out.println(bst.contains(27));
 
   }
