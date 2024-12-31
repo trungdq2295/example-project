@@ -16,5 +16,10 @@ public class Main {
     bst.deleteNode(27);
     System.out.println(bst.contains(27));
 
+    System.out.println(bst.bfs());
+    System.out.println(bst.dfsPreorder());
+    System.out.println(bst.dfsPostorder());
+    System.out.println(bst.dfsInorder());
+
   }
 }

@@ -1,8 +1,10 @@
 Travesal Binary Tree
 	Breadth-first ( also call level-order traversal)
 		Loop by level ordered, from left to right
+		We use Queue to implement this
 	Depth-first 
 		3 strategies
 		Preorder: Root node -> left sub tree -> right sub-tree - 
 		Inorder: left sub-tree -> root -> right subtree
 		Postoder: left sub-tree -> right sub-tree -> root
+		We use recursion to implement this

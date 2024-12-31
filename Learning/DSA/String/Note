@@ -1,0 +1,9 @@
+Working with character such as 'a','b'
+    You should use  (character - 'a') to get the index when working with zero-indexed array
+    Example:
+        int[] freq = new int[26]; // 26 here due to the number of alphabet a,b,c,d,...x,y,z
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;  //
+        }
+    If we don't use c - 'a' but freq[c] the index will be large like 'a' = 97 => freq[c] = fred[97]. Then you have to init the right size for an array
+        Example: 128 for ASCII and 65536 for Unicode ( inefficient for storage)

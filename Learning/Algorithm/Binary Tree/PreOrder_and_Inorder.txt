@@ -1,5 +1,0 @@
-PreOrder and Inorder
-	PreOrder
-		always has the node first, but we don't know the size of either branch (usually root node)
-	Inorder
-		always has the left branch to the left of the node, and right branch right of the node

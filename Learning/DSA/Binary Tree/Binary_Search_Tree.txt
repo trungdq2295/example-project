@@ -13,3 +13,4 @@ Binary Search  Tree
 		10    20
 	   / \   /  \
 	  8  16 17   25
+	Inorder Traversal in Binary Search Tree always return a sorted list ascending

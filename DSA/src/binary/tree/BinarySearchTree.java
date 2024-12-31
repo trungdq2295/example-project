@@ -1,6 +1,10 @@
 package binary.tree;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Node {
   int value;
 
@@ -133,5 +137,74 @@ public class BinarySearchTree {
       currentNode = currentNode.left;
     }
     return currentNode.value;
+  }
+
+  public ArrayList<Integer> bfs() {
+    Node currentNode = root;
+    Queue<Node> queue = new LinkedList<>();
+    ArrayList<Integer> result = new ArrayList<>();
+    queue.add(currentNode);
+    while (!queue.isEmpty()) {
+      currentNode = queue.poll();
+      result.add(currentNode.value);
+      if (currentNode.left != null) {
+        queue.add(currentNode.left);
+      }
+      if (currentNode.right != null) {
+        queue.add(currentNode.right);
+      }
+    }
+    return result;
+  }
+
+  public ArrayList<Integer> dfsPreorder() {
+    ArrayList<Integer> result = new ArrayList<>();
+    class PreOrderTraverse {
+      PreOrderTraverse(Node currentNode) {
+        result.add(currentNode.value);
+        if (currentNode.left != null) {
+          new PreOrderTraverse(currentNode.left);
+        }
+        if (currentNode.right != null) {
+          new PreOrderTraverse(currentNode.right);
+        }
+      }
+    }
+    new PreOrderTraverse(root);
+    return result;
+  }
+
+  public ArrayList<Integer> dfsPostorder() {
+    ArrayList<Integer> result = new ArrayList<>();
+    class PostOrderTraverse {
+      PostOrderTraverse(Node currentNode) {
+        if (currentNode.left != null) {
+          new PostOrderTraverse(currentNode.left);
+        }
+        if (currentNode.right != null) {
+          new PostOrderTraverse(currentNode.right);
+        }
+        result.add(currentNode.value);
+      }
+    }
+    new PostOrderTraverse(root);
+    return result;
+  }
+
+  public ArrayList<Integer> dfsInorder(){
+    ArrayList<Integer> result = new ArrayList<>();
+    class InOrderTraverse {
+      InOrderTraverse(Node currentNode) {
+        if (currentNode.left != null) {
+          new InOrderTraverse(currentNode.left);
+        }
+        result.add(currentNode.value);
+        if (currentNode.right != null) {
+          new InOrderTraverse(currentNode.right);
+        }
+      }
+    }
+    new InOrderTraverse(root);
+    return result;
   }
 }
