@@ -1,0 +1,25 @@
+Tries
+    What is Tries?
+        Is a Tree-like data structure that stores a string as a sequences of character, with each character being a node in the tree.
+        Efficient for handling collection of string when you need to search for or manages prefixs
+    Why we use Tries?
+        Efficient for prefix searches & Space Optimization
+            Example: you want to implement autocomplete or spell checking. Like when user type 'c', you can suggest 'cat','count', 'come',... or when user types 'ca', you can suggest 'cat', 'car', 'can', etc..
+            In this case, if you use HashTable you need to store 'c', 'ca', 'cat','car','count','come',.. It's not efficient.
+            Instead, you store first Node as 'c', and that Node will show you all the Node which references to like 'a', 'o', 'i', ... and so one
+            => Less storage than HashTable
+            => However, Time Complexity is O(k) with k is the length of the String (not fast like HasTable O(1))
+        Order Reservation
+    When to use it?
+        Autocomplete, spell checking, suggestion, prefix
+    When not to use it
+        Memory usage is critical since tries consumes a lot of memory when string have few prefix searches only
+            => can use hashtable for this case
+        When exact match is the goal
+            => hash table is the best choice since time complexity O(1)
+
+        Highly Dynamic dataset
+            When string are frequently added or removed, managing tries can be complexity ( add/remove prefix to/from tries)
+            => Priority Queue or HashMap
+
+
