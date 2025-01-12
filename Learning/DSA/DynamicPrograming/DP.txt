@@ -1,0 +1,6 @@
+Dynamic Programming
+    Is to split you problem into sub-problem
+    There are 2 requirements
+        First is to have overlapping sub problem
+        Second is to have optimized sub-structure
+            Which means if you have optimized solution for sub problem, then you will have optimized solution for your problem

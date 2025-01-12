@@ -1,0 +1,7 @@
+Backtracking
+    In some problems, as we search for a solution, we may reach a dead end and have to go back and search again
+    Recursive solutions are a natural fit for backtracking, but it's tricky to see the backtracking in recursive solution
+    Everytime we search, we need to keep track the visited so if we reach the point visited point, we can skip it
+
+    The easiest approach is not to think about the backtracking at all
+    Just imagine you are calling a different, working function

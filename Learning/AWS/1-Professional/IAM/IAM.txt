@@ -1,0 +1,124 @@
+IAM - Identity Access Management
+    User: long term credentials (user account to login)
+    Group
+    Roles: short-term credentials, use STS
+        EC2 instance roles: use the EC2 metadata service. ONe role at a time per instance
+        Service roles: API Gateway, CodeDeploy, etc...
+        Cross Account Roles ( to have access to another account)
+    Policies
+        AWS Managed
+        Customer Managed
+        Inline Policies
+    Resource Based Policies (S3 bucket, SQS queue, etc..)
+
+
+IAM Deep Dive
+   a JSON Document with 4 of these 5 thing: Effect, Action, Resource, Conditions, Policy Variables
+   Example:
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:GetObject",
+                    "s3:ListBucket"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::example-bucket",
+                    "arn:aws:s3:::example-bucket/*"
+                ]
+                },
+                {
+                "Effect": "Allow",
+                "Action": "dynamodb:*",
+                "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/example-table"
+                }
+            ]
+        }
+   Effect DENY has higher priority than Allow
+   Best Practice: use least privilege for maximum security
+       Access Advisor: See permissions granted and when last accessed
+       Access Analyzer: Analyze resources that are shared with external entity
+
+IAM AWS Managed Policies
+    For example:
+        AdministratorAccess
+           {
+            "Version":"2012-10-17",
+            "Statement":[
+                {
+                    "Effect":"Allow",
+                    "Action":"*",
+                    "Resource":"*"
+                },
+            ]
+           }
+            This mean the user is allowed to do everything
+        PowerUserAccess
+            {
+                "Version":"2012-10-17",
+                "Statement":[
+                    {
+                        "Effect":"Allow",
+                        "NotAction":[ //The reason I use NotAction here because If we use DENY, it will has higher priority of ALLOW and then won't allow user to has permission below
+                            "iam:*",
+                            "organizations:*",
+                            "account:*",
+                        ],
+                        "Resource":"*"
+                    },
+                    {
+                        "Effect":"Allow",
+                        "Action":[
+                            "iam:CreateServiceLinkedRole",
+                            "organizations:DescribeOrganization",
+                            "account:ListRegions",
+                        ],
+                        "Resource":"*"
+                    },
+                ]
+            }
+IAM Policies Condition
+    The condition to apply policies
+    "Condition": { "{condition-operator}":{ "{condition-key}" :"{condition-value}"}}
+    Operators:
+        String (StringEquals, StringNotEquals, StringLike...)
+        Example:
+            "Condition": {"StringEquals":{"aws:PrincipalTag/job-category":"iamuser-admin"}}
+            "Condition": {"StringLike":{"s3:prefix":["","home/","home/${aws:username}/"]} // to allow user to access s3 with prefix the home directory of thaat user
+        Numeric (NumbericEquals, NumericNotEquals, NumericLessThan ..)
+        Date
+        Boolean
+        (Not) IpAddress
+        ArnEquals, ArnLike
+        Null
+
+IAM Policies Variables and Tags
+    Example: ${aws:username}
+    AWS Specific:
+        aws:CurrentTime, aws:TokenIssueTime, aws:principaltype. aws:SecureTransport, aws:SourceIp, aws:userid, ec2:SourceInstanceARN
+    Service Specific:
+        s3:prefix, s3:max-keys, s3:x-amz-acl, sns:Endpoint, sns:Protocol, ...
+    Tag Based:
+        iam:ResourceTag/key-name, aws:PrincipalTag/key-name
+
+IAM Roles vs Resource Based Policies
+    Attach a policy to a resource (example: S3 bucket policy) versus attaching of a using a role as proxy
+    Example: you have user account A want to access the S3 bucket in account B
+        1st way: You assigned a role in account B to account A
+        2nd way: You assign S3 bucket Policy to account A
+    For the 1st way, When you assume a role (user, application or service), you give up your original permission and take the permissions assigned to the role
+    For the 2nd way, When you use a resource-based policy, the principal doesn't have to give up any permissions. So it's good in the case you need to have 2 roles
+        Example: User in account A needs to scan DynamoDB table in account A and dump it in S3 bucket in account B
+            In this case, you can't use 1st way but the 2nd way
+    Resource Based Policies supported by: S3, SNS topics, SQS Queues, Lambda functions, ECR, Backup, EFS, Glacier, Cloud9, AWS Artifact, Secrets Manager, ACM, KMs, CloudWatch, ...
+
+IAM Permission Boundaries
+    are supported for users and roles ( not groups)
+    Advanced feature to use a managed policy to set the maximum permissions an IAM entity can get
+    Can be used in combinations of AWS Organizations SCP (Service control policies)
+    Use cases:
+        Delegate responsibilities to non administrators within their permission boundaries. For example: create new IAM users
+        Allow developers to self-assign policies and manage their own permission, while making sure they can't "escalate" their privileges (=make themselves admin)
+        Useful to restrict one specific user (instead of a whole account using Organizations & SCP)
