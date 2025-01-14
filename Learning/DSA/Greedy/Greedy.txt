@@ -1,0 +1,10 @@
+Greedy
+    Is to build a solution step by step, selecting most advantageous option at each step with the hope that this strategy will lead to an optimal solution
+    When to use
+        Choice property: A global optimum can be arrived at by selecting a local optimum
+        Optimal substructure: An optimal solution to the problem contains an optimal solution to the sub problem
+    Pros
+        Efficient: faster than other like DP as it avoids exhaustive search and complex recursion
+        Simple to implement: Straight forward because it needs the most optimal solution
+    Cons
+        It doesn't always produce the globally optimal solution
