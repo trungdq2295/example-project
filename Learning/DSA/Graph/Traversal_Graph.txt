@@ -1,0 +1,4 @@
+Traversal Graph
+    BFS
+        start at some arbitrary node of a graph and explores the neighbour nodes first, before moving to the next level neighbours
+        Use a Queue data structure to track which node to visit

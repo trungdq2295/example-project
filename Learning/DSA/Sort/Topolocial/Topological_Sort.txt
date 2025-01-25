@@ -1,0 +1,19 @@
+Topological Sort
+    What is it?
+        is an ordering of the nodes in a directed graph where for reach directed edge from node to node B, node A appears before nodes B in the ordering
+        It can find a topological ordering in O(V+E) time
+        Note: Topological ordering are NOT unique
+
+        Not every graph can have a topological ordering. A graph which contains a cycle cannot have a valid ordering
+        Example: A connect B, C. C connect D. D connect B -> cycle graph A -> C -> D -> B -> C ...
+             A
+            / \
+           B - C
+            \ /
+             D
+        The only type of graph which has a valid topological ordering is a Directed Acyclic Graph (DAG). These are graph with directed edges and no cycle
+
+    How to do it?
+        Pick an unvisited node
+        Beginning with the selected node, do the DFS exploring only unvisited nodes.
+        On the recursive callback of the DFS, add the current node to the topological ordering in reverse order

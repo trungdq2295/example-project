@@ -1,0 +1,4 @@
+Permutation Property
+    The array nums is a permutation of numbers in the range [0, n-1]. This means:
+        Every number in the array is unique.
+        The indices and values in nums form a closed cycle when followed repeatedly.
