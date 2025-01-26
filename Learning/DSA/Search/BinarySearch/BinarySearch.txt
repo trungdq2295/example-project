@@ -1,0 +1,2 @@
+BinarySearch
+    We can use binary search to find min-max using the condition to move left/right to get the max/min
