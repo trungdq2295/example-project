@@ -1,0 +1,64 @@
+BitManipulation
+    Most significant bit
+        Is the first bit from the left
+    Least significant bit ( right most)
+        Is the first bit from the right
+        => right most 1 is the least significant bit 1 from the right
+            example: 1100 => right most 1 is at index 2 (0-indexed, from the right)
+        => right most 0
+    Addition
+        It's the same as how you do with 234 + 582 from right to left. If two value addition exceed 10 then you will have a carrier 1 to the next number on the left.
+        In bit addition, two value exceed 2 then it will carrier 1 to to the next number
+        Example: 101 + 011 = 1000
+            Explanation: From left to right
+                1+ 1 = 2, this equals 2 => the first number will be 0 and you have carrier 1 to the left
+                0 + 1 + 1(the carrier from the right) = 2 => the second number will be 0, etc
+                1 + 0 + 1 = 2 => the third number will be 0,
+                This time, the carrier still 1 and you have no number left so the fourth number will be 1
+                => result = 1000
+    Negative number
+        Use Two's Complement in the most significant bit
+            0 for positive
+            1 for negative
+        n-bit binary system
+            Unsigned bit (all positive number): 0 to (2^n - 1)
+            Signed Bit (Positive number and negative number): -2^(n-1) to (2^(n-1) - 1)
+        How to convert the positive to negative number
+            Example: 4-bit signed bit systems
+                2 = 0010
+            First: You have to invert the bit
+                0010 => 1101
+            Finally: You add 1 to the inverted bit
+                1101 + 1 = 1110
+
+    Left shift - Right shift
+        Left shift mean is to move all the bit to the left by 1. This does mean multiply by 2 in unsigned bit
+        Right shift mean is to move all the bit to the right by 1. This does mean divide by 2 in unsigned bit
+            Example: 3 = 0011
+                left shift => 0110 = 6
+                right shift => 0001 = 1 (round down)
+
+    Bit Masking
+        AND(&) both number have to be 1 then return 1
+            0 & 0 = 0
+            0 & 1 = 0
+            1 & 1 = 1
+        OR(|) either one of number is 1 then return 1
+            0 | 0 = 0
+            0 | 1 = 1
+            1 | 1 = 1
+        XOR(^) two different number return 1
+            0 ^ 0 = 0
+            0 ^ 1 = 1
+            1 ^ 1 = 0
+        NOT(~) invert the bit value
+             2 = 0010 -> 1101 => -3
+
+        Example: You have READ, WRITE, EXECUTE PERMISSION (note all in decimal format)
+            READ = 0
+            WRITE = 1,
+            EXECUTE = 2
+            You can use
+                &: to check if user has permission like (userPermission & READ_PERMISSION) == READ_PERMISSION
+                |: to combine permission like userPermission = READ_PERMISSION | WRITE_PERMISSION
+                ^: to remove permission like userPermission = userPermission ^ WRITE_PERMISSION
