@@ -11,6 +11,7 @@ public class Topic_1937 {
    * Solution: Use Dynamic Programing to store the value at the current [i][j]
    * The idea is you gonna find at each cell which gonna give you the max value by iterating each row
    * In each row, you have left and right dp[] to check if which one has greater value
+   * <p>
    * Then you update to the current dp[] and we use that current dp for the next row
    * <p>
    * After processing all row, we will get the max value from that dp
@@ -26,6 +27,11 @@ public class Topic_1937 {
     }
 
     for (int i = 1; i < m; i++) { //process row by row
+      /**
+       *  The reason we have to traversal from left and right because of the penalty of the previous row
+       *  For example if you got the highest value at index 2 and dp length = 3
+       *  => There will be 1 penalty at right[2] and there's most likely 2 penalty from the left
+       */
       long left[] = new long[n];
       long right[] = new long[n];
 
@@ -36,7 +42,7 @@ public class Topic_1937 {
 
       right[n - 1] = dp[n - 1];
       for (int j = n - 2; j >= 0; j--) {
-        right[j] = Math.max(right[j + 1] - 1, dp[j]);
+        right[j] = Math.max(right[j + 1] - 1, dp[j]); // we use " - 1 " here because take the penalty from last row
       }
 
       //We combine the value to compare
