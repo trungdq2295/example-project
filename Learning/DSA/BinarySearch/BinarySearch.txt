@@ -1,0 +1,10 @@
+Binary Search
+    If you are searching for the minimum value:
+        Use right = mid when the condition is valid.
+        Use left = mid + 1 when the condition is invalid.
+    If you are searching for the maximum value:
+        Use left = mid when the condition is valid.
+        Use right = mid - 1 when the condition is invalid.
+    If you are searching for an exact match:
+        Use right = mid - 1 when mid is too large.
+        Use left = mid + 1 when mid is too smal
