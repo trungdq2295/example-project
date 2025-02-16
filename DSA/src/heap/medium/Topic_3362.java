@@ -1,6 +1,7 @@
 package heap.medium;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Topic_3362 {
@@ -31,7 +32,7 @@ public class Topic_3362 {
   public int maxRemoval(int[] nums, int[][] queries) {
     int n = nums.length;
     int m = queries.length;
-    Arrays.sort(queries, (a, b) -> a[0] - b[0]);
+    Arrays.sort(queries, Comparator.comparingInt(a -> a[0]));
     PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> b - a);
     int[] end = new int[n + 1];
     int current = 0,  //are number of queries currently in use.
