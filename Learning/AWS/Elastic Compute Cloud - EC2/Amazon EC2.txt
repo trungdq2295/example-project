@@ -21,6 +21,29 @@ Ec2 instance types: example
 		m: instance class
 		5: generation
 		2xlarge: size within the instance class
+	Compute Optimized
+	    Great for compute-intesive tasks that reuire high performance processors
+	        Batch processing workloads
+	        Media transcoding
+	        High Performance for web servers
+	        High Performance computing
+	        Scientific modeling & machine learning
+	        Dedicated gaming servers
+	Memory Optimized
+	    Fast performance for workloads that process large data sets in memory
+	    Use cases:
+	        High performance, relational/non-relational databases
+	        Distributed web scale cache stores
+	        In-memory databases optimize for BI(business intelligence)
+	        Applications performing real-time processing of big unstructured data
+    Storage Optimized
+        Great for storage-intensive tasks that require high, sequential read and write access to large data sets on local storage
+        Use cases:
+            High frequency online transaction processing (OLTP) systems
+            Relational & NoSQL database
+            Cache for in-memory databases (Redis)
+            Data warehousing applications
+            Distributed file systems
 		
 EC2 Instances Purchasing Options
 	On-Demand Instance - short workload, predictable pricing, pay by second
@@ -31,48 +54,62 @@ EC2 Instances Purchasing Options
 		No long-term commitment
 		Recommended for short-term and un-interrupted workloads, where you cant predict how the application will behave
 	Reserved Instance
+	    Reserved Instances - long workloads
+	    Convertible Reserved instances - long workloads with flexible instances
 		Up to 72% discount compared to ON-demand
-		Payment Options - No Upfront, Partial Upfront, All Upfront
+		You reserve a specific instance attributes
+		    1 year(+discount)
+		    3 years(+++discount)
+		Payment Options -
+		    No Upfront (+)
+		    Partial Upfront (++)
+		    All Upfront (+++)
+        Reserved Instance's Scope - Regional or Zonal (reserve capacity in an AZ)
 		Recommended for steady-state usage applications ( such as database)
+		You can buy and sell in the Reserved Instance Marketplace if you don't need it anymore
+		Convertible Reserved Instance
+		    Can change the EC2 instance type, instance family, OS, scope and tenancy
+		    Up to 66% discount
 	Saving Plans
+	    Commitment to an amount of usage, long workloads
 		Discount based on long-term usage
 		Commit to a certain type of usage ( $10/hour for 1 or 3 years)
 		Usage beyond EC2 Savings Plans is billed at the On-Demand price
 		Locked to a specific instance family & AWS region (M5 in us-east-1)
 		Flexible across:
-			Instace Size ( such as m5.xlarge, m5.2xlarge)
-			OS ( Linux, WIndows)
+			Instance Size ( such as m5.xlarge, m5.2xlarge)
+			OS ( Linux, Windows)
 			Tenancy (Host, Dedicated, Default)
 	Spot Instances
 		Can get discount up to 90%
 		Instances that you can "lose" at any point of time if your max price is less than the current spot price
 		The MOST cost-efficient instances in AWS
-		Useful for workloads that are resilient to falure
+		Useful for workloads that are resilient to failure
 			Batch jobs
 			Data analysis
 			Image processing
-			Any distributed workloadsWorkloads with a flexible start and end time
-		Not suitable for criticqal jobs or databases
+			Any distributed workloads with a flexible start and end time
+		Not suitable for critical jobs or databases
 	Dedicated Hosts
 		A physical server with EC2 instance capacity full dedicated to your use
-		Allows you address compiance requirements and use your existing server bound software license( per-socket, per-core, per-VM software licenses)
+		Allows you address compliance requirements and use your existing server bound software license( per-socket, per-core, per-VM software licenses)
 		Purchasing Options
 			On-Demand - pay per second for active Dedicated Host
 			Reserved - 1 or 3 years (No Upfront, Partial Upfront, All Upfront)
+        The most expensive option since you own a physical server
 		Useful for software that have complicated licensing model (ByOL - Bring your Own License)
-		Or for companies that have strong regulatory or copliance needs
+		Or for companies that have strong regulatory or compliance needs
 	Dedicated Instances
 		Instances run on hardware that's dedicated to you
 		May share hardware with other instances in same account
-		No control over instance placement( can move hardware after Stop/ Start)
+		No control over instance placement (can move hardware after Stop/ Start)
 	Capacity Reservations
 		Reserve On-Demand instances capacity in a specific AZ for any duration
 		You always have access to EC2 capacity when you need it
 		No time commitment (create/cancel anytime), no billing discounts
-		Combine with Regional Reserved Instances and SAvings Plans to benefit from billing discounts
+		Combine with Regional Reserved Instances and Savings Plans to benefit from billing discounts
 		You're charged at On-Demand rate whether you run instances or not
-		Suitable for short-term, uninterrupted workloads that needs to be in a speicfic AZ
-		
+		Suitable for short-term, uninterrupted workloads that needs to be in a specific AZ
 		
 General purpose:
 	Great for a diversity of workloads such as web servers or code repositories
@@ -80,16 +117,5 @@ General purpose:
 		Compute (CPU)
 		Memory (such as RAM)
 		Networking
-
-Security Groups:
-	Can be attached to multiple EC2 instance
-	Locked down to a region/VPC combination
-	Its goood to maintain one separate security goup for SSH access
-	If your application is not accessible (time out), then its a security group issue
-	If your application gives a "connection refused" error, then its an appliocation error or its not launched
-	All inbound traffic is blocked by default
-	All outbound traffic is authorised by default
-
-
-
+    You can use EC2 connect to your ec2 instances
 	

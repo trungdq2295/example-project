@@ -1,0 +1,19 @@
+Security Groups:
+    are the fundamental of network security in AWS
+    control how traffic is allowed into or out of our EC2 instances
+    only contains allow rules
+    can reference by IP or security group
+    Deeper Dive
+        Security group acting as a "firewall" on EC2 instances
+        They regulate:
+            Access to Ports
+            Authorised IP ranges - IPv4 and IPv6
+            Control of inbound network (from other to the instance)
+            Control of outbound network (from instance to other)
+    Can be attached to multiple EC2 instance
+    Locked down to a region/VPC combination
+    Its good to maintain one separate security group for SSH access
+    If your application is not accessible (time out), then its a security group issue
+    If your application gives a "connection refused" error, then its an application error or its not launched
+    All inbound traffic is blocked by default
+    All outbound traffic is authorised by default
