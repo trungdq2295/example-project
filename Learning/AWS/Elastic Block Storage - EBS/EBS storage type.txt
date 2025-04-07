@@ -1,3 +1,36 @@
+EBS Volume ( think them as a USB stick)
+    An Elastic Block Storage volume is a network drive you can attach to your instances while they run
+    it allows your instances to persist data, even after their termination
+    They can only be mounted to one instance at a time ( at the CCP level)
+    They are bound to specific availability zone
+    It's a network drive
+        It uses the network to communicate the instance, which means there might be a bit of latency
+        It can be detached from an EC2 instance and attached to another one quickly
+    It's locked to an AZ
+        An EBS Volume in us-east-1a cannot be attached to us-east-1b
+        To move a volume across, you first need to snapshot it
+    Have a provisioned capacity (size in GBs, and IOPS)
+        You get billed for all the provisioned capacity
+        You can increase the capacity of the drive over time
+    Controls the EBS behaviour when an EC2 instance terminates
+        By default, the root EBS volume is deleted (attribute enabled)
+        By default, any other attached EBS volume is not deleted (attribute disabled)
+
+EBS Snapshots
+    Make a backup (snapshot) of your EBS volume at a point in time
+    Not necessary to detach volume to do snapshot, but recommended
+    Can copy snapshots across AZ or Region
+    Features:
+        EBS Snapshot Archive
+            Move a Snapshot to an "archive tier" that is 75% cheaper
+            Takes within 24 to 72 hours for restoring the archive
+        Recycle Bin for EBS Snapshots
+            Setup rules to retain deleted snapshots, so you can recover them after accidental deletion
+            Specify retention (from 1 day to 1 year)
+        Fast Snapshot Restore (FSR)
+            Force full initialization of snapshot to have no latency on the first use
+            Most expensive
+
 EBS Volume types
 	gp2/gp3 (SSD): General purpose SSD volume that balances price and performance for a wide variety of workloads
 	io1/io2 (SSD): Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads
@@ -6,7 +39,7 @@ EBS Volume types
 	
 	General purpose of SSD
 		Cost effective storage, low-latency
-		System boot volumes, Virtual Destops, Development and test environments
+		System boot volumes, Virtual Desktops, Development and test environments
 		1Gb - 6 TB
 		gp3:
 			Baseline of 3,000 IOPS and throughput of 125MB/sc1
@@ -18,7 +51,7 @@ EBS Volume types
 Why gp3 is better than gp2
 	gp3 is successor of gp2
 	if you want to increase IOPS, you need to increase the volume size in gp2
-	gp3 removed this limitation and you can increase the IOPs and/or throughput independently up to 16,000 IOPs and 1,000 MiB/s respectively.
+	gp3 removed this limitation, and you can increase the IOPs and/or throughput independently up to 16,000 IOPs and 1,000 MiB/s respectively.
 	gp3 is cheaper than gp2
 	
 	Provisioned IOPS (PIOPS) SSD
@@ -27,16 +60,30 @@ Why gp3 is better than gp2
 		Great for database workloads( sensitive performance and consistency)
 		io1/io2 (4GB - 16TB):
 			Max IOPS: 64,000 for Nitro EC2 instances & 32,000 for other
-			Can increase PIOPS independently from storage size
+			Can increase PIOPS independently of storage size
 			io2 have more durability and more IOPS per GB(at the same price as io1)
 		io2 Block Express (4GB - 64TB):
 			Sub-milisecond latency
 			Max PIOPS: 256,000 with an IOPS:GB ratio of 1,000:1
 		Support EBS Multi-atach
 
+HDD
+    Cannot be a boot volume
+    125 GiB to 16TiB
+    Throughput Optimized HDD (st1)
+        Big Data, Data Warehouse, Log Processing
+        Max throughput 500 MiB/s - max IOPS 500
+    Cold HDD (sc1):
+        For data that is infrequently accessed
+        Scenarios where the lowest cost is important
+        Max throughput 250 MiB/s - max IOPS 250
+
 EBS Multi-attach
 	Only support in io1/io2
 	Attach the same EBS volume to multiple EC2 instances in the same AZ
-	Each instance has full read and write permissions
+	Each instance has full read and write permissions to the high-performance volume
+	Use case:
+	    Achieve higher application availability in clustered Linux applications
+	    Applications must manage concurrent write operations
 	Only in the same AZ
 	Can be attached up to 16 Ec2 instances

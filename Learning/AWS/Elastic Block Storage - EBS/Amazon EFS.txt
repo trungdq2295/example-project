@@ -1,19 +1,39 @@
-EBS Volume - Elastic Block Storage
-	one instance (except multi-attach io1/io2)
-	are locked at the AZ
-	gp2: IO increase if the disk size increase
-	io1: can increase IO independently
-	To migrate an EBS volume across AZ
-		Take a snapshot
-		Restore snapshot into another AZ
-		EBS backups use IO and you shoudn't run them while your application is handling a lot of traffic cuz it will impact performance
-	Root EBS Volumes of instances can be terminated by default if the Ec2 instance gets terminated ( can disable it)
 EFS - Elastic File System
-	Mounting up to 100s instances across AZ
-	EFS share website files(Wordpress)
-	Only for Linux instances
-	
-	EFS has a higher price point than EBS (the more space u use in EFS, the higher price is while EBS is fixed size)
-	Can leverage EFS-IA for cost savings ( move an unused file to IA EFS)
-	
+    Managed NFS (network file system) that can be mounted on many EC2
+    Scales automatically, pay-per-use, no capacity planning
+    EFS works with EC2 instance in multi-AZ
+    Highly available, scalable, expensive (3x gp2), pay per use
+    Use cases:
+        content management
+        Web serving
+        data sharing
+        Wordpress
+    Use NFSv4.1 protocol
+    Use security group to control access to EFS
+    Encryption at rest using KMS
+
+    Performance & Storage Classes
+        EFS Scale
+            1000s of concurrent NFS clients, 10GB+ /throughput
+            Grow to Petabyte-scale network file system, automatically
+        Performance Mode ( set at FS creation time)
+            General purpose (default) - latency-sensitive use cases( web servers, CMS, etc ..)
+            Max I/O - higher latency, throughput, highly parallel ( big data, media processing)
+        Throughput Mode
+            Bursting - 1 TB = 50MiB/s + burst of up to 100MiB/s
+            Provisioned - set your throughput regardless of storage size, ex: 1GiB/s for 1TB storage
+            Elastic - automatically scales throughput up or down based on your workloads
+                Up to 3GiB/s for reads and 1GiB/s for writes
+                Used for unpredictable workloads
+        Storages Classes
+            Storage Tier (lifecycle management feature - move file after N days)
+                Standard: for frequently accessed files
+                Infrequent access (EFS-IA): cost to retrieve file, lower price to store
+                Archive: rarely accessed data (few times each year), 50% cheaper
+                Implement lifecycle policies to move files between storage tiers
+            Availability and durability
+                Standard: Multi-AZ, great for prod
+                One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone-IA)
+            Over 90% in cost savings
+
 	
