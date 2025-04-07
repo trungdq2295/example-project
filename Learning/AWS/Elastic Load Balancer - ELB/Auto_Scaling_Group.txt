@@ -1,0 +1,50 @@
+Auto Scaling Group
+    In real-life, the load on your websites and application can change
+    IN the cloud, you can create and get rid of servers very quickly
+
+    The goal of an Auto Scaling Group
+        Scale out (add EC2 instances) to match an increased load
+        Scale in (remove EC2 instances) to match a decreased load
+        Ensure we have a minimum and maximum number of EC2 instances running
+        Automatically register new instances to a load balancer
+        Re-create an EC2 instance in case a previous one is terminated (ex: if unhealthy)
+    ASG is free (you only pay for the underlying EC2 instances)
+
+    Attributes
+        A Launch Template (older "Launch Configurations" are deprecated)
+            AMI + Instance Type
+            EC2 User Data
+            EBS Volumes
+            Security Groups
+            SSH Key Pair
+            IAM Roles for your EC2 instances
+            Network + Subnets Information
+            Load Balancer Information
+        Min/Max Size, Initial Capacity
+    It is possible to scale an ASG based on CloudWatch alarms
+    An alarm monitor as metric ( such as Average CPU, or a custom metric)
+    Metric such as Average CPU are computed for the overall ASG instances
+    Based on the alarm:
+        We can scale-in/ scale-out
+
+    Scaling Policies
+        Dynamic Scaling
+            Target Tracking Scaling
+                Simple to set up
+                Example: Scale based on CPU usage
+            Simple / Step Scaling
+                 When a CloudWatch alarm is triggered, you can scale up or scale down
+        Scheduled Scaling
+            Anticipate a scaling based on known usage patterns
+            Example: scale in/out at specific time range such as 8:00 AM
+        Predictive scaling:
+            Continuously forecast load and schedule scaling ahead
+    Scaling Cooldowns
+        After a scaling activity happens, you are in the cooldown period (default 300 seconds)
+        During the cooldown period, the ASG will not launch or terminate additional instances (to allow for metric to stabilize)
+        ADvice: Use a ready-to-use AMI to reduce configuration time in order to be serving request fasters and reduce the cooldown periods
+    Instance Refresh
+        Goal: update launch template and then re-creating all EC2 instances
+        For this, we can use the native feature of Instance Refresh
+        Setting of minimum healthy percentage
+        Specify warm-up time (how long until the instance is ready to use)

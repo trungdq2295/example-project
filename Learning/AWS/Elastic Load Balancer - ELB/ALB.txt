@@ -1,30 +1,30 @@
 Application Load Balancer (v2)
-    is Layer 7 in Network layer => HTTP
-    Load balancing to multiple HTTP applications across machines (target groups)
-    Load balancing to multiple applications on the same machines( ex: containers)
-    Support for HTTP/2 and Websocket
-    Support redirects( from HTTP to HTTPS for example)
+    is Layer 7 in Network layer => HTTP
+    Load balancing to multiple HTTP applications across machines (target groups)
+    Load balancing to multiple applications on the same machines( ex: containers)
+    Support for HTTP/2 and Websocket
+    Support redirects( from HTTP to HTTPS for example)
 
-    Routing tables to different target groups:
-        Routing based on path in URL (example.com/users & example.com/posts)
-        Routing based on hostname in URL (one.example.com & other.example.com)
-        Routing based on Query String, Headers (example.com/users?id=123&order=false)
+    Routing tables to different target groups:
+        Routing based on path in URL (example.com/users & example.com/posts)
+        Routing based on hostname in URL (one.example.com & other.example.com)
+        Routing based on Query String, Headers (example.com/users?id=123&order=false)
 
-    ALB are a great fit for micro services & container-based application (example: Docker & Amazon ECS)
-    Has a port mapping  feature to redirect to a dynamic port in ECS
+    ALB are a great fit for microservices & container-based application (example: Docker & Amazon ECS)
+    Has a port mapping feature to redirect to a dynamic port in ECS
 
 Target groups
-    EC2 instances (can be managed by Auto scailing group) - HTTP
-    ECS tasks ( managed by ECS itself) - HTTP
-    Lambda functions - HTTP request is translated into a JSON event
-    IP Address - must be private IPs
-
-    ALB can rotue to multiple target groups
-    Health check are at the target group level
-
-
- 
-
-    We can prevent other access EC2 intsance after creating ALB by 
-        + Create ALB's own security group
-        + Update inbound rule for HTTP from 0.0.0.0 to security group of ALB
+    EC2 instances (can be managed by Auto scaling group) - HTTP
+    ECS tasks ( managed by ECS itself) - HTTP
+    Lambda functions - HTTP request is translated into a JSON event
+    IP Address - must be private IPs
+    ALB can route to multiple target groups
+    Health check are at the target group level
+    Good to know ALB
+        Fixed hostname (xxx.region.elb.amazonaws.com)
+        The application servers don't see the IP of the client directly
+            The true IP of the client is inserted in the header X-Forwarded-For
+            We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)
+    We can prevent other access EC2 instance after creating ALB by
+        + Create ALB's own security group
+        + Update inbound rule for HTTP from 0.0.0.0 to security group of ALB

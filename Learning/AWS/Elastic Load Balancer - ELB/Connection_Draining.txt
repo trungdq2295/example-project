@@ -1,0 +1,10 @@
+Connection Draining
+    Feature naming
+        Connection Draining - for CLB
+        Deregistration Delay - for ALB & NLB
+    Time to complete "in-flight requests" while the instance is de-registering or unhealthy
+    Stop sending new request to the EC2 instance which is de-registering
+    The idea is ELB gonna create new connection to other EC2 instance when the current one is unhealthy/draining
+    Between 1 to 3600 seconds
+    Can be disabled
+    Set to a low value if your request a short (like latency less than 1 second)

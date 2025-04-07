@@ -1,0 +1,17 @@
+Network Load Balancer
+    Network load balancer (Layer 4) allow to:
+        Forward TCP & UDP traffic to your instances
+        Handle millions of request per seconds
+        Ultra-low latency
+    NLB has one static IP per AZ, and support assigning Elastic IP (fixed IP)
+    NLB are used for extreme performance, TCP or UDP traffic
+    Not included in AWS free tier
+
+    Target Groups
+        EC2 instances
+        IP Addresses - must be private IPs
+        Application Load Balancer (NLB in front of ALB)
+            We use this because:
+                + With NLB, we can get the IP Address
+                + With ALB, we can get all the rules of handling HTTP type traffic
+        Health check support the TCP, HTTP and HTTPS Protocols

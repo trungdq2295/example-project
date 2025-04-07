@@ -1,25 +1,22 @@
 Cross-Zone Load Balancing
-    With Cross zone load balancing
-        each load balancer instance distributes evenly across all registered instances in all AZ
-        Example:
-            2 instance at AZ eu-east-01 and 8 instances at eu-east-02
-            hen client make request, it will be load seperates requests to 2 AZ, However the load balancer will combine all instances from all AZs, mean for each 100 requests, each instance will handle 10 requests
-    Without Cross-Zone load balancing
-        Requests are distributed in the instances of the node of the Elastic Load Balancer
-        Example:
-            2 instance at AZ eu-east-01 and 8 instances at eu-east-02
-            When client make request, it will be load seperates requests to 2 AZ, and each az will load balance the request inside the AZ only, it mean for 100 each requests, eu-east-01 will handle 50 and it has 2 instance >>> each instance handle 25 request. eu-east-02 will handle 50 and it has 8 instance >>> each instance handle 6.25 request
+    With Cross zone load balancing
+        each load balancer instance distributes evenly across all registered instances in all AZ
+        Example:
+            2 instance at AZ eu-east-01 and 8 instances at eu-east-02
+            Then client make request, it will be load seperates requests to 2 AZ, However the load balancer will combine all instances from all AZs, mean for each 100 requests, each instance will handle 10 requests
+    Without Cross-Zone load balancing
+        Requests are distributed in the instances of the node of the Elastic Load Balancer
+        Example:
+            2 instance at AZ eu-east-01 and 8 instances at eu-east-02
+            When client make request, it will be load seperates requests to 2 AZ, and each az will load balance the request inside the AZ only, it mean for 100 each requests, eu-east-01 will handle 50 and it has 2 instance >>> each instance handle 25 request. eu-east-02 will handle 50 and it has 8 instance >>> each instance handle 6.25 request
+    For Application Load Balancer
+        Enabled by default (can be disabled at Target group level)
+        No charges for internal AZ
 
- 
+    For Network Load Balancer and Gateway Load Balancer
+        Disabled by default
+        You pay charges for internal AZ data if enabled
 
-    For Application Load Balancer
-        Enabled by default (can be disabled at Target group level)
-        No charges for internal AZ
-
-    For Network Load Balancer and Gateway Load Balancer
-        Disabled  by default
-        You pay charges for internal AZ data if enabled
-
-    Classic Load Balancer
-        Disabled by default
-        No charges for internal AZ
+    Classic Load Balancer
+        Disabled by default
+        No charges for internal AZ
