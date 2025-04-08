@@ -1,6 +1,6 @@
 RDS & Aurora Security
 	At-rest encryption:
-		DB master & replicas encryptiong using AWS KMS - must be defined as launch time 
+		DB master & replicas encryption using AWS KMS - must be defined as launch time
 		If the master is not encrypted, the RR cannot be encrypted 
 		To encrypt an un-encrypted DB, go through a DB snapshot & restore as encrypted
 	In-flight encryption:

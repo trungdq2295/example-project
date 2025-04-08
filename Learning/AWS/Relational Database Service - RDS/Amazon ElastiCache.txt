@@ -2,7 +2,7 @@ Amazon ElastiCache
 	The same way RDS is to get managed Relational Database 
 	ElasticCache is to get managed Redis sor Memcached 
 	Caches are iin-memory DB with really high performance, low latency 
-	Help reduce load off of DBs for read intensive worklodas 
+	Help reduce load off of DBs for read intensive workloads
 	Help make your application stateless AWS takes care of OS maintenance/patching, optimizations, set up, configuration, monitoring, failure recovery and backups 
 	Using ElastiCache involves heavy application code changes
 	
@@ -13,7 +13,7 @@ Amazon ElastiCache
 	Solution Architecture  - User Session stores
 		User logs into any of the application 
 		The application writes the session data into ElasticCache 
-		THe user hits another instance of our appliciation 
+		THe user hits another instance of our application
 		The instance retrieves the data and the user is already logged in
 	ElastiCache - Redis & Memcached
 		Redis
@@ -23,10 +23,11 @@ Amazon ElastiCache
 			Backup and restore features 
 			Supports Sets and Sorted Sets
 		Memcached
-			Multi-node for paritioning of data (sharding) 
+			Multi-node for partitioning of data (sharding)
 			No HA 
-			Non persistent 
-			No backup and restore 
+			Non-persistent
+			No backup and restore
+			    Only serverless type has backup and restore
 			Multi-threaded architecture
 		
 Cache Security
@@ -40,11 +41,25 @@ Cache Security
 		Supports SASL-based authentication
 	
 Patterns for ElastiCache
-	Lazy Loading: all the read data is cached, data can become stale in cache 
-	Write Through: Adds or update data in the cache when written to a DB( no stale data) 
-	Session Store: store temporary session data in a cache (using TTL features) 
+	Cache-Aside/Lazy Loading: all the read data is cached, data can become stale in cache
+	    is easy to implement and works for many situation as a foundation, especially on the read side
+	    Pros
+	        Only requested data is cached( the cache isn't filled up with unused data)
+	        Node failure are not fatal (just increase latency to warm the cache)
+	    Cons
+	        Cache miss penalty that result in 3 round trips (network), noticeable delay for that request
+	        Stale data: data can be updated in the database and outdated in the cache
+	Write Through: Adds or update data in the cache when written to a DB( no stale data)
+	    is usually combine with Lazy loading as targeted for the queries or workloads that benefit from this optimization
+	    Pros:
+            Data in cache is never stale, reads are quick
+            Write penalty vs read penalty - each write requires 2 calls
+        Cons:
+            Missing Data until it is added/ updated in the DB. Mitigation is to implement lazy loading strategy as wel
+            Cache churn - a lot of the data will never be read
+	Session Store: store temporary session data in a cache (using TTL features)
 
 ElastiCache Uses cases:
-	Gaming Leaderboards are computationally compelx 
-	Redis Sorted sets guaratee both uniqueness and element ordering 
+	Gaming Leaderboards are computationally complex
+	Redis Sorted sets guarantee both uniqueness and element ordering
 	Each time a new element added, it's ranked in real time, the added in correct order

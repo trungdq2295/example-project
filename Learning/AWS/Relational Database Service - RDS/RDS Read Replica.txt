@@ -13,7 +13,7 @@ RDS Read Replica
 		Read replicas are used for SELECT (read) only kind statements ( not  INSERT, UPDATE, DELETE)
 	
 	Network Cost
-		In AWS, there's network cost when data goes from one AZ to anothe
+		In AWS, there's network cost when data goes from one AZ to another
 		For RDS Read Replica within the same regions, you don't pay that fee
 		Example: 
 			Data goes from DB main us-east-1a to DB read replicas us-east-1b (Same Region) = no cost

@@ -1,0 +1,6 @@
+MemoryDB
+    Redis-compatible, durable, in-memory database service
+    Ultra-fast performance with over 160million requests/second
+    Durable in-memory data storage with Multi-AZ transactional log
+    Scale seamlessly from 10s GB to 100s TB of storage
+    Use cases: web and mobile apps, online gaming, media streaming,...
