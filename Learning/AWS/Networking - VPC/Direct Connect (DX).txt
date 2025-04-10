@@ -9,7 +9,7 @@ Direct Connect (DX)
 		Hybrid Environments ( on prem + cloud)
 
 Direct Connect Gateway
-	If you wnat to setup a Direct Connect to one or more VPC in many differente regions (same account), you must use a Direct Connect Gateway
+	If you want to setup a Direct Connect to one or more VPC in many different regions (same account), you must use a Direct Connect Gateway
 
 Direct Connect - Connection Types
 	Dedicated Connections: 1 Gbp, 10 Gbps and 100Gbps capacity 
