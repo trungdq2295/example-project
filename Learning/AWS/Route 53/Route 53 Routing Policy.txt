@@ -2,7 +2,7 @@ Route 53 - Routing Policies
     Define how Route 53 responds to DNS queries 
     Don't get confused by the word "Routing" 
         It's not the same as Load Balancer routing which routes the traffic 
-        DNS does not route any rtaffic, it only responds to the DNS queries 
+        DNS does not route any traffic, it only responds to the DNS queries
     Route 53 Supports the following Routing Policies 
         Simple 
         Weighted 
@@ -16,7 +16,8 @@ Routing Policies - Simple
     Typically, route traffic to a single resource
     Can specify multiple values in the same record
     If multiple values are returned, a random one is chosen by the client 
-        Example: You set up a DNS and there's multiple value IP to route (12.23.34.56 and 23.78.34.56), client will randomly access it, either 12.23.34.56 or 23.78.34.56
+        Example: You set up a DNS and there's multiple value IP to route (12.23.34.56 and 23.78.34.56),
+                    client will randomly access it, either 12.23.34.56 or 23.78.34.56
     When Alias enabled, specify only one AWS resource 
     Can't be associated with Health Checks
 Routing Policies - Weighted
@@ -42,19 +43,19 @@ Routing Policies - Failover
 Routing Policies - Geolocation
     Different from Latency-based! 
     This routing is based on user location 
-    Specifiy location by Continent, Country or by US State (if there's overlapping, most precise location selected) 
+    Specify location by Continent, Country or by US State (if there's overlapping, most precise location selected)
     Should create a "Default" record ( in case there's no match on location) 
     Use cases: website localization, restrict content distribution, load balancing, ... 
     Can be associated with Health Checks
-Routing Policies - Geoproximity
+Routing Policies - Geo-proximity
     Route traffic to your resource based on the geographic location of users and resources 
-    Ability toshift more traffic to reosurces based on the defined bias 
+    Ability to shift more traffic to resources based on the defined bias
     To change the size of the geographic region, specify bias values: 
         To expand(1 to 99) - more traffic to the resource 
         To shrink (-1 to -99) - less traffic to the resource 
     Resources can be: 
         AWS resources (specify AWS region) 
-        Non-AWS resources(specify Latitude and Longtitude) 
+        Non-AWS resources(specify Latitude and Longitude)
     You must use Route 53 Traffic Flow (advanced) to use this feature
     It's really helpful when you need to shift traffic from one region to another by increasing bias
 Routing Policies - IP-based routing
@@ -69,3 +70,5 @@ Routing Policies - Multi-Value
     Can be associated with Health CHeck (return only values for healthy resources - Unlike Routing Policies - Simple, which can return unhealthy resource when it has multiple value, )
     Up to 8 healthy record are returned for each Mutli-Value query 
     Multi-Value is not a substitute for having ELB
+    Example: The idea is when client connect to our Route 53, Route 53 will return like 8 different IP, and client will chose any of them
+            => Load balancer on client side

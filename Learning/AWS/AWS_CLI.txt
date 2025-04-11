@@ -1,0 +1,9 @@
+AWS CLI
+    Credentials Provider Chain
+        this CLI will look for credentials in the order
+            1. Command line option
+            2. Environment variables
+            3. CLI credential files
+            4. CLI Configuration files
+            5. Container credentials
+            6. Instance profile credentials

@@ -16,10 +16,10 @@ Guideline for IAM
 Summary IAM
 	Users: mapped to a physical users, has a password for AWS console
 	Groups: contains users only
-	Policies: JSON doocument that outline permissions for  users or groups
+	Policies: JSON document that outline permissions for  users or groups
 	Roles: a permission for EC2 instance or AWS services
-	Security: MFA + Password Policy
+	Security: MFA + Password d Policy
 	AWS CLI: manage your AWS services using command line
 	AWS SDK: manage your AWS sservices using programming language ( Java, Python, ... )
 	Access Key: key to access AWS using CLI or SDK
-	Audit: IAM Credential Reprots and IAM Access Advisor
+	Audit: IAM Credential Reports and IAM Access Advisor

@@ -1,0 +1,13 @@
+AWS SDK
+    to performance actions on AWS directly from your application without using the CLI
+    We have to use the AWS SDK when coding against AWS such as DynamoDB
+
+    If you don't specify or configure a default region, then us-east-1 will be chosen by default
+
+    Default Credentials Provider Chain
+        will look for credentials in this order (Java in this example):
+            Java system properties
+            Environment variable
+            Default credential profiles file
+            ECS container credentials
+            Instance profile credentials

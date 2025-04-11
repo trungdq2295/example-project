@@ -10,8 +10,8 @@ Amazon S3 Storage Class
 	Can move between classes manually or using S3 Lifecycle configurations
 S3 Durability and Availability 
 	Durability: 
-		High duraiblity (99.999999999%, 11 9's) of objects across multiple AZ
-		If you store 10,000,000 objets with Amaon S3, you can ov average expect to incur a loss of a single object once every 10,000 years
+		High durability (99.999999999%, 11 9's) of objects across multiple AZ
+		If you store 10,000,000 objets with Amazon S3, you can ov average expect to incur a loss of a single object once every 10,000 years
 		Same for all storage classes
 	Availability
 		Measures how readily available a service is
@@ -35,30 +35,29 @@ S3 Storage Classes - infrequent Access
 	Amazon S3 OneZone- Infrequent Access (S3 OneZone-IA)
 		High Durability (99.999999999%) in a single AZ; data lost when AZ is destroyed
 		99.% Availability
-		Use cases: Storing secondary backup copies of on-premeise data, or data you can recreate
+		Use cases: Storing secondary backup copies of on-premise data, or data you can recreate
 
 Amazon S3 Glacier Storage Class
 	Low-cost object storage meant for archiving /backup
 	Pricing: price for storage + object retrieval cost
 	
 	Amazon S3 Glacier Instant Revival
-		Millisecond retrieval, greate for data accessed once a quarter
-		Minium storage duration of 90 days
+		Millisecond retrieval, great for data accessed once a quarter
+		Minimum storage duration of 90 days
 	Amazon S3 Glacier Flexible Retrieval(formerly Amazon S3 Glacier):
 		Expedited ( 1 to 5 minutes), Standard( 3 to 5 hours), Bulk(5 to 12 hours) - free
-		Minium storage duration of 90 days
-	Amazon S3 Glacier Deep Arcive - for long term storage
+		Minimum storage duration of 90 days
+	Amazon S3 Glacier Deep Archive - for long term storage
 		Standard (12 hours), Bulk(48 hours)
-		Minium storage duration of 180 days
+		Minimum storage duration of 180 days
 	
 S3 Intelligent- Tiering
 	Small monthly monitoring nd auto-tiering fee
 	Moves objects automatically between Access Tiers based on usage
 	There are no retrieval charges in S3 Intelligent-Tiering
-	
-	
+
 	Frequent Access tier(automatic): default tier
 	Infrequent Access tier(automatic): objects not accessed for 30 days
 	Archive Instant Access Tier (automatic): objects not accessed for 90days
-	Archive Access tier (otpional): configurable from 90days to 700+ days
+	Archive Access tier (optional): configurable from 90days to 700+ days
 	Deep Archive access tier (optional): config fro 180days to 700+days

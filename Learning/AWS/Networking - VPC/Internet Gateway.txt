@@ -1,7 +1,7 @@
 Internet Gateway (IGW)
-	Allows resources (e.g., EC2 instances) in a VPC connect to the internet
+	Allows resources (e.g., EC2 instances) in a VPC connect to the internet (outside of the AWS)
 	It scales horizontally and is highly available and redundant
-	Must be created seperately from a VPC
+	Must be created separately from a VPC
 	One VPC can only be attached to one IGW and vice versa
 	Internet Gateways on their own do not allow Internet access
 	Route tales must also be edited

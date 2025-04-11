@@ -1,0 +1,12 @@
+S3 Event Notifications
+    Listen to the event happens in S3
+    You can do the filtering based on object name
+    Use cases:
+        generate thumbnails of images uploads to S3
+    Can create as many "s3 event" as desired
+    S3 event notifications typically deliver events in seconds but can some times take a minutes or longer
+
+With EventBridge
+    Advanced filtering option with JSON rules
+    Multiple Destinations - ex Step functions, Kinesis data streams
+    EventBridge Capabilities - Archive, Replay Events, Reliable Delivery

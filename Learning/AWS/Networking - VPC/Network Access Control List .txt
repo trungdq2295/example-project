@@ -1,5 +1,7 @@
 Network Access Control List (NACL)
 	NACL are like a firewall which control traffic from and to subnets
+	Can have ALLOW and Deny Rules
+	Are attached at subnet level
 	One NACL per subnet, new subnets are assigned the default NACL
 	You define NACL Rules:
 		Rules have a number ( 1 - 32766), higher precedence with a lower number
@@ -8,7 +10,7 @@ Network Access Control List (NACL)
 		The last rule is an asterisk (*0 and deinies a request in case of no rule match
 		AWS recommends adding rules by increment of 100
 	Newly created NACLS will deny everything
-	NACL are a greate way of blocking a specific IP address at the subnet level
+	NACL are a great way of blocking a specific IP address at the subnet level
 	
 Default NACL
 	Accepts everything inbound/outbound with the subnets it's associated with

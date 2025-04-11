@@ -3,7 +3,7 @@ S3 Bucket Policies
 		Resource: buckets and objects 
 		Effect: Allow/Deny 
 		Actions: Set of API to Allow or Deny 
-		Principal: The aaccount or user to apply the poclity to 
+		Principal: The account or user to apply the policy to
 	Example:
 		{
 		  "Version": "2012-10-17",
@@ -21,7 +21,10 @@ S3 Bucket Policies
 			}
 		  ]
 		}
-	Use S3 bucket for policty to: Grant public access to the bucket Force objects to be encrypted at upload Grant access to another account (Cross Account)
+	Use S3 bucket for policy to:
+	    Grant public access to the bucket
+	    Force objects to be encrypted at upload
+	    Grant access to another account (Cross Account)
 	
 	These settings was created to prevent data leak
 	

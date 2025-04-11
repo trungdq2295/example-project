@@ -1,0 +1,16 @@
+AWs Limits( Quotes)
+    API Rate Limit
+        DescribeInstance API for EC2 has a limit of 100 calls per seconds
+        GetObject on S3 has a limit of 5500 GET per second per prefix
+        For intermittent Errors: implement Exponential Backoff
+        For Consistent Errors: request an API throttling limit increase
+    Service Quotes (Service Limit)
+        Running On-Demand Standard Instance: 1152vCPU
+        You can request a service limit increase by opening a ticket
+        You can request a service quota increase by using the Service Quotas API
+    Exponential Backoff (any AWS Service)
+        If you get ThrottlingException (due to many API calls), use exponential backoff
+        Retry mechanism already included AWS SDK API calls
+        Must implement yourself if using AWS API as-is or in specific cases
+            Only implement the retries on 5xx server errors and throttling
+            Do not implement on the 4xx client errors

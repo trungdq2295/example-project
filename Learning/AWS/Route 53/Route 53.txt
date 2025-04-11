@@ -1,10 +1,10 @@
-Amazone Route 53
+Amazon Route 53
     A highly available , scalable, fully managed and Authoritative DNS
-        Authoritative = the customer ( you) can update the DNS reords 
+        Authoritative = the customer ( you) can update the DNS records
     Route 53 is also a Domain Registrar 
     Ability to check the health of your resources 
     The only AWS service which provides 100% availability SLA 
-    WHy Route 53? 53 is a reference to the traditional DNS port
+    Why Route 53? 53 is a reference to the traditional DNS port
 
     Route 53 - Records
         How you want to route traffic for a domain 
@@ -22,7 +22,7 @@ Amazone Route 53
         A - maps a hostname to IPv4 
         AAAA - maps a hostname to IPv6 
         CName- maps a hostname to another hostname 
-            The target is a dommain name which must have an A or AAAA record 
+            The target is a domain name which must have an A or AAAA record
             Cant' create a CName record for the top node of a DNS namespace( Zone Apex)
             Example: you can't create or example.com but you can create for www.example.com 
         NS - Name Servers for the Hosted Zone 
@@ -40,7 +40,7 @@ Amazone Route 53
             Less traffic on Routes 53 
             Possibly outdated records 
         Low TTL- e.g. 60secs 
-        More traffic on Route 53 ($$) 
-        Records are outdated for less time 
-        Easy to change records 
-    Except for Aliasa records, TTL is mandatory for each DNS records
+            More traffic on Route 53 ($$)
+            Records are outdated for less time
+            Easy to change records
+    Except for Alias records, TTL is mandatory for each DNS records

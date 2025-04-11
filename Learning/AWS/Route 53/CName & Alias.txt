@@ -7,7 +7,9 @@ CName & Alias
         ONLY FOR NON ROOT DOMAIN (aka: something.mydomain.com, not working: mydomain.com)
     Alias: 
         Points a hostname to an AWS Resource (app.mydomain.com => blabla.amazonaws.com)
-        Workds for ROOT DOMAIN and NON ROOT DOMAIN (aka: mydomain.com and something.mydomain.com)
+        Works for ROOT DOMAIN and NON ROOT DOMAIN (aka: mydomain.com and something.mydomain.com)
+        Free of charge
+        Native health check
 
     Route 53- Alias Records
         Maps a hostname to an AWS resource 

@@ -12,14 +12,14 @@ Use cases:
 	Application Hosting 
 	Data lakes & big data analytics 
 	Software delivery 
-	Statis website
-	
-Buckest 
+	Statics website
+
+Bucket
 	Amazon S3 allows people to storage objects (files) in "buckets" (directories) 
 	Buckets must have a globally unique name (across all regions all accounts) 
 	Buckets are defined at the region level 
 	S3 looks like a global service but buckets are created in a region 
-	Naming Convetion 
+	Naming Convention
 		No uppercase,
 		No underscore, 
 		3-63 characters long, 
