@@ -1,0 +1,11 @@
+CloudFront Edge - Pricing
+	CloudFront Edge locations are all around the world
+	The cost of data out per edge location varies
+		The more capicity user spent per month ( more GB), the lower the price per GB is
+		For example: first 10TB will be $0.085/GB and next $40TB will be $0.080/GB and so on
+	Price classes:
+		You can reduce the number of edge locations for cost reduction
+		Three class prices:
+			1. Price Class All : all regions - best performance
+			2. Price Class 200: most regions, but excludes the most expensive regions
+			3. Price Class 100: only the least expensive regions
