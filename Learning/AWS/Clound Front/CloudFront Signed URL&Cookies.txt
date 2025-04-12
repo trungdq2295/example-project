@@ -1,0 +1,23 @@
+CloudFront Signed URL/Cookies
+    You want to distribute paid shared content to premium user over the world
+    You can use CloudFront Signed URL/Cookie. We attach a policy with
+        Includes URL expiration
+        Includes IP ranges to access the data from
+        TRusted signer( Which AWS Account can create signed URLs)
+    How long should the URL be valid for ?
+        Shared content (movie, music): make it short ( a few minutes or less)
+        Private content (private to the user): can make it last for a year
+    Signed URL = access to individual files ( one signed url per file)
+        => 100 file = 100 signed url
+    Signed Cookies = access to multiple files ( one signed cookies for many files)
+
+CloudFront signed URL vs S3 Pre-signed URL
+    CloudFront signed URL
+        Allow access to a path, no matter the origin
+        Account wide key-pair, only the root can mange it
+        Can filter by IP, path, date, expiration
+        can leverage caching feature
+    S3 Pre-signed URL:
+        Issue a request as the person who pre-signed the URL
+        Uses the IAM key of the signing IAM principal
+        Limited lifetime

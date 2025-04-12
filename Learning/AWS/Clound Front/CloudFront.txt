@@ -1,0 +1,31 @@
+AWS CloudFront
+    CDN
+    Improves read performance, content is cached at the edge
+        Example: our S3 in Australia, and a user from USA request a bucket
+            Then user will be directed to the cloudfront at USA and CloudFront will be able to fetch content from Australia
+            Same as China user, it will fetch data at China edge location
+    Improves users experience
+    216 Point of Presence globally (edge locations)
+    DDoS protection (because worldwide), integration with Shield, AWS Web application Firewall
+
+    Origins
+        S3 bucket
+            For distributing files and caching them at the edge
+            Enhanced security with CloudFront Origin Access Control (OAC)
+            OAC is replacing Origin Access Identity (OAI)
+            CloudFront can be used as an ingress (to upload file to S3)
+        Custom Origin (HTTP)
+            ALB
+            EC2 Instance
+            S3 website (must first enable the bucket as a static S3 website)
+
+    CloudFront vs S3 Cross Region Replication
+        CloudFront:
+            Global Edge Network
+            Files are cached for a TTL (maybe a day)
+            Great for static content must be available everywhere
+        S3 Cross Region Replication:
+            Must be setup for each region you want replication to happen
+            Files are updated in near real-time
+            Read only
+            Great for dynamic content that needs to be available at low-latency in few regions

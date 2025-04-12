@@ -1,0 +1,4 @@
+CloudFront - Origin Groups
+    To increase HA and do failover
+    Origin Group: one primary and one secondary origin
+    If the primary origin fails, the second is used

@@ -1,0 +1,6 @@
+CloudFront - Real time Logs
+    Get real-time requests received by cloudFront sent to Kinesis Data Streams
+    Monitor, analyze, and take actions based on content delivery performance
+    Allow you to choose:
+        Sampling Rate - percentage of requests for which you want to receive
+        Specific fields and specific Cache behaviors (path patterns)

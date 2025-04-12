@@ -1,0 +1,8 @@
+CloudFront - Field Level Encryption
+    Protect user sensitive information through application stack
+    Adds an additional layer of security along with HTTPS
+    Sensitive information encrypted at the edge close to use
+    Uses asymmetric encryption
+    Usage:
+        Specify set of fields in POST request that you want to be encrypted (up to 10 fields)
+        Specify the public key to encrypt them

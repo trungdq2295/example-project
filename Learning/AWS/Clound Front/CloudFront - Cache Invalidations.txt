@@ -1,4 +1,4 @@
 CloudFront - Cache Invalidations
-	In case you update the back-end origin, CloudFron doesn't know about it and will only get the refreshed content after TTL has expired
+	In case you update the back-end origin, CloudFront doesn't know about it and will only get the refreshed content after TTL has expired
 	However, you can force an entire or partial cache refresh( thus bypassing the TTL) by performing a CloudFront Invalidation
 	You can invalidate all files (/*) or a specific path (/images/*)

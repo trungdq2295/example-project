@@ -1,0 +1,54 @@
+CloudFront Caching
+    The cache lives at each CloudFront Edge Location
+    CloudFront identifies each object in the cache using Cache Key
+    You want to maximize the Cache Hit ratio to minimize request to origin
+    You can invalidate part of the cache using CreateInvalidation API
+
+    CloudFront Cache Key
+        A unique identifier for every object in the cache
+        By default, consists of hostname + resource portion of the URL
+        If you have an application that serves up content that varies based on user, device, language, location
+        You can add other element (HTTP headers, cookies,..) to the Cache Key using CloudFront Cache Policies
+    Cache Policy
+        Cache based on:
+            HTTP Headers: None - Whitelist
+            Cookies: None - Whitelist - Include All-Except - ALL
+            Query String: None - Whitelist - Include All-Except - ALL
+        Control the TTL (0 second to 1 year), can be set by origin using the Cache-Control header, Expires header..
+        Create your own policy or use Predefined managed Policies
+        All HTTP headers, cookies, and  query strings that you include in the Cache Key are automatically included in origin requests
+
+        Cache Policy HTTP Headers
+            None:
+                Don't include any header in the Cache Key
+                Headers are not forwarded (except default)
+                Best performance
+            Whitelist:
+                only specified headers included in the Cache Key
+                Specified headers are also forwarded to Origin
+        Cache Policy Query Strings
+            None:
+                Don't include any query strings in the Cache Key
+                query strings are not forwarded
+            Whitelist
+                Only specified query strings included in the Cache Key
+                Only specified query strings are forwarded
+            Include All-Except
+                Include all query strings in the Cache KEy except the specified list
+                All query strings are forwarded except the specified list
+            All
+                Include all query strings in the Cache Key
+                All query strings are forwarded
+        Origin Request Policy
+            Specify values that you want to include in origin request without including them in the Cache Key(no duplicated cached content)
+            You can include
+                HTTP headers: none - whitelist - all viewer headers option
+                cookies: none - whitelist - all
+                query strings: none - whitelist - all
+            Ability to add CloudFront HTTP headers and Custom Headers to an origin request that were not included in the viewer request
+            Create your own policy or use Predefined managed Policies
+
+    Cache Policy vs Origin Request Policy
+        Just think it simple,
+            cache policy is from the client and cloudfront
+            origin policy is more cloudfront and origin server (ec2 instance, s3, ...)

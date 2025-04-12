@@ -1,0 +1,6 @@
+CloudFront - Multiple Origin
+    To route to different kind of origins based on the content type
+    Based on path pattern
+        /images/*
+        /api/*
+        /*
