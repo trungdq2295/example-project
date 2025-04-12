@@ -4,5 +4,5 @@ Amazon S3 - Access Log
 	That data can be analyzed using data analysis tools... 
 	The target logging bucket must be in the same AWS region
 	Warning: 
-	Do not set your logging bucket to be the monitored bucket 
-	It will create a logging loop, and your bucket will grow exponentially
+        Do not set your logging bucket to be the monitored bucket
+        It will create a logging loop, and your bucket will grow exponentially

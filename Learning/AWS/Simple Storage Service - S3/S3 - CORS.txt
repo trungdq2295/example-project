@@ -1,0 +1,11 @@
+S3 - CORS
+    What is CORS?
+        Cross-Origin Resource Sharing
+        Web Browser based mechanism to allow requests to other origins while visiting the main origin
+        Same origin: http://example.com/app1 & http://example.com/app2
+            => same http://example.com
+        Different origin: http://www.example.com & http://other.example.com
+        The requests won't be fulfilled unless the other origin allows for the request, using CORS Headers (example: Access-Control-Allow-Origin)
+    IF a client makes a cross-origin request on your S3 bucket, we need to enable the CORS headers
+    It's a popular exam question
+    You can allow for a specific origin or for * (all origins)
