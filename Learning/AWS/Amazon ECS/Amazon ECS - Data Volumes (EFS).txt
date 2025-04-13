@@ -1,6 +1,12 @@
 Amazon ECS - Data Volumes (EFS)
+    Share the data between multiple containers in the same Task Definition
 	Mount EFS file systems onto ECS tasks
 	Works for bot EC2 and Fargate launch types
+	EC2 Tasks - using EC2 instance storage
+	    Data are tied to the lifecycle of the EC2 instance
+    Fargate Tasks - using ephemeral storage
+        Data are tied to the container(s) using them
+        20GiB - 200Gib
 	Tasks running in any AZ will share the same data in the EFS file systems
 	Fargate + EFS = Serverless
 	Use cases: persistent multi-AZ shared storage for your containers

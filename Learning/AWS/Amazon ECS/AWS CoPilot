@@ -1,0 +1,8 @@
+AWS CoPilot
+    CLI tool to build, release, and operate product-ready containerized apps
+    Run your apps on AppRunner, ECS, and Fargate
+    Helps you focus on building apps rather than setting up infrastructure
+    Provisions all required infrastructure for containerized app (ECS, VPC, ELB, ...)
+    Automated deployment with one command using CodePipeline
+    Deploy to multiple environment
+    Troubleshooting, logs, health status,...

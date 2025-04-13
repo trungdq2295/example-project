@@ -1,0 +1,6 @@
+ECS - Rolling Update
+    When updating from v1 to v2, we can control how many tasks can be started and stopped, and in which order
+    It's like K8S deployment but you can define the % maximum and % minimum,
+        It will init based on the maximum,
+        and until ecs task's ready, it will terminate the older version
+        number of task's ready and number of old tasks which will be terminated, it based on the configuration min/max

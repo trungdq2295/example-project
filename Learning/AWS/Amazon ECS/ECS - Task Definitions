@@ -1,0 +1,11 @@
+ECS - Task Definitions
+    are metadata in JSON from to tell ECS how to run a Docker container
+    It contains crucial information, such as:
+        Image Name
+        Port Binding for Container and Host
+        Memory and CPU required
+        Environment variables
+        Networking information
+        IAM role
+        Logging configuration (ex: CloudWatch)
+    Can define up to 10 containers per task definition

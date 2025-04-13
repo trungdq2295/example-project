@@ -1,5 +1,5 @@
 Amazon EKS
-	Amazon Elsatic Kubernetes service
+	Amazon Elastic Kubernetes service
 	It is a way to launch managed kubernetes clusters on AWS
 	Kubernetes is an open-source system for automatic deployment, scaling and management of containerized ( usually Docker) application
 	It's an alternative to ECS, similar goal but different API

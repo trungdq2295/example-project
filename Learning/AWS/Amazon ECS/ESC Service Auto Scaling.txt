@@ -12,8 +12,8 @@ ESC Service Auto Scaling
 	ECS Service Auto Scailing ( task level) # EC2 Auto Scaling( Ec2 instance level)
 	Fargate Auto Scaling is much easier to set up ( Because serverless)
 	
-EC=2 Lanuch Type - Auto Scailing EC2 instances
-	Accommonfate ECS Service Scaling by adding underlying EC2 instances
+EC=2 Launch Type - Auto Scailing EC2 instances
+	Accommodate ECS Service Scaling by adding underlying EC2 instances
 	Auto Scaling Group Scaling
 		Scale your ASG based on CPU Utilization
 		Add Ec2 instances over time

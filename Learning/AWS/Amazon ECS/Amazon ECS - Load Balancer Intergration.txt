@@ -1,4 +1,17 @@
-Amazon ECS - Load Balancer Intergration
+Amazon ECS - Load Balancer Integration
 	Application Load Balancer supported and works for most use cases
 	Network Load Balancer recommended only for high throughput/ high performance use cases, or to pair it with AWS Private Link
 	Classic Load Balancer supported but not recommended(no advanced features- no Fargate)
+	We get a Dynamic Host Port Mapping if you define only the container in the task definition
+	For EC2 Launch Type
+        The ALB finds the right port on your EC2 Instance thanks to the dynamic host port Mapping
+            Note: This does not work with CLB
+        you must allow on the EC2 instance's Security Group any port from the ALB's Security Group
+    For Fargate Type
+        Each task has a unique private IP
+        Only define the container port(host port is not applicable)
+        Example:
+            ECS ENI Security Group
+                Allow port 80 from the ALB
+            ALB Security Group
+                Allow port 80/443 from web

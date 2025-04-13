@@ -1,4 +1,8 @@
 Amazon ECS IAM Roles for ECS
+    One IAM Role per Task Definition
+        you define IAM role on Task Definition
+            The container will pull the IAM role from the Task definition so multiple containers has the same IAM role
+            You don't to configure for each container
 	EC2 Instance Profile ( EC2 Launch Type Only)
 		Used by the ECS agent
 		Makes API calls to ECS service

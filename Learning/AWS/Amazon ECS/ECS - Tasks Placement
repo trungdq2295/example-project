@@ -1,0 +1,32 @@
+ECS - Tasks Placement
+    When a task of type EC2 is launched, ECS must determine where to place it, with the constraints of CPU, memory and available port
+    Similarly, when a service scales in, ECS needs to determine which task to terminate
+    To assist with this, you can define a task placement strategy and task placement constraints
+    Note: this is only for ECS with EC2 Launch type
+
+    Task Placement Process
+        Task placement strategies are a best effort
+        When Amazon ECS places task,it uses the following process to select container instances
+            1. Identify the instances that satisfy the CPU, memory, and port requirements in the task definition
+            2. Identify the instances that satisfy the task placement constraints
+            3. Identify the instances that satisfy the task placement strategies
+            4. Select the instances for task placement
+    Task Placement Strategies
+        Binpack
+            Place tasks based on the least available amount of CPU or memory
+            This minimizes the number of instances in use (cost saving)
+            => ECS tried to place as much as possible container in a single EC2 instance
+                Only create new instance if there's no longer available resources
+        Random
+            Place the task randomly
+            No rule - just place randomly in any ec2 instances
+        Spread
+            Place the task evenly based on the specified value
+            Example: instance id, AZ
+            => Maximize the availability
+        You can mix these strategies together by using specific strategy for the specific resources
+            Like: instaceid on spread, memory on binpack
+    Task Placement Constraints
+        distinctInstance: place each task on different container instance
+        memberOf: places task on instance satisfy an expression
+            Uses the Cluster Query Language (advanced)
