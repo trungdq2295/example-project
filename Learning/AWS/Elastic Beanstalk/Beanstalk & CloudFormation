@@ -1,0 +1,4 @@
+Beanstalk under the hood
+    Under the hood, Beanstalk relies on CloudFormation
+    CloudFormation is used to provision other AWS service (we'll see later)
+    Use case: you can define CloudFormation resources in your .ebextension to provision ElastiCache, an S3 bucket, anything you want
