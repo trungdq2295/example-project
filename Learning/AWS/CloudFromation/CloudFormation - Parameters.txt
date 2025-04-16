@@ -1,0 +1,40 @@
+CloudFormation - Parameters
+    Parameters are a way to provide inputs to your AWS CloudFormation template
+    They're important to know about if:
+        you want to reuse your template across the company
+        Some inputs can not be determine ahead of time
+    Parameters are extremely powerful, controlled, and can prevent errors from happening in your templates, thanks to types
+    Parameters can be controlled by all these settings:
+        Type
+            String
+            Number
+            CommaDelimitedList
+            List<Number>
+            AWS-Specific Parameter (to help catch invalid values - match agaisnt existed values in the AWS account)
+            List<AWS-Specific Parameter)
+            SSM Parameter (get parameter value from SSM Parameter store)
+        Description
+        ConstraintDescription
+        Min/MaxLength
+        Min/MaxValue
+        Default
+        AllowedValues
+        AllowedPattern
+        NoEcho
+        ....
+    Example:
+
+    How to reference a Parameter
+        The Fn::Ref function can be leveraged to reference parameters
+        Parameters can be used anywhere in a template
+        The shorthand for this in YAML is !Ref
+        The function can also reference other element within template
+    Pseudo Parameter
+        These can be used at any time and are enabled by default
+        Some important pseudo parameters
+            AWS::AccountId
+            AWS::Region
+            AWS::StackId
+            AWS::StackName
+            AWS::NotificationARN
+            AWS::NoValue

@@ -1,0 +1,6 @@
+CloudFormation - Outputs
+    The outputs section declares optional output values that we can import onto other stack (if you export them first)
+    You can also view the outputs in the AWS Console or in using the AWS CLI
+    They're very useful for example if you define network CloudFormation, and output the variables such as VPC ID and your Subnet Ids
+    It's the best way to perform some collaboration cross stack, as you let expert handle their own part of the stack
+

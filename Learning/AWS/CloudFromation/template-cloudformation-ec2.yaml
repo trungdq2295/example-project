@@ -1,0 +1,44 @@
+---
+Parameters:
+    InstanceTypeExample:
+        Description: Choose An Ec2 instance type
+        Type: String
+        AllowedValues:
+            - t2.micro
+            - t2.small
+            - t2.mediuym
+        Default: t2.micro
+
+Mappings:
+    RegionMap:
+        use-east-1:
+            HVM64: ami-abcc
+            HVMG2: ami-123
+        use-west-1:
+            HVM64: ami-abcc
+            HVMG2: ami-123
+
+Outputs:
+    StackSSHSecurityGroups:
+        Description: The SSH Security Group for our Company
+        Value: !Ref MyCompanyWideSSHSecurityGroup
+        Export:
+            Name: SSHSecurityGroup
+
+Resources:
+    MyInstance:
+        Type: AWS::EC2::Instance #type of resource
+        Properties:
+            ImageId: ami-0a3dasds
+            InstanceType: !Ref InstanceTypeExample
+    MySecondInstance:
+        Type: AWS::EC2::Instance #type of resource
+        Properties:
+            ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", HVM64]
+            InstanceType: !Ref InstanceTypeExample
+            AvailabilityZone: us-east-1a
+            SecurityGroups:
+                - !ImportValue SSHSecurityGroup
+    MountPoint:
+        Type: AWS::EC2::VolumeAttachment
+        Condition: CreateProdResources
