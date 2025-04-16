@@ -1,0 +1,2 @@
+CloudFormation - Termination Protection
+    An extra step to protect you unintentionally detect your stack

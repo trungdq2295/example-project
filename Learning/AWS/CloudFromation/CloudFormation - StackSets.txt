@@ -1,0 +1,6 @@
+CloudFormation - StackSets
+    Create, update, delete stacks across multiple accounts and regions with a single operation/template
+    Target accounts to create, update, delete stack instances from StackSets
+    When you update a stack set, all associated stack instances are updated throughout all accounts and regions
+    Can be applied into all accounts of an AWS Organization
+    Only Administrator account (or Delegated Administrator) can create StackSets

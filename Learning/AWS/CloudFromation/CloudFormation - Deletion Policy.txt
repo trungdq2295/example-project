@@ -1,0 +1,16 @@
+CloudFormation - Deletion Policy
+    Deletion Policy:
+        Control what happens when the CloudFormation template is deleted or when a resource is removed from a CloudFormation template
+        Extra safety measure to preserve and backup resources
+    Default DeletionPolicy=Delete
+        Delete won't work on an S3 bucket if the bucket is not empty
+            => Either you do clear s3 bucket manually and delete it or you create a custom resource to clear s3 bucket and delete s3 bucket
+    DeletionPolicy=Retain
+        Specify on resources to preserve in case of CloudFormation deletes
+        Works with any resources
+    DeletionPolicy=Snapshot
+        Create one final snapshot before deleting resource
+        Examples of supported resources:
+            EBS Volume, ElastiCache Cluster, ElastiCache ReplicationGroup
+            RDS DBInstance, RDS DBCluster, Redshift Cluster, Neptune DBCluster, DocumentDB DBCluster
+

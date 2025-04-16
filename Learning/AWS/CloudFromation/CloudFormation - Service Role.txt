@@ -1,0 +1,7 @@
+CloudFormation - Service Role
+    IAM role that allow CloudFormation to create/update/delete stack resources on your behalf
+    Give ability to users to create/update/delete the stack resources even if they don't have permissions to work with the resources in the stack
+    Use cases:
+        you want to achieve the least privilege principle
+        But you don't want to give the user all required permissions to create the stack resources
+    User must have iam:PassRole permissions

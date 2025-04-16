@@ -1,0 +1,20 @@
+CloudFormation - Custom Resources
+    Used to
+        define resources not yet supported by CloudFormation
+        define custom provisioning logic for resources can that be outside of CloudFormation (on-premises resources, 3rd party resources...)
+        have custom scripts run during create / update / delete through Lambda function (running a Lambda function to empty an S3 bucket before being deleted)
+    Type Define in the template using
+        AWS::CloudFormation::CustomResource
+        or Custom::MyCustomResourceTypeName (recommended)
+    Backed by a Lambda function (most common) or an SNS topic
+
+    How to define a Custom Resource
+        Example:
+            Resources:
+                MyCustomResourcesUsingLambda:
+                    Type: Custom::MyLambdaResources
+                    Properties:
+                        ServiceToken: arn:aws:lambda:REGION:ACCOUNT_ID:function:...
+                        ExampleProperty: "ExampleValue"
+        ServiceToken specifies where CloudFormation sends request to, such as Lambda ARN or SNS ARN
+        input data parameters (optional)

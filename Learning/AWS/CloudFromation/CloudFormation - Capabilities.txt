@@ -1,0 +1,9 @@
+CloudFormation - Capabilities
+    CAPABILITY_NAMED_IAM and CAPABILITY_IAM
+        Necessary to enable when your CloudFormation template is creating or updating IAM resources(IAM User, Role, Group, Policy, Access Key, Instance Profile, ...)
+        Specify CAPABILITY_NAMED_IAM if the resources are named
+    CAPABILITY_AUTO_EXPAND
+        Necessary when your CloudFormation template includes Macros or Nested Stack (stacks within stacks) to perform dynamic transformations
+        You're acknowledging that your template may change before deploying
+    InsufficientCapabilitiesException
+        Exception that will be thrown by CloudFormation if the capabilities haven't been acknowledged when deploying a template (security measure)

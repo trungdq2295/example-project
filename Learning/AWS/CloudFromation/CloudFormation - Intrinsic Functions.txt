@@ -1,1 +1,48 @@
 CloudFormation - Intrinsic Functions
+    Must know
+        Ref
+        Fn::GetAtt
+        Fn:FindInMap
+        Fn::ImportValue
+        Condition Functions (Fn::If, Fn::Not, Fn::Equlas, etc)
+        Fn::Base64
+    Optional
+        Fn::Join
+        Fn::Sub
+        Fn::ForEach
+        FN::ToJsonString
+        Fn::Cidr
+        Fn::GetAZs
+        Fn::Select
+        Fn::Split
+        Fn::Transform
+        FN::Length
+    Fn::Ref
+        can be leveraged to reference
+            Parameters - returns the value of the parameter
+            Resources - returns the physical ID of the underlying resource
+        The shorthand for this in YAML is !Ref
+    Fn:GetAtt
+        Attributes are attached to any resources you create
+        To know the attributes of your resources, the best place to look at is the documentation
+        Example: get the AZ of an Ec2 instance
+            Resources:
+                MyEC2Instance: # this is just a name
+                    Type: AWS::EC2::Instance
+                    Properties:
+                        ImageId: ami-0742b
+                        InstanceType: t2.micro
+                EBSVolume:
+                    Type: AWS::EC2::Volume # this is the volume
+                    Condition: CreateProdResources
+                    Properties:
+                        Size: 100
+                        AvailabilityZone: !GetAtt MyEC2Instance.AvailabilityZone
+    Fn::FindInMap
+        To return a named value from specific key
+    Fn::ImportValue
+        Import values that are exported in other stacks
+    Fn::Base64
+        convert String to Base64 representation
+        Example: pass encoded data to EC2 Instance's UserData property
+

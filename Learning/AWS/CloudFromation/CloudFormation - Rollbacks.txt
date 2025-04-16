@@ -1,0 +1,9 @@
+CloudFormation - Rollbacks
+    Stack Creation fails:
+        Default: everything rolls back (gets deleted). We can look at the log
+        Option to disable rollback and troubleshoot what happened
+    Stack Update fails:
+        The stack automatically rolls back to the previous known working state
+        Ability to see in the log what happened and error messages
+    Rollback Failure? Fix resources manually then issue ContinueUpdateRollbackAPI from Console
+        Or from the CLI using continue-update-rollback API call
