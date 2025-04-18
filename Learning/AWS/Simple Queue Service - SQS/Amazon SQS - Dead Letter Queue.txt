@@ -1,0 +1,13 @@
+Amazon SQS - Dead Letter Queue
+	If a consumer fails to process a message within the Visibility Timeout... the message go back to the queue
+	We can set a threshold of how many times a message can go back to the queue
+	After the MaximumReceives threshold is exceeded, the message goes into a dead letter queue
+	Useful for debugging
+	DLQ of a FIFO queue must also be a FIFO queue
+	DLQ of a standard queue must also be a standard queue
+	Make sure to process the messages in the DLQ before they expire
+	    Good to set a retention of 14 days in the DLQ
+
+    Re-drive to Source
+        feature to help consume messages in the DLQ to understand what is wrong with them
+        When our code is fixed, we can re-drive the messages from DLQ back to queue (or any other queue) in batches without writing custom code
