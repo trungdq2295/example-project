@@ -1,0 +1,5 @@
+Amazon SQS - Extended Client
+	Message size limit 256 Kb, how to send large message e.g 1GB?
+	Using the SQS Extended Client (Java Library)
+	The idea is you gonna upload your large message into the S3 buckets and send metadata to SQS
+	    Consumer will poll metadata message from SQS and then retrieve the large message from S3 using the info from metadata
