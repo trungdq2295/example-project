@@ -1,0 +1,25 @@
+Amazon CloudWatch - Agent
+    By default, no logs from your EC2 will go to CloudWatch
+    You need to run a CloudWatch agent on EC2 to push the log file you want
+    Make sure IAM permissions are correct
+    The CloudWatch log agent can be setup on-premises too
+
+    Agent & Unified Agent
+    For virtual server (EC2 instance, on-premise server...)
+    CloudWatch Logs Agent
+        Old version of the agent
+        Can only send to CloudWatch Logs
+    CloudWatch Unified Agent
+        Collect additional system-level metrics such as RAM, processes, etc...
+        Collect logs to send to CloudWatch Logs
+        Centralized configuration using SSM Parameter Store
+        Metric
+            Collected directly on your Linux server/ EC2 instance
+            CPU such as active, guest, idle, system ,user, steal
+            Disk metrics such as free, used, total
+            Disk IO (writes, reads, bytes, iops)
+            RAM (free, inactive, used, total, cached)
+            Netstat( number of TCP and UDP connections, net packets, bytes)
+            Processes (total, dead, bloqued, idle, running, sleep)
+            Swap Space (free, use, used %)
+        Reminder: out-of-the box metrics for EC2 - disk, CPU, network (high level)

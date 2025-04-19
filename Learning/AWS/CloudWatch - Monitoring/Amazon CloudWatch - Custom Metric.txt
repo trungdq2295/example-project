@@ -1,0 +1,11 @@
+Amazon CloudWatch - Custom Metric
+    Possibility to define and send your own custom metrics to CloudWatch
+    Example: RAM usage, disk space, number of logged in users
+    Use API call PutMetricData
+    Ability to use dimensions (attributes) to segment metrics
+        Instance.id
+        Environment.name
+    Metric resolution (StorageResolution API parameter - two possible value):
+        Standard: 1 minute
+        High Resolution: 1/5/10/30 second - higher cost
+    Important: Acccept metric data point two weeks in the past and two hours in the future so make sure to configure your EC2 instance time correctly

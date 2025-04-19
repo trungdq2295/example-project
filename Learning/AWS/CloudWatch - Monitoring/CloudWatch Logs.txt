@@ -11,34 +11,35 @@ CloudWatch Logs
 	Logs are encrypted by default
 	Can setup KMS-based encryption with your own keys
 
-CloudWatch Logs - Source
-	SDK, CloudWatch Logs Agent, CloudWatch Unified Agent
-	Elastic Beantalk: collection of logs from applicaiton
-	ECS: collection from containers
-	AWS Lambda: collection from function logs
-	VPC Flow Logs: VPC specific logs
-	API Gateway
-	CloudTrail based filter
-	Route53: Log DNS queries
+    Source
+        SDK, CloudWatch Logs Agent, CloudWatch Unified Agent
+        Elastic Beanstalk: collection of logs from application
+        ECS: collection from containers
+        AWS Lambda: collection from function logs
+        VPC Flow Logs: VPC specific logs
+        API Gateway
+        CloudTrail based filter
+        Route53: Log DNS queries
 	
-CloudWatch Logs Insights
-	Search and analyze log data stored in CloudWatch Logs
-	Example: find a specific IP inside a log, conut occurrences of "ERROR" in your logs...
-	Provides a purpose-built query language
-		Automatically discovers field from AWS services and JSON log events
-		Fetch desired event field, filter based on conditions, calculate aggregate statistics, sort events, imit number of events...
-		Can sae queries anda dd them to CloudWatch Dashboard
-	Can query multiple Log GRoups in different AWS accounts
-	It's a query engine, not a real-time engine
+    Insights
+        It's like Kibana for filtering the logging
+        Search and analyze log data stored in CloudWatch Logs
+        Example: find a specific IP inside a log, conut occurrences of "ERROR" in your logs...
+        Provides a purpose-built query language
+            Automatically discovers field from AWS services and JSON log events
+            Fetch desired event field, filter based on conditions, calculate aggregate statistics, sort events, imit number of events...
+            Can save queries anda dd them to CloudWatch Dashboard
+        Can query multiple Log Groups in different AWS accounts
+        It's a query engine, not a real-time engine
 
-CloudWatch Logs - S3 Export
-	Log data can take up to 12hours to become available for export
-	The API call is CreateExportTask
-	Not near-real-time or real-time ... use Logs Subscription instead if you want real time
+    S3 Export
+        Log data can take up to 12hours to become available for export
+        The API call is CreateExportTask
+        Not near-real-time or real-time ... use Logs Subscription instead if you want real time
 
-CloudWatch Logs Subscription
-	Get a real-time log events from CloudWatch logs for processing and analysis
-	send to Kinesis Data Streams, Kinesis Data Firehose, or Lambda
-	Subscription Filter - filter wihch logs are event delivered to your destination
-	Cross-Account Subscription - send log events to resources in a different AWS account (KDS, KDF)
+    CloudWatch Logs Subscription
+        Get a real-time log events from CloudWatch logs for processing and analysis
+        send to Kinesis Data Streams, Kinesis Data Firehose, or Lambda
+        Subscription Filter - filter which logs are event delivered to your destination
+        Cross-Account Subscription - send log events to resources in a different AWS account (KDS, KDF)
 	

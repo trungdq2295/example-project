@@ -1,6 +1,6 @@
 Amazon CloudWatch Metrics
-	CloudWatch provide smetrics for every services in AWS
-	Metric is a variable to monitor (CPU Utilization, Networkln,...)
+	CloudWatch provide metrics for every services in AWS
+	Metric is a variable to monitor (CPU Utilization, Network,...)
 	Metrics belong to namespaces
 	Dimension is an attribute of metric(instance id, environment, etc...)
 	Up to 30 dimensions per metric
@@ -8,9 +8,16 @@ Amazon CloudWatch Metrics
 	Can create CloudWatch dashboards of metrics
 	Can create CloudWatch Custom Metric ( for the RAM example)
 
+    EC2 Detail monitoring
+        EC2 instance metric have metric "every 5 mintues"
+        With detail monitoring (for a cost), you get data "Every 1 minute"
+        Use detail monitoring if you want to scale faster for your ASG
+
+        THE AWS Free Tier allows us to have 10 detailed monitoring metric
+        Note: EC2 Memory usage is by default not pushed ( must be pushed from inside the instance as a custom metric)
+
 CloudWatch Metric Streams
 	Continually stream CloudWatch metrics to a destination of your choice, with near-real-time delivery and low latency
 		Amazon Kinesis Data Firehose( and then its destination)
 		3rd party service provider: Datadog, Dynatrace, New relic, Splunk, Sumo Logic
-	
-	Option to iflter metrics to only stream a subset data
+	Option to filter metrics to only stream a subset data

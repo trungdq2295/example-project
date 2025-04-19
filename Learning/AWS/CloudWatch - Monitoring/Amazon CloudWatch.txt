@@ -1,0 +1,5 @@
+Amazon CloudWatch
+    Metrics: Collect and track key metrics
+    Logs: Collect, monitor, analyze and store log file
+    Events: Send notifications when certain events happen in your AWS
+    Alarms: React in real-time to metrics / events
