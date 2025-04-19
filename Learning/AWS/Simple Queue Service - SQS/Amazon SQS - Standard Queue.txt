@@ -35,3 +35,12 @@ SQS - Security
 	SQS Access Policies (similar to S3 bucket policies)
 		Useful for cross-account access to SQS queus
 		Useful for allowing other services (SNS,S3 ....) to write an SQS queue
+
+SQS - Must know API
+    CreateQueue (MessageRetentionPeriod), DeleteQueue
+    PurgeQueue: Delete all message in the queues
+    SendMessage (DelaySeconds), Receive Message, Delete Message
+    MaxNumberOfMessages: default 1, max 10 (for ReceiveMessage API)
+    ReceiveMessageWaitTimeSeconds: Long Polling
+    ChangeMessageVisibility: change the message timeout
+    Batch API for SendMessage, DeleteMessage, ChangeMessageVisibility help decrease your cost

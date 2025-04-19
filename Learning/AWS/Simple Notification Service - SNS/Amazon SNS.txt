@@ -1,6 +1,7 @@
 Amazon SNS
+    Pub/sub Model
 	The "event producer" only sends message to one SNS topic
-	As many "event receivers" (subscriptions) as we want to liste nto the SNS topic notifications
+	As many "event receivers" (subscriptions) as we want to listen to the SNS topic notifications
 	Each subscriber to the topic will get all the messages (note: new feature to filter message)
 	Up to 12,500,000 subscriptions per topic
 	100,000 topic limits
@@ -22,7 +23,7 @@ Amazon SNS - Security
 			In-flight encryption using HTTPS API
 			At-rest encryption using  KMS keys
 			Client-side encryption if the client wants to perform encryption/decryption itself
-		Access Controls: IAM policies to regulat access to the SNS API
+		Access Controls: IAM policies to regular access to the SNS API
 		SNS Access Policies ( similar to S3 bucket policies)
 			Useful for cross-account access to SNS topics
 			Useful for allowing other services (S3...) to write an SNS Topic

@@ -1,18 +1,26 @@
 Kinesis Data Streams
+    Collect and store streaming data in real-time
 	Retention between 1 day to 365 days
 	Ability to reprocess (replay) data
-	Once data is inserted in Kinesis, it can't be deleted (immutability)
+	Once data is inserted in Kinesis, it can't be deleted (immutability) until it expires
+	Data upto 1 MB (typical use case is lot of "small" real-time data)
+	DAta ordering guarantee for data with the same "Partition ID"
 	Data that shares the same partition goes to the same shard (ordering)
 	Producers: AWS SDK, Kinesis Producer Library(KPL), Kinesis Agent
 	Consumers:
 		Write your own: Kinesis Client Library ( KCL), AWS SDK
 		Managed: AWS Lambda, Kinesis Data Firehose, Kinesis DAta analytics
+    You can perform Shard Splitting on Kinesis Data Streams when a single shard is getting hot issue
+        => Shard splitting helps to split the shard into smaller shards and each shard recieve the same length of key range
+            Example: big shard receive the hash key range from 1 - 1000
+                After splitting into 2 smaller, the first one receive from 1 - 500 and the second receive from 501 - 1000
 		
 Capacity Modes:
 	Provisioned Mode:
 		you choose the number of shards provisioned, scale manually or using API
 		Each shard gets 1MB/s in ( or 1 000 record per second)
 		Each shard gets 2MB/s out ( classic or enhanced fan-out consumer)
+		Scale manually to increase or decrease number of shards
 		You pay per shard provisioned per hour
 	On-demand mode:
 		no need to provision or manage the capacity
@@ -20,7 +28,7 @@ Capacity Modes:
 		Scales automatically based on observed throughput peak during the last 30 days
 		Pay per stream per hour & data in/out per GB
 Security
-	Controll access/ authorization using IAM policies
+	Control access/ authorization using IAM policies
 	Encryption in flight using HTTPS endpoints
 	Encryption at rest using KMS
 	You can implement encryption/decryption of data on client side (harder)

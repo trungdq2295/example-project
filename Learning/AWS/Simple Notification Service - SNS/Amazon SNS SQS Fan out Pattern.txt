@@ -20,9 +20,10 @@ Amazon SNS - FIFO topic
 		Ordering by Message Group ID ( all messages in the same group are ordered)
 		Deduplication using a Deduplication ID or Content based Deduplication
 	
-	Can only have SQS FIFO queue as subscribers
-	Limited ThroughPut
+	Can have SQS Standard and SQS FIFO queue as subscribers
+	Limited Throughput ( same throughput as SQS FIFO)
 
 SNS - Messages filtering
 	JSON policy used to filter messages sent to SNS topic' subscriptions
-	If a subscription doesn 't have a filter policy, it receives every messages
+	If a subscription doesn't have a filter policy, it receives every messages
+	So the idea is everytime SNS receive a message, it can route the message to the right subscriber based on the content by using message filtering

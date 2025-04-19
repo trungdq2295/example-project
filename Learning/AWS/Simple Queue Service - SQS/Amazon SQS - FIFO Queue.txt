@@ -3,3 +3,16 @@ Amazon SQS - FIFO Queue
 	Limited throughput: 300 msg/s without batching, 3000msg/s with
 	Exactly-once send capability ( by removing duplicates)
 	Messages are processed in order by the consumer
+	Ordering by Message Group ID ( all messages in the same group are ordered) - mandatory parameter
+
+	Deduplication
+	    De-duplication interval is 5minute
+	    Two de-duplication methods:
+	        Content-based deduplication: will do a SHA-256 hash of the message body
+	        Explicitly provide a Message Deduplication ID
+    Message Grouping
+        IF you specify the same value of MessageGroupId in an SQS FIFO queue, you can only have one consumer and all messages are in order
+        To get ordering at the level of a subset of messages, specify different values for MessageGroupId
+            Messages that share a common Message Group ID will be in order within the group
+            Each group Id can have a different consumer (parallel processing)
+            Ordering across groups is not guaranteed
