@@ -1,0 +1,16 @@
+Amazon CloudWatch Synthetics
+    The concept is a script which act like a customer access to your system and cause incident so you will know what to do
+    Configurable script that monitor your APIs, URLS, Websites, ..
+    Reproduce what your customer do programmatically to find issues before customer are impacted
+    Check the availability and latency of your endpoint and can store load time dat aand screenshot of the UI
+    Integration with CloudWatch Alarms
+    Scripts written in Node.js or PYthon
+    Programmatic access to a headless google chrome browser
+    Can run once or on a regular schedule
+    Blueprints
+        Heartbeat Monitor - load URL, store screenshot and an HTTP archive file
+        API Canary - test basic read and write functions of REST API
+        Broken Link checker - check all links inside the URL that you are testing
+        Visual Monitoring - compare a screenshot taken during a canary run with baseline screenshot
+        Canary recorder - used with CloudWatch Synthetics recorder ( record your action on a website and automatically generates a scripts for that)
+        GUI Workflow Builder - verifies that actions can be taken on your webpage (test a webpage with a login form)
