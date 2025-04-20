@@ -1,0 +1,55 @@
+X-Ray
+    Visual analysis of our application
+        For example: your service has 3 I/O call to other services and there's an issue
+            So X-Ray helps you to visualize to figure our where issue comes from which services
+    Troubleshooting performance (bottlenecks)
+    Understand dependencies in a microservice architecture
+    Pinpoint service issue ( like which service is the issue)
+    Review request behavior
+    Find errors and exceptions
+    Are we meeting time SLA
+    Where I am throttled
+    identify users that are impacted
+
+    X-RAy compatibility
+        AWS Lambda
+        Elastic Beanstalk
+        ECS
+        ELB
+        API Gateway
+        EC2 instances or any application server (even on-premise)
+    Leverage Tracing
+        Tracing is an end to end way to following a "request"
+        Each component dealing with the request adds its own "trace"
+        Tracing is made of segments ( + sub segments)
+        Annotations can be added to traces to provide extra-information
+        Ability to trace:
+            Every request
+            Sample request ( as a % for example or a rate per minute)
+        X-Ray security:
+            IAM for authorization
+            KMS for encryption at rest
+    How to enable it?
+        1/Your code must import AWS X-Ray SDK
+            Very little code modification needed
+            The application SDK will then capture:
+                Calls to AWS service
+                HTTP/HTTPS requests
+                Database Calls (MySQL, PostgreSQL, DynamoDB)
+                Queue calls (SQS)
+        2/ Install the X-Ray daemon or enable X-Ray AWS Integration
+            X-Ray daemon works as a low level UDP packet interceptor (Linux/Windows/Mac...)
+            AWS Lambda /other AWS services already run the X-Ray daemon for you
+            Each application must have the IAM rights to write data to X-RAY
+    The X-Ray Magic
+        X-Ray service collects data from all the different services
+        Service map is computed from all the segments and traces
+        X-Ray is graphical, so even non technical people can help troubleshoot
+    Troubleshooting
+        If X-Ray is not working on EC2
+            Ensure the EC2 IAM Role has the proper permissions
+            Ensure the EC2 instance is running the X-Ray Daemon
+        To enable on AWS Lambda
+            Ensure it has an IAM execution role with proper policy (AWSX-RayWriteOnlyAccess)
+            Ensure that X-Ray is imported in the code
+            Enable Lambda X-Ray Active Tracing
