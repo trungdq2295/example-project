@@ -1,0 +1,6 @@
+X-Ray - ElasticBeanstalk
+    AWS Elastic Beanstalk platforms include the X-Ray daemon
+    You can run daemon by setting an option in the Elastic Beanstalk console or with a configuration file (in .ebextensions/xray-daemon.config)
+    Make sure to give your instance profile the correct IAM permissions so that the X-RAy daemon can function correctly
+    Then make sure your application code is instrumented with the X-Ray SDK
+    Note: The X-Ray daemon is not provided for Multi container docker

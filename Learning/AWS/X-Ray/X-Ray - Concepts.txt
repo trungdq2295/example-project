@@ -1,0 +1,10 @@
+X-Ray - Concepts
+    Segments: each application/ service will send them
+    Subsegments: If you need more details in your segment
+    Trace: segments collected together to form an end-to-end trace
+    Sampling: decrease the amount of requests sent to X-ray, reduce cost
+    Annotations: Key Value pairs used to index traces and use with filters
+    Metadata: Key Value pairs, not indexed, not used for searching
+    The X-Ray daemon/ agent has a config to send traces cross account:
+        make sure the IAM permissions are correct - the agent will assume the role
+        This allows to have central account for all your application tracing

@@ -1,0 +1,5 @@
+X-Ray - Instrumentation
+    Instrumentation means the measure of product's performance, diagnose errors, and to write trace information
+    To instrument your application code, you use the X-RAy SDK
+    Many SDK require only configuration changes
+    You can modify your application code to customize and annotation the data that the SDK sends to X-RAY, using interceptors, filters, handlers, middleware...
