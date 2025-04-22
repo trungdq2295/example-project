@@ -1,0 +1,19 @@
+AWS Lambda - ALB
+    To expose a Lambda function as HTTP(s) endpoint ..
+    You can use Application Load Balancer (or an API Gateway)
+    The lambda function must be registered in a target group
+
+    How ALB convert the request from ALB to Lambda?
+        ALB to Lambda: HTTP to JSON
+            convert to json file (key,value)
+        Lambda to ALB conversion: JSON to HTTP
+            convert to http style like statusCode, headers, body,..
+
+    ALB Multi-Value Headers
+        can support multi-value headers (alb setting)
+        When you enable multi-value headers, HTTP headers and query string parameters that are sent with multiple values ares shown as arrays within the AWS Lambda event and object
+        For example:
+            Requests HTTP will have query param like this
+                http://example.com/path?name=foo&name=bar
+            Instead of overring the name param, it will convert into an array when parsing to JSON to forward to Lambda
+                "queryStringParameters": {"name":["foo","bar]}

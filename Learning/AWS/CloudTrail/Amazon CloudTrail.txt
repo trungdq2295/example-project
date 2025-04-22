@@ -1,5 +1,5 @@
 Amazon CloudTrail
-    Internal monitoring of API calls being made
+    Internal monitoring of API calls being made to your AWS resources
     Audit changes to AWS Resources by your users
 	Provides governance, compliance and audit ofr your AWS Account
 	CloudTrail is enabled by default!
@@ -23,17 +23,18 @@ CloudTrail Events
 		Can separate Read Events (that don't modify resources) from Write Events (that may modify resource)
 		
 	Data Events:
-		By defualt, data events are not logged (because high volume operations)
+		By default, data events are not logged (because high volume operations)
 		Amazon S3 object-level activity(ex: GetObject, DeleteObject, PutObject): can seperate Read and Write Events
 		AWS Lambda function execution activity(the Invoke API)
 		
 	CloudTrail Insights Events
+	    Is like a visualize chart
 		Enable CloudTrail Insights to detect unusual activity in your account:
 			inaccurate resource provisioning
 			hitting service limits
 			Bursts of AWS IAM actions
 			Gaps in periodic maintenance activity
-		CloudTrail Insights analyzes normal managemente evnets to create a baseline
+		CloudTrail Insights analyzes normal management events to create a baseline
 		And then continuously analyzes write events to detect unusual patterns
 			Anomalies appear in the CloudTrail console
 			Event is sent to Amazon S3

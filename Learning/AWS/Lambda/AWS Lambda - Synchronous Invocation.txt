@@ -1,0 +1,17 @@
+AWS Lambda - Synchronous Invocation
+    Synchronous: CLI, SDK, API gateway, ALB
+        Results is returned right away
+        Error handling must happen client side (retries, exponential backoff, etc..)
+    Services:
+        User Invoked:
+            ELB - ALB
+            Amazon API Gateway
+            Amazon CloudFront
+            Amazon S3 Batch
+        Service Invoked:
+            Amazon Cognito
+            AWS Step functions
+        Other Services:
+            Amazon Lex
+            Amazon Alexa
+            Amazon Kinesis Data Firehose
