@@ -1,0 +1,24 @@
+AWS Lambda - Asynchronous Invocations
+    The events are placed in an Event Queue
+    Lambda function will read even from that Event Queue
+    Lambda attempts to retry on errors
+        3 tries to tal
+        1 minute wait after 1st, then 2 minutes wait
+    Make sure the processing is idempotent ( in case of retries)
+    If function is retried, you will see duplicate logs entries in CloudWatch Logs
+    Can define a DLQ - SNS or SQS - for failed process (need correct IAM permissions)
+    Asynchronous invocations allow you to speed up the process if you don't need to wait for the result
+    Services are done asynchronously
+        S3
+        SNS
+        CloudWatch Events / EventBridge
+        CodeCommit (CodeCommit Trigger: new branch, new tag, new push)
+        AWS CodePipeline (invoke a Lambda function during the pipeine, Lambda must callback)
+        -- other--
+        CloudWatch Logs (log process)
+        Simple Email service
+        CloudFormation
+        Config
+        IoT
+        IoT Events
+

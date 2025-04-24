@@ -1,0 +1,14 @@
+AWS Lambda - Destination
+    New features:
+        Can config to send result to a destination
+    Asynchronous invocation - can define destination for successfully and failed event:
+        SQS
+        SNS
+        Lambda
+        EventBridge bus
+    Note: AWS recommends you use destinations instead of DLQ now (but both can be used at same time)
+        because DLQ only for failed event, but destination is for both successfully and failed
+    Event Source mapping: for discarded event batches
+        SQS
+        SNS
+    Note you can send events to a DLQ directly from SQS
