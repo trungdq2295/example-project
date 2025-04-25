@@ -1,0 +1,72 @@
+DynamoDB - Read/Write Capacity Modes
+	Control how you manage your table's capacity (read/write throughput)
+	Provisioned Mode (default)
+		You specify the number of reads/writes per seconds
+		You need to plan capacity beforehand
+		Pay for provisioned Read Capacity Units(RCU) & Write Capacity Units (WCU)
+		Possibility to add auto-scaling mode for RCU & WCU
+		Table must have provisioned read and write capacity unit
+		Read Capacity Units (RCU) - throughput for reads
+		Write Capacity Units (WCU) - throughput for writes
+		Option to setup auto-scaling of throughput to meet demand
+		Throughput can be exceeded temporarily using "Burst Capacity"
+		If Burst Capacity has been consumed, you'll get a ProvisionedThroughputExceedException
+		It's then advised to do an exponential backoff retry
+		
+	On-Demand Mode
+		Read/writes automatically scale up/down with your workloads
+		No capacity planning needed
+		Unlimited WCU & RCU, no throttle so pay for what you use, more expensive ($$$)
+		You're charged for reads/writes that you use in terms of RRU and WRU
+		Read Request Units (RRU) - throughput for reads ( same RCU)
+		Write Request Units (WRU) - throughput for writes ( same WCU)
+		2.5 more expensive than provisioned capacity ( use with care)
+		Great for unpredictable workloads, steep sudden spikes
+
+    Write Capacity Units (WCU)
+        1 WCU represents one write per second for an item up to 1KB in size
+        If the items are largen than 1Kb, more WCUs are consumed
+        Example 1: we write 10 items per second, with item size 2 KB
+            We need 10 * (2 KB/ 1KB) = 20 WCUs
+        Example 2: we write 6 items per second, with item size 4.5 KB
+            We need 6 * (5 KB/1KB) = 30 WCUs ( 4.5 rounded to 5 Kb)
+        Example 3: We write 120 items per second, with item size 2KB
+            we need (120/60) * (2KB/1KB) = 4 WCUs
+
+    Strong Consistent Read vs Eventually Consistent Read
+        Eventually Consistent Read (default)
+            If we read just after a write, it's possible we'll get some stale data because of replication
+        Strong consistent read
+            If we read just after a write, we will get the correct data
+            Set "ConsistentRead" parameter to True in API calls
+            Why don't we use Strong consistent read all the times?
+                Because It's expensive. It consumes twice the RCU and also has higher latency
+    Read Capacity Units (RCU)
+        One RCUs represent one Strongly Consistent Read per second, or two Eventually Consistent Reads per second for an item up to 4 KB in size
+        If the item are larger than 4KB, more RCU are consumed
+        Example: 10 Strongly Consistent Reads per second, with Item size is 4KB
+                10 * (4KB/4KB) = 10
+        Example 2: 16 Eventually Consistent Reads per second, with item size is 12 KB
+            16/2 * (12KB/4KB) = 24
+        Example 3: 10 Strongly Consistent Read per second, with item size 6KB
+            10 * (8/4) = 20 RCUs (6 rounded to 8KB)
+    Partitions Internal
+        Data is stored in partition
+        Partition keys go through a hashing algorithm to know which partition they go to
+        To compute the number of partitions:
+        WCUs and RCUs are spread evenly across partition
+            It mean you split into 10 partitions and you have 20 WCU and 10 RCU
+                then each partition will have 2 WCUs and 1 RCU equally
+    Throttling
+        If we exceed provisioned RCUs or WCUs, we get "ProvisionedThroughputExceedException"
+        Reasons:
+            Hot keys - one partition key is being read too many times (e.g, popular item like Elon Musk tweet)
+            Hot Partitions
+            Very large items, remember RCU and WCU depends on size of items
+        Solutions:
+            Exponential partition keys as much as possible
+            Distribute partition keys as much as possible
+            If RCUs issue, we can use DynamoDB Accelerator (DAX)
+
+
+

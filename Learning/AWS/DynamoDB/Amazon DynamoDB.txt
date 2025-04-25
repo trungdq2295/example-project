@@ -4,10 +4,11 @@ Amazon DynamoDB
 	Scales to massive workloads, distributed database
 	Millions of requests per seconds, trillions of row, 100s of TB of storage
 	Fast and consistent in performance (single-digit millisecond) 
-	Integrated with IAM for escurity, authorization and administration
+	Integrated with IAM for security, authorization and administration
+	Enables event driven programming with DynamoDB Streams
 	Low cost and auto-scaling capabilities
 	No maintenance or patching, always available
-	Standard & Infrequest Access (IA) Table Class
+	Standard & In-frequent Access (IA) Table Class
 
 DynamoDB Basic
 	DynamoDB is made of Tables
@@ -20,6 +21,16 @@ DynamoDB Basic
 		Document Types - List, Map
 		Set types - String set, Number Set, Binary Set
 	Therefore, in DynamoDB you can rapidly evolve schema
+
+	Primary Keys
+	    Option 1: Partition Key (Hash)
+	        Partition key must be unique for each item
+	        Partition key must be "diverse" so that the data is distributed
+	        Example: "User_ID" for a users table
+        Option 2: Partition Key + Sort Key (Hash + Range)
+            The combination must be unique for each item
+            Data is grouped by partition key
+            Example: users-game table "user-id" for partition key and "game-id" for sort key
 
 DynamoDB - Read/Write Capacity Modes
 	Control how you manage your table's capacity (read/write throughput)
