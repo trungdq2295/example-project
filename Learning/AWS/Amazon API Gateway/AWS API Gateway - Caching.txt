@@ -1,0 +1,13 @@
+AWS API Gateway - Caching
+    Cache the response to reduce the number of calls made to the backend
+    Default TTL is 300seconds (min: 0s, max 3600s)
+    Caches are defined per stage
+      So if you have many stages in your API Gateway, you need to define many caches for them
+    Possible to override cache setting per method
+    Cache encryption option
+    Cache capacity between 0.5GB to 237GB
+    Cache is very expensive, make sense in product but not in dev/test
+    How we invalidate the cache
+      Abel to flush the entire cache (invalidate it )immediately
+      Clients can invalidate the cache with header: Cache-Control: max-age = 0 ( with proper IAM authorization)
+      If you don't impose an InvalidateCache policy (or choose the Require authorization check box in the console), any client can invalidate the API cache

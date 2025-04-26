@@ -1,0 +1,24 @@
+AWS API Gateway - Monitoring Logging Tracing.txt
+  CloudWatch Logs
+    Log contains information request/response body
+    Enable CloudWatch logging at the Stage level ( with Log level - ERROR, DEBUG, INFO)
+    Can override settings a per API basis
+  X-Ray
+    Enable tracing to get extra information about requests in API Gateway
+    X-Ray API Gateway + AWS Lambdas give you the full picture
+  CloudWatch Metrics
+    Metrics are by stages, Possibility to enable detailed metrics
+    CacheHitCount & CacheMissCount: efficiency of the cache
+    Count: Thet total number API requests in a given period
+    Integration Latency: The time between when API Gateway relays a requests to the backend and when it receives a response from the backend
+    Latency: the time between API Gateway receives a request from a client and when it returns a response to the client. The latency includes the integration latency and other API Gateway overhead
+    4xxError (client-side) and 5xxError(server-side)
+  API Gateway Throttling
+    Account Limit
+      API Gateway throttles requests at 10,000 rps across all API
+      Soft limit that can be increased upon request
+    In case of throttling => 429 too many requests (retriable error)
+    Can set Stage limit & method limits to improve performance
+    Or you can define Usage Plans to throttle per customer
+    Just like Lambda concurrency, one API that is overloaded, if not limited, can cause other APIs to be throttled
+  API Gateway Errors

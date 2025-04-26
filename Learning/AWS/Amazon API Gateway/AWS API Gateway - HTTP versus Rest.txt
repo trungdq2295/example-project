@@ -1,0 +1,7 @@
+AWS API Gateway - HTTP versus Rest
+  HTTP APIs
+    low-latency, cost-effective AWS Lambda Proxy, HTTP Proxy APIs and private integration (no data mapping)_
+    support OIDC and OAuth 2.0 authorization, and built-in support for CORS
+    No usage plans and API keys
+  Rest APi
+    all features (exception Native OpenID Connect/ Oauth 2.0)

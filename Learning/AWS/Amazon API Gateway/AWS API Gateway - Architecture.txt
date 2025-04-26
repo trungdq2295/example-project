@@ -1,0 +1,5 @@
+AWS API Gateway - Architecture
+  Create a single interface for all the microservices in your company
+  Use API endpoints with various resources
+  Apply a simple domain name and SSL certificates
+  CAn apply forwarding and transformation rules at the API Gateway Level

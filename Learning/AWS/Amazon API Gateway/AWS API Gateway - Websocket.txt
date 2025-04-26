@@ -1,0 +1,19 @@
+AWS API Gateway - Websocket
+  API Gateway does support Websocket for client to keep sending message to server
+  However, the callback is quite different. It's not the same as tradition websocket
+    But API Gateway provide a callback url so the client listen on the callback url and get the response from server
+  Routing
+    Incoming JSON messages are routed to different backend
+    If no routes => sent to $default
+    You request a route selection expression to select the field on JSON to route from
+      Example:
+      {
+        "service":"chat",
+        "action":"join", // this as a key to route
+        "data":{
+          "room":"room1234"
+        }
+      }
+    Sample expression: $request.body.action
+    The result is evaluated against the route keys available in your API Gateway
+    The route is then connected to the backend you've setup through API Gateway

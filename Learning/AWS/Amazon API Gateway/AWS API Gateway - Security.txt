@@ -1,0 +1,51 @@
+AWS API Gateway - Security
+  IAM Permissions
+    Create an IAM  policy authorization and attach to User /Role
+    Authentication = IAM |
+    Authorization = IAM Policy
+    Good to provide access within AWS (EC2, Lambda, IAM users,...)
+    Leverage "Sig v4" capability where IAM credential are in headers
+    So the idea is:
+      When client make a RestAPI call to API Gateway with header SigV4
+      API Gateway will know how to decrypt them and then call to IAM to check if user is authenticated
+      So when it done, API Gateway will call to Lambda to get response and then response back to client
+  Resource Policies
+    similar to Lambda Resource Policy
+    Allow for Cross Account Access(combined with IAM Security)
+    Allow for a specific source IP address
+    Allow for a VPC Endpoint
+  Cognito User Pools
+    Cognito fully manages user life cycle, token expires automatically
+    API Gateway verifies identity automatically from AWS Cognito
+    No custom implementation required
+    Authentication = Cognito User Pools
+    Authorization = API Gateway Methods
+    The idea is:
+      The client will authenticate by calling to Cognito User Pools and retrieve token
+      And then the client will call API Gateway with token
+      And API Gateway will verify the token by calling to Cognito
+      And API Gateway will call to Lambda for the response for the client
+  Lambda Authorizer (formerly Custom Authorizers)
+    Token-based authorizer (bearer token) - ex JWT
+    A request parameter-based Lambda authorizer ( headers, query string, stage var)
+    Lambda must return an IAM policy for the user, result policy is cached
+    Authentication = External
+    Authorization = Lambda function
+    The idea is the same as Cognito User Pool but using 3rd party for retrieve token
+      and API Gateway will call to Lambda Authorizer and Lambda authorizer will call to 3rd party to verify token
+      and then the same as the other
+
+  Summary
+    IAM:
+      Great for users/ roles already within your AWS account, + resource policy for cross account
+      Handle authentication + authorization
+      Leverages Signature v4
+    Custom Authorizer:
+      Great for 3rd party token
+      Very flexible in terms of what IAM policy is returned
+      Handle Authentication verification + authorization in the Lambda function
+      Pay per Lambda invocation, results are cached
+    Cognito User Pool:
+      you manage your own user pool ( can be backed by FB, GG login etc...)
+      no need to write any custom code
+      Must implement authorization in the backend
