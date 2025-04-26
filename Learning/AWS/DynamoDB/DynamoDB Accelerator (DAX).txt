@@ -1,6 +1,9 @@
 DynamoDB Accelerator (DAX)
-	Fully-managed, ighly available, seamless in-memory cache for DynamoDB
+	Fully-managed, highly available, seamless in-memory cache for DynamoDB
 	Help solve read congestion by caching
-	Microseconds latency for cached data
-	Doesn't require applicaiton logic modification (compatible with existing DynamoDB APIs)
+	Microseconds latency for cached data reads & queries
+	Doesn't require application logic modification (compatible with existing DynamoDB APIs)
 	5 minutes TTL for cache ( default)
+	Up to 10 nodes in the cluster
+	Multi-AZ (3 nodes minimum recommended for production)
+	Secure (Encryption at rest with KMS, VPC, IAM, CloudTrail, ...)

@@ -1,0 +1,24 @@
+Amazon DynamoDB - Indexes
+  Local Secondary Index (LSI) -
+    Similar Sort Key for your table (same Partition Key as that of base table)
+    The sort key consists of one scalar attribute (String, Number, or Binary)
+    Up to 5 Local Secondary Indexes per table
+    Must be defined at table creation time
+    Attribute Projections - can contain some or all the attributes of the base table (KEYS_ONLY, INCLUDE, ALL)
+    Use cases: You want to query on the same partition but different sort key
+  Global Secondary Index (GSI)
+    Alternative Primary Key (HASH or HASH+ RANGE) from the base table
+    Speed up queries on non-key attributes
+    The Index Key consist of scalar attribute (String, Number, or Binary)
+    Attribute Projections - some or all the attributes of the base table (KEYS_ONLY, INCLUDE, ALL)
+    Must provisions RCUs & WCUs for the index
+    can be added/modified after table creation
+    Use cases: you want to query on different partition key(primary key)
+  Indices and Throttling
+    Global Secondary Index (GSI):
+      If the writes are throttled on the GSI, then the main table will be throttled Even if the WCU on the main tables are fine
+      Choose  your GSI partition key carefully
+      Assign your WCU capacity carefully
+    Local Secondary Index(LSI):
+      Uses the WCUs and RCUs of the main table
+      No special throttling considerations

@@ -1,0 +1,9 @@
+Amazon DynamoDB - TTL
+  Automatically delete items after an expiry timestamp
+  Doesn't consume nay WCUs (no extra cost)
+  the TTL attribute must a "number" data type with "Unix Epoch timestamp" value
+  Expired items deleted within few days of expiration
+  Expired items that haven't been deleted, appears in reads/queries/scan ( if you dont need them, use FilterExpression)
+  Expired items are also deleted from both LSI and GSI
+  A delete operation for each expired items also enters the DynamoDB Streams (can help you to recover expired item)
+  Use cases: reduced storage data by keeping only current item such as User session

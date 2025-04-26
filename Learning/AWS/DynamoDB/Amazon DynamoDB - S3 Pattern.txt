@@ -1,0 +1,4 @@
+Amazon DynamoDB - S3 Pattern
+  Large Object Pattern
+    We can't really store a large object in our DynamoDb since we can only store up to 400kb data
+    So instead of storing large object in DynamoDB, we store it in S3 and store the metadata of object into DynamoDB

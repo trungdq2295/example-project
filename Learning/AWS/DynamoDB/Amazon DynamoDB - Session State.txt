@@ -1,0 +1,11 @@
+Amazon DynamoDB - Session State
+  It's common to use DynamoDB to store session state
+  versus ElastiCache:
+    Durable storage
+    DynamoDB is serverless, ElastiCache is in-memory
+  vs EFS:
+    EFS must be attached to EC2 instance as a network drive
+  vs EBS & Instance store:
+    EBS & Instance store can only be used for local caching, not shared caching
+  vs S3:
+    S3 is higher latency, and not meant for small object

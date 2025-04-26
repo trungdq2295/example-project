@@ -1,0 +1,74 @@
+Amazon DynamoDB - Basic Operations
+  Note: FilterExpression for the read query, ConditionExpression for the write operations
+  Writing Data
+    PutItem
+      Creates a new item or fully replace an old item (same Primary Key)
+      Consumes WCUs
+    UpdatedItem
+      Edits an existing item's attributes or add a new item if it doesn't exist
+      Can be used to implement Atomic Counters - a numeric attribute that's unconditionally incremented
+    Conditional Writes
+      Accept a write/update/delete only if conditions are met, otherwise returns an error
+      Helps with concurrent access to items
+      No performance impact
+      For PutItem, UpdateItem, DeleteItem and BatchWriteItem
+      You can specify a Condition expression to determine which items should be modified
+        attribute_exists
+        attribute_not_exists
+        attribute_type
+        contains ( for string)
+        begins_with (for string)
+        ProductCategory In (:cat1, :cat2) and Price between low and high
+        size (string length)
+  Reading Data
+    GetItem
+      Read based on Primary Key
+      Primary key can be hash or hash+range
+      Eventually consistent Read(default)
+      Option to use Strongly consistent Reads (more R CU - might take longer)
+      ProjectExpression can be specified to retrieve only certain attributes
+    Query
+      Query returns items based on:
+        KeyConditionExpression
+          Partition Key value (must be = operator) - required
+          Sort key like compare equals or begin - option
+        FilterExpression
+          Additional filtering after the Query operation (before data returned to you)
+          Use only with non-key attributes (does not allow HASH or Range attributes)
+        Returns
+          The number of items specified in Limit
+          Or up to 1 MB of data
+        Ability to do pagination on the result
+        Can query table, a Local Secondary Index, or a Global Secondary Index
+    Scan
+      Scan the entire table and then filter out data (inefficient)
+      Returns up to 1 MB of data - use pagination to keep on reading
+      Consumes a lot of RCU
+      Limit impact using Limit or reduce the size of the result and pause
+      For faster performance, use Parallel Scan
+        Multiple workers scan multiple data segments at the same time
+        Increase the throughput and RCU consumed
+        Limit the impact of parallel scans just like you would for Scans
+      Can use ProjectExpression and filterExpression (no changes to RCU)
+  Deleting Data
+    DeleteItem
+      Delete an individual item
+      Ability to perform condition delete
+    DeleteTable
+      Delete a whole table and all its items
+      Much quicker deletion than calling DeleteItem on all items
+  Batch Operations
+    Allows you to save in latency by reducing the number of API calls
+    operations are done in parallel for better efficiency
+    Part of a batch can fail; in which case we need to try again for the failed items
+    BatchWriteItem
+      Up to 25 PutItem and/or DeleteItem in one call
+      Up to 16Mb of data written, up to 400Kb of data per item
+      Can't update items (use UpdateItem)
+      UnprocessedItems for failed write operations (exponential backoff or add WCU)
+    BatchGetItem
+      returns items from one or more tables (for Scan, you only get data in 1 table)
+      Up to 100 items, up to  16MB of data
+      Items are retrieved in parallel to minimize latency
+      UnprocessedKey for failed read operations (exponential backoff or add RCU)
+

@@ -1,0 +1,8 @@
+Amazon DynamoDB - Partition Strategies
+  Write Sharding
+    A situation we have a voting application with two candidates A and B ( such as USA President Election) and other candidate
+    If partition key is candidate_id, this will result in hot partition since people will vote most A,b
+    A good way to solve this is to add suffix/prefix to candidate_id
+      It can be random suffix/prefix
+      Or It can be calculated suffix/prefix
+    Whatever methods suit you, you choose it

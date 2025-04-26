@@ -1,0 +1,16 @@
+Amazon DynamoDB - Transactions
+  Coordinated, all-or-nothing operation to multiple items across one or more tables,
+  Provides ACID
+  Read Modes - Eventual Consistency, Strong consistency, Transactional
+  Writes Modes - Standard, Transactional
+  Consumes twice the WCUs & RCUs
+    DynamoDB performs 2 operations for every items (prepare & commit)
+  Two operations:
+    TransactGetItem - one or more GetItems operations
+    TransactWriteItems - one or more PutItem, UpdateItem and DeleteItem operations
+  Use cases: financial transactions, managing orders, multiplayer games
+  Capacity Computations
+    Example 1: 3 Transactional writes per seconds, with item size of 5KB
+      2 * 3 * (5KB/1KB) = 30 WCUs
+    Example 2: 5 Transaction reads per seconds, with item size of 5KB
+      5 * 2 * (8KB/4KB) = @0 RCUs

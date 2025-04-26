@@ -1,0 +1,11 @@
+Amazon DynamoDB - PartiQL
+  PartiQL
+    SQL - compatible query language for DynamoDB
+    Allows you to use DDL query (not all) in DynamoDB
+    Run queries across multiple DynamoDB tables
+    Run PartiQL queries from:
+      AWS Management Console
+      NoSQL Workbench for DynamoDB
+      DynamoDB APIs
+      AWS CLI
+      AWS SDK

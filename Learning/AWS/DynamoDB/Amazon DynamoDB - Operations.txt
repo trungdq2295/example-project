@@ -1,0 +1,13 @@
+Amazon DynamoDB - Operations
+  Table Cleanup
+    Option 1: Scan + DeleteItem
+      Very slow, consumes RCUs & WCUs, expensive
+    Option 2: Drop Table + Recreate Table
+      Fast, efficient, cheap
+  Copying a DynamoDB Table
+    Option 1: Using AWS Data Pipeline
+    Option 2: Backup and restore into a new table
+      Take some time
+      But you don't need to use other AWS service or external source
+    Option 3: Scan + PutItem or BatchWriteItem
+      Write your own code

@@ -1,0 +1,3 @@
+Amazon DynamoDB - Optimistic Locking ( locking data by versioning row)
+  A strategy to ensure hasn't changed before you update/delete it
+  Each item has an attribute that act as a version number

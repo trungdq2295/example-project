@@ -1,0 +1,8 @@
+Amazon DynamoDB - CLI
+  --project-expression: one or more attributes to retrieve
+  --filter-expression: filter items before returned to you
+  General AWS CLI Pagination options (apply for most AWS service s uch as DynamoDB, S3, ..)
+    --page-size: specify that AWS CLI retrieves the full list of items but with a larger number of API call instead of API calls (default 1000 items)
+      This mean if you want to get 100 items, CLI will make 100 API calls instead of 1 API call which can cause you timeout
+    --max-times: max number of items to show in the CLI (return NextToken)
+    --starting-token: specify the last NextToken to retrieve the next set of items (It's like API Token from DynamoDB Streams)
