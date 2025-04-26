@@ -1,0 +1,24 @@
+AWS API Gateway - Deployment Stages
+  Making changes in the API Gateway does not mean they're effective
+  You need to make a "deployment" for them to be in effect
+  It's a common source of confusion
+  Changes are deployed to "Stages" (as many as you want)
+  Use the naming you like for stages (dev, test ,prod)
+  Each stage has it own configuration parameters
+  Stages can be rolled back as a history of deployments is kept
+
+  Stage Variables
+    stage variables are like environment variables for API Gateway
+    Use them to change often changing configuration values
+    THey can be used in:
+      Lambda function ARN
+      HTTP endpoint
+      Parameter mapping templates
+    Use cases:
+      Configure HTTP endpoints your stages talk to (dev, test, prod...)
+      Pass configuration parameters to AWS Lambda through mapping templates
+    Stage variables are passed to the "context" object in AWS Lambda
+    Format: ${stageVariables.variableName}
+  Stage Variables & Lambda Aliases
+    We create a stage variable to indicate the corresponding Lambda alias
+    Our API gateway will automatically invoke the right Lambda function

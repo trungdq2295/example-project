@@ -1,0 +1,30 @@
+AWS API Gateway - Integration Types
+  Integration Type
+    MOCK
+      API Gateway returns a response without send the request to backend
+    HTTP/AWS (lambda & AWS Services)
+      you must configure both the integration request and integration response
+      Setup data mapping using mapping templates for the request & response
+    AWS_Proxy (Lambda Proxy):
+      incoming request from the client is the input to Lambda
+      THe function is responsible for the logic request/response
+      No mapping template, headers, query string parameters .. are passed as arguments
+    HTTP_PROXY
+      No mapping template
+      The HTTP request is passed to the backend
+      The HTTP response from the backend is forwarded by API Gateway
+      possibility to add HTTP headers if need (ex: API key)
+  Mapping Templates
+    Mapping templates can be used to modify request / response
+    Rename / Modify query string parameter
+    Modify body content
+    Add headers
+    Uses velocity template Language (VTL)
+    filter output results (remove unnecessary/secured data)
+    Content-Type can be set to application/json or application/xml
+    How to integrate with SOAP API through API Gateway
+      API Gateway should:
+        Extract data from the request: either path, payload or header
+        Build SOAP message based on request data (mapping template)
+        Call SOAP service and receive XML response
+        Transform XML response to desired format (like JSON), and response to the user
