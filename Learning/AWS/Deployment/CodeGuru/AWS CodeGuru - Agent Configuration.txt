@@ -1,0 +1,16 @@
+AWS CodeGuru - Agent Configuration
+  MaxStackDepth - the maximum depth of the stacks in the code that is represented in the profile
+    Example: If CodeGuru Profiler finds a method A, which calls method B, which call method C, which call method D, then the depth is 4
+    If the MaxStackDepth is set to 2, then the profiler evaluates method A and B
+  MemoryUsageLimitPercent - the memory percentage used by the profiler
+  MinimumTimeForReportingInMilliseconds - the minium time between sending reports (milliseconds)
+    This mean when report's ready, you have to wait "N" milliseconds before sending
+  ReportingIntervalInMilliseconds - the reporting interval used to report profilers (milliseconds)
+    The CodeGuru profiler will send report every "N" milliseconds
+  SamplingIntervalMilliseconds - the sampling interval that is used to profile samples (milliseconds)
+    Reduce to have a higher sampling rate
+    Example: This is how often the CodeGuru Profiler collect a sample
+
+  So the scenario is like this
+    SamplingIntervalMilliseconds -> ReportingIntervalInMilliseconds -> MinimumTimeForReportingInMilliseconds
+    Collect sample, sample, sample -> waiting for report interval done so i -> waiting for reporting time before sending

@@ -1,0 +1,31 @@
+AWS Serverless Application Model (SAM)
+  Framework for developing and developing serverless applications
+  All the configuration is YAML code
+  Generate Complex CloudFormation from simple SAM YAML file
+  Supports anything from CloudFormation: Outputs, Mappings, Parameters, Resources,..
+  SAM can use CodeDeploy to deploy Lambda functions
+  SAM can help you to run Lambda, API Gateway, DynamoDB locally
+  Recipe
+    Transform Header indicates it's SAM template
+      Transform: 'AWS::Serverless-2016-10-31'
+    Write Code
+      AWS::Servlets:Function // Lambda Function
+      AWS::Servlets:Api // Api Gateway
+      AWS::Servlets:SimpleTable // DynamoDB
+    Package & Deploy: sam deploy (optionally preceded by "sam package")
+    Quickly sync local changes to AWS Lambda (SAM Accelerate): sam sync --watch
+  SAM Accelerate (sam sync)
+    is a set of features to reduce latency while deploying resources to AWS
+    sam sync
+      Synchronizes your project declared in SAM templates to AWS
+      Synchronizes code changes to AWS without updating infrastructure (uses services APIs & bypass CloudFormation)
+    sam sync --code
+      Synchronize code changes without updating infrastructure (bypass CloudFormation, update in seconds)
+    sam sync --code --resource AWS::Serverless::Function
+      Synchronize only all Lambda functions and their dependencies
+    sam sync --code --resource-id HelloWorldLambdaFunction
+      Synchronize only a specific resource by its ID
+    sam sync --watch
+      Monitor for file changes and automatically synchronize when changes are detected
+      If change include configuration, it uses sam sync
+      If changes are code only, it use sam sync --code

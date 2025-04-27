@@ -1,0 +1,15 @@
+AWS CodeArtifact
+  Software packages depend on each other to be build (also called dependencies), and new ones are created
+  Storing and retrieving these dependencies is called artifact management
+  Traditionally you need to setup your own artifact management system
+  CodeArtifact is a secure, scalable, and cost-effective artifact management for software development
+  Works with common dependency management tools such as Maven, Gradle, npm, yarn, twine, pip, and NuGet
+  Developers and CodeBuild can then retrieve dependencies straight from CodeArtifact
+
+  Event Bridge Integration
+    Event is created when a Package is created, modified, or deleted
+    CodePipeline will listen to the event and can be triggered to rebuild your application
+    This might be help you to improve dependencies such as security
+  Resource Policy
+    Can be used to authorize another account to access CodeArtifact
+    A given principal can either read all the packages in a repository or none of them

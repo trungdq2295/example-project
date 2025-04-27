@@ -1,0 +1,61 @@
+AWS CodeDeploy
+  Deployment service that automates application deployment
+  Deploy new applications versions to EC2 Instances, On-premises servers, Lambda functions, ECS services
+  Automated Rollback capability in case of failed deployments, or trigger CloudWatch Alarms
+  Gradual deployment control
+  A file named appspec.yml defines how the deployment happens
+  Important Note: You need to create role for CodeDeploy so it can deploy to other services
+
+  EC2/On-premises platform
+    Can deploy to EC2 Instance & on-premises server
+    Perform in-place deployments or blue/green deployments
+    Must run the CodeDeploy Agent on the target instances
+    Define deployment speed
+      AllAtOnce: most downtime // rollout all new version at a time
+      HalfAtATime: Reduce capacity by 50%
+      OneAtATime: slowest, lowest availability impact
+      Custom: define your % capacity
+    Deploy to an ASG
+      In-place Deployment
+        Updates existing EC2 instances
+        Newly created EC2 instances by an ASG will also get automated deployments
+      Blue/Green Deployment
+        A new Auto-Scaling Group is created (settings are copied)
+        Choose how long to keep the old EC2 instances (old ASG)
+        Must be using an ALB
+
+  CodeDeployAgent
+    The CodeDeploy Agent must be running on the EC2 instances as a pre-requisites
+    It can be installed and updated automatically if you're using System Manager
+    The EC2 Instances must have sufficient permissions to access Amazon S3 to get deployment bundles
+      So it can download it from S3
+
+  Lambda Platform
+    CodeDeploy can help you automate traffic shift for Lambda aliases
+    Feature is integrated within the SAM Framework
+    Linear: grow traffic every N minutes until 100%
+      LambdaLinear10PercentEvery3Minutes
+      LambdaLinear10PercentEvery10Minutes
+      The idea is you have PROD alias running at version 1, and then you deploy version 2
+        CodeDeploy will help you to route "X" traffic to version and the rest to PROD alias
+        Traffic will grow every N minutes until it reach 100%
+    Canary: try X percent then 100%
+      LambdaCanary10Percent5Minutes
+      LambdaCanary10Percent30Minutes
+    AllAtOne: immediate
+  ECS Platform
+    CodeDeploy can help you automate the deployment of a new ECS Task Definition
+    Only Blue/Green Deployments
+    Linear: grow traffic every N minutes until 100%
+      ECSLinear10PercentEvery3Minutes
+      ECSLinear10PercentEvery10Minutes
+    Canary: try X percent then 100%
+      ECSCanary10Percent5Minutes
+      ECSCanary10Percent30Minutes
+    AllAtOne: immediate
+
+  Redeploy & Rollbacks
+
+
+
+

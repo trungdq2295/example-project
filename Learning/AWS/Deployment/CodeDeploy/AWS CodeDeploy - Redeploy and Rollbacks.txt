@@ -1,0 +1,7 @@
+AWS CodeDeploy - Redeploy and Rollbacks
+  Rollback = redeploy a previous deployed revision of your application
+  Deployments can be rolled back:
+    Automatically - rollback when a deployment fails or rollback when a CloudWatch Alarm thresholds are met
+    Manually
+  Disable Rollbacks - do not perform rollbacks for this deployment
+  If a roll back happens, CodeDeploy redeploys the last known good revision as a new deployment (not a restored version)
