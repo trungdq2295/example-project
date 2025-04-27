@@ -1,3 +1,30 @@
 AWS CodeBuild
-    to Build the code
-    Build instructions:
+    to take source of code (Github, S3, Bitbucket)
+    And build the code
+    To Build instructions: You have to involve a file buildspec.yml in your codebase or insert it manually in Console
+    Output logs can be stored in S3 and CloudWatch Logs
+    Use CloudWatch Metric to monitor build statistic
+    Use EventBridge to detect failed builds and trigger notifications
+    Use CloudWatch Alarms to notify if you need "threshold" for failures
+    Build Projects can be defined within CodePipeline or CodeBuild
+    Supported Environment
+        JAva, Ruby, Python, Go, NodeJS, Android, .NET Core, PHP, Docker image
+    How it works
+        First CodeBuild will run all instructions from buildspec.yml file
+        And Codebuild has an option to cache a reusable pieces which can be reuse from build to build
+            This is an optimization for faster build
+        Then all the logs can be stored in S3 or CloudWatch Logs if you enable it
+        So when CodeBuild is done, it can produce some artifacts and these artifacts will be extracted out and put into S3
+
+    buildspec.yml
+        This file must be at the root of your code
+        env - define environment variables
+            variables - plaintext variables
+            parameter-store - variables stored in SSM Parameter Store
+            secrets-manager - variables stored in AWS Secrets Manager
+        phases - specify commands to run:
+            install - install dependencies you may need for your build
+            pre_build - final commands to execute before build
+            Build - actual build commands
+            post_build - finishing touches (e.g, zip output)
+        artifacts - what to uplaod to S3 (encrypted with KMS)
