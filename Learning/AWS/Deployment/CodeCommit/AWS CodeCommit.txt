@@ -1,0 +1,29 @@
+AWS CodeCommit
+    is like github,Bitbucket
+    Version control is the ability to understand the various changes that happened to the code over time( and possibly rollback)
+    All these are enabled by using a version control system such as Git
+    a Git repository can be synchronized on your computer but it usually is uploaded to a central online repository
+    Benefits are
+        Collaborate with other developers
+        Make sure the code is backed-up somewhere
+        Make sure it's fully viewable and auditable
+    AWS CodeCommit
+        Private git repositories
+        No size limit on repositories (scale seamlessly)
+        Fully managed, highly available
+        Code only in AWS Cloud Account => increased security and compliance
+        Security (encrypted, access control, ...)
+    Integrated with Jenkins, AWS CodeBuild, and other CI tools
+    Security
+        Interaction are done using Git (standard)
+        Authentication
+            SSH Keys - AWS Users can configure SSH keys in their IAM console
+            HTTPS - with AWS CLI Credential helper or Git credentials for IAM user
+        Authorization
+            IAM policies to manage users/roles permission to repositories
+        Encryption
+            Repositories are automatically encrypted at rest using AWS KMS
+            Encrypted in transit ( can only use HTTPS or SSH - both secure)
+        Cross-account Access
+            Do not share your SSh keys or your AWS Credentials
+            Use an IAM Role in your AWS account and use AWS STS (AssumeRole API)
