@@ -1,0 +1,27 @@
+AWS CodePipeline
+    Just think it's like Jenkin
+    Visual Workflow to orchestrate your CICD
+    Source - CodeCommit, ECR, S3, Bitbucket, Github
+    Build - CodeBuild, Jenkins, CloudBees, TeamCity
+    Test - CodeBuild, AWS Device Farm, 3rd party tools,..
+    Deploy - CodeDeploy, Elastic Beanstalk, CloudFormation, ECS, S3, ..
+    Invoke - Lambda, Step Functions
+    Consists of stage
+        Each stage can have sequential actions and/or parallel actions
+        Example: Build -> Test -> Deploy -> Load Testing
+        Manual approval can be defined at any stage
+    Each pipeline stage can create artifacts and stored in an S3 bucket and passed on to the next stage
+    So the idea is
+        When developer commit the code to Github, gitlab,...
+        These will output an artifact and stored in S3 bucket
+        AWS CodeBuild will pull the artifact from S3 and build and output a news one to store in S3 again
+        AWS CodeDeploy will pull that new one and deploy
+    Troubleshooting
+        For CodePipeline Pipeline/Action/Stage Execution State Changes
+        Use CloudWatch Events (Amazon EventBridge). Example:
+            You can create events for failed pipeline
+            You can create events for cancelled pipeline
+        If CodePipeline fails a stage, your pipeline stops, and you can get information in the console
+        If pipeline can't perform an action, make sure the "IAM service role" attached does have enough IAM permissions (IAM policy)
+        AWS CloudTrail can be used to audit AWS API calls
+

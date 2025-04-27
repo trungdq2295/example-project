@@ -27,3 +27,7 @@ AWS CodeCommit
         Cross-account Access
             Do not share your SSh keys or your AWS Credentials
             Use an IAM Role in your AWS account and use AWS STS (AssumeRole API)
+    Deprecation
+        On July 25th 2024, AWS abruptly discontinued CodeCommit
+        New customers cannot use the service
+        AWS recommends to migrate to an external Git solution
