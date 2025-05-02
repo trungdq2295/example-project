@@ -1,0 +1,36 @@
+AWS Step Functions
+  Model your workflows as state machines (one per workflow)
+    Order fulfillment, Data processing
+    Web applications, Any workflow
+  Written in JSON
+  Visualization of the workflow and the execution of the workflow as well as history
+  Start workflow with SDK call, API Gateway, EventBridge
+  Use cases: a chain of lambda function
+    For example: if you process a long running task, single lambda would be a bad idea
+    You have to create multiple lambda for it and it can become a nightmare for you
+  Task States
+    Do some work in your state machine
+    Invoke one AWS service
+      Can invoke a Lambda function
+      Run an AWS Batch job
+      Run an ECS task and wait for it to complete
+      Insert an item from DynamoDB
+      Publish message to SNS, SQS
+      Launch another Step Function workflow
+    Run an one Activity
+      EC2, Amazon ECS, on-premises
+      Activity poll the Step functions for work
+      Activities send result back to Step function
+  States
+    Choice State - Test for a condition to send to a branch ( or default branch)
+    Fail or Succeed State - Stop execution with failure or success
+    Pass State - Simply pass its input to its output or inject some fixed data, without performing work
+    Wait State - provide a delay for a certain amount of time or until a specified time/date
+    Map State - Dynamically iterate steps
+    Parallel State - Dynamically iterate steps
+
+	Build  serverless visual workflow to orchestrate your lambda functions
+	Features: sequence, parallel, conditions, timeouts, error handling, ..
+	Can integrate with EC2, ECS, On-premises servers, API Gateway, SQS queues, etc..
+	Possibility of implementing human approval feature
+	Use cases: order fulfillment, data processing, web applications, any workflow
