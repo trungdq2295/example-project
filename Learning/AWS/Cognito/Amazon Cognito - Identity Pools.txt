@@ -1,0 +1,27 @@
+Amazon Cognito - Identity Pools
+  The issue is you have so many users who want to access AWS service temporary, so creating an IAM role for this kind of situation is not good
+  Get identities for "users" so they obtain temporary AWS credentials
+  Your identity pool (e.g identity source) can include:
+    Public providers (Amazon, FB,GG,...)
+    Users in an Amazon Cognito User pool
+    OpenID Connect Providers & SAML Identity Provider
+    Developer Authenticated Identities ( custom login servers)
+    Cognito identity Pools allow for unauthenticated (guest) access
+      => You can create Guest account for this kind
+  After getting these credentials, users can then access AWS services directly or through API Gateway
+    The IAM policies applied ot the credentials are defined in Cognito
+    They can be customized based on the user_id for fine grained control
+  Flow:
+    Client login and get token
+    Client exchange token with Cognito identity Pools
+    Cognito identity pool will validate if token valid
+    Cognito return temporary AWS credentials to client
+    Client use temporary AWS credentials to connect AWS
+
+  IAM Roles
+    How cognito assign IAM Role to the user?
+    We have to define default IAM roles for authenticated and guest users
+    Default rules to choose the role for each used based on the user's ID
+    you can partition your user's access using policy variables
+    IAm credentials are obtained by Cognito identity Pools through STS ( AWS Security Token Service)
+    The roles must have a "trust" policy of Cognito Identity Pools

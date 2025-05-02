@@ -1,0 +1,13 @@
+AWS Lambda - VPC
+    By default, your Lambda function is launched outside your own VPC ( in an AWS-owned VPC)
+    Therefore it cannot access resource in your VPC (RDS, ElastiCache, internal ELB..)
+
+    VPC in Lambda
+        You must define the VPC ID, the Subnets and the security groups
+        Lambda will create an ENI (Elastic Network Interface) in your subnets
+        AWSLambdaVPCAccessExecutionRole
+    Internet Access
+        A lambda function in your VPC does not have internet access
+        Important: Deploying a Lambda function in a public subnet does not give it internet access or a public IP
+        Deploying a Lambda function in a private subnet gives it internet access if you have a NAT Gateway/ instance
+        You can use VPC endpoints privately access AWS services without a NAT

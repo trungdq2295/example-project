@@ -1,0 +1,8 @@
+AWS Lambda - Dependencies
+    If your lambda function depends on external libraries:
+        You need to install the packages alongside your code and zip it together
+    Upload the zip straight to Lambda if less than 50MB,
+        else you have to upload to S3 first
+    Native libraries work: they need to be compiled on Amazon Linux
+    AWS SDK comes by default with every Lambda function
+        So if you code includes AWS SDK, you don't need to do anything

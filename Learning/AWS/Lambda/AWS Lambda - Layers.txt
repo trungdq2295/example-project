@@ -1,0 +1,6 @@
+AWS Lambda - Layers
+    Custom Runtimes
+    Externalize Dependencies to re-use them:
+        When you deploy your lambda function and it attached external dependencies and they're rarely changed
+        So the idea is instead of deploying all of your zip file ( which is very large like upto 30MB)
+        then you use lambda layers for your external dependencies to minimize the zip file

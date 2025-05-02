@@ -1,0 +1,22 @@
+AWS Cloud Development Kit
+  CDK
+  Define your cloud infrastructure using a familiar language : Js, Typescripts, python, Java and .NET
+  Similar to CloudFormation but higher level
+  Contains high level components called constructs
+  The code is "compiled" into a CloudFormation template (JSON/YAML)
+  You can therefore deploy infrastructure and application runtime code together
+    Great for Lambda function
+    Great for docker containers in ECS/EKS
+  CDK vs SAM
+    SAM:
+      Serverless focused
+      Write your template declaratively in JSON or YAML
+      Great for quickly getting started with Lambda
+      Leverages CloudFormation
+    CDK:
+      Support for all AWS Service
+      Write infra in a programming languages
+      Leverages CloudFormation
+  You can combine both CDK + SAM
+    you can use SAM CLI to locally test your CDK apps
+    You must first run cdk synth

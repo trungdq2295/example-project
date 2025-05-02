@@ -1,0 +1,9 @@
+AWS Cloud Development Kit - Unit Testing
+  To test CDK apps, use CDK Assertions Module combined with popular test frameworks such as Jest (Javascript), or Pytest (Python)
+  Verify we have specific resources, rules, conditions, parameters...
+  Two type of tests:
+    Fine-grained Assertions(common) - test specific aspects of the CloudFormation template (e.g, check if a resource has this property with this value)
+    Snapshots Tests - test the synthesized Cloudformation template against a previously stored baseline template
+  To import a template:
+    Template.fromStack(MyStack): stack built in CDK
+    Template.fromString(myString): stack build outside CDK

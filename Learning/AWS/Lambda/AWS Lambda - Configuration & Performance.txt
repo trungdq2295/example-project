@@ -1,0 +1,27 @@
+AWS Lambda - Configuration & Performance
+    Configuration
+        RAM:
+            From 128MB to 10GB in 1 MB increments
+            The more RAM you add, the more vCPU credits you get
+            AT 1,792 MB RAM, a function has the equivalent of one full vCPU
+            After 1,792 MB RAM, you get more than one CPU, and need to use multi-threading in your code to benefit from it
+        If your application is CPU-bound (computation heavy), increase RAM
+        Timeout: default 3 seconds, maximum is 900 seconds (15 minutes)
+    Execution Context
+        is a temporary runtime environment initializes any external dependencies of your lambda code
+        Great for database connections, HTTP clients, SDK clients...
+        The execution context is maintained for some time in anticipation of another Lambda function invocation
+            => So the next function invocation can "re-use" the context to execution time and save time in initializing connections object
+            Example: you make a call to DB which you need to create a connection to DB first, and then execute query
+                    However, It is not efficient for each query, you create a connection to DB
+                    So the idea of execution context is you move the code which create connection to DB outside of function handler,
+                    and Lambda will reuse it
+        The execution context includes the /tmp directory
+            A space where you can write files and they will be available across executions
+            Example: if your lambda function needs to download a big file to work
+                And every execution, you download it again which is very inefficient
+                We use /tmp directory to store this file and can be reused for multiple invocations
+            For permanent persistence of object (non temporary), use S#
+            To encrypt content on /tmp, you must generate KMS Data keys
+
+

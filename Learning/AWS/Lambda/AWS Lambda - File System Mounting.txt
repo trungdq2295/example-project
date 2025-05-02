@@ -1,0 +1,5 @@
+AWS Lambda - File System Mounting
+    Lambda Function can access EFS file system if they are running in a VPC
+    Configure Lambda to mount EFS file systems to local directory during initialization
+    Must leverage EFS Access Points
+    Limitation: watch out for teh EFS connection limits ( one function instance = once connection) and connection burst limits

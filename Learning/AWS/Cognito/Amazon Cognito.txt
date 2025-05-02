@@ -1,0 +1,28 @@
+Amazon Cognito
+  It's like an OAuth 2 for your application ( just like your application use google)
+    The idea is Cognito provides you a domain, and user will be directed to their login website
+      and you have so many option for authentication there
+      and then, you can do some authorization based on the token or so
+	Give users an identity  to interact with our web or mobile application
+	Cognito User Pools:
+		Sign in functionality for app users
+		Integrate with API gateway & Application Load Balancer
+	Cognito Identity Pools (federated Identity):
+		Provide AWS credentials to users so they can access AWS resources directly
+		Integrate with Cognito User Pools as an identity provider
+	IAM for internal users
+	Cognito for external users
+
+  User Pools versus identity Pool
+    Cognito User Pools (for authentication = identity verification)
+      Database of users for your web and mobile application
+      Allows to federate logins through Public Social, OIDC, SAML...
+      Can customize the hosted UI for authentication (including the logo)
+      Has triggers with AWS Lambda during the authentication flow
+      Adapt the sign-in experience to different risk levels (MFA, adaptive authentication, etc..)
+    Cognito Identity Pools (for authorization = access control)
+      Obtain AWS credentials for your users
+      Users can login through Public Social, OIDC< SAML & Cognito User Pools
+      Users can be unauthenticated ( guests)
+      Users are mapped to IAM roles & policies, can leverage policy variables
+    CUP + CIP = authentication + authorization

@@ -1,0 +1,34 @@
+AWS - Cognito User Pools(CUP) - User Features
+	Create a serverless database of user for your web & mobile apps
+	Simple Login: Username (or email) / password combination
+	Password reset
+	Email & Phone Number Verification
+	Multi-factor Authentication (MFA)
+	federated identities: users from Facebook, GG, SAML...
+	Feature: block users if their credentials are compromised elsewhere
+	Login sends back a JWT
+	CUP integrate with API Gateway and Application Load Balancer
+	So the idea is the client will call to Cognito User Pools to get the token and call to APi Gateway/ALB
+	  And then APi Gateway/ALB will call to Cognito User Pools to verify the token
+	  If it's ok, then it will process it
+
+  Lambda Trigger
+    CUP can invoke a Lambda function synchronously on these trigger event:
+      Authentication Events
+      Sign-up
+      Messages
+      Token Creations
+  Hosted Authentication UI
+    Cognito has a hosted authentication UI that you can add to your app to handle sign-up and sign-in workflows
+    Using the hosted UI, you have foundation for integration with social logins, OIDC or SAML
+    Can customize with a custom logo and custom CSS
+  Hosted UI Custom Domain
+    For custom domains, you must create an ACM certificate in "us-east-1" no matter what your region is
+    The custom domain must be defined in the "App Integration" section
+  Adaptive Authentication
+    Block sign-ins or require MFA if the login appears suspicious
+    Cognito examines each sign-in attempt and generates a risk score (low, medium, high) for how likely the sign-in request is to be from malicious attacker
+    Users are prompted for a second MFA only when risk is detected
+    Risk score is based on different factors such as if the users has used the same device, location, or IP address
+    Checks for compromised credentials, account takeover protection, and phone and email verification
+

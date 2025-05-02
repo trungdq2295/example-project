@@ -1,0 +1,18 @@
+AWS Serverless Application Model (SAM) - Local Capabilities
+  Locally start AWS Lambda
+    command: sam local start-lambda
+    Stars a local endpoint that emulates AWS Lambda
+    Can run automated tests against this local endpoint
+  Locally invoke Lambda function
+    command: sam local invoke
+    Invoke Lambda function with payload once and quit after invocation completes
+    Helpful for generating test cases
+    If the function make API calls to AWS, make sure you are using the correct --profile option
+  Locally start an API Gateway Endpoint
+    command: sam local start-api
+    STarts a local HTTP server that host all your functions
+    Changes to function are automatically reloaded
+  Generate AWS Events for Lambda Function
+    command: sam local generate-event
+    Generate sample payloads for event sources
+    S3, API Gateway, SNS, Kinesis, DynamoDB,...

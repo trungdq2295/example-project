@@ -1,0 +1,28 @@
+Application Load Balancer - Authenticate Users
+  Your ALb can securely authenticate users
+    Offload the work of authenticating users to your load balancer
+    Your applications can focus on their business logic
+  Authenticate users though:
+    Identity Provider (IdP): OpenID Connect (OIDC) compliant
+    Cognito User Pool:
+      Social IdPs, such as Amazon, Facebook or Google
+      Corporate identities using SAML, LDAP, or Microsoft AD
+  Must use an HTTPS listener to set authenticate-oidc & authenticate-cognito rules
+  OnUnauthenticatedRequest - we can do 3 options:
+    authenticate (default): ask user to authenticate
+    deny: deny request
+    allow
+  Auth through Cognito User Pools
+    Create Cognito User Pool, Client and Domain
+    Make sure an ID token is returned
+    Add the social or Corporate ldP if needed
+    Several URL redirections are necessary
+    Allow your Cognito User Pool Domain on your ldP app's callback URL which will be redirected after successfully login
+  ODIC Auth Flow
+    This is quite complicated
+      There will be a http request from client to ALB
+      Then ALB's going to redirect the user for authentication to the authentication endpoint of your identity provider
+      The Identity provider will grant user a "Authorization Code"
+      Authorization code will be passed to ALB, which is going to send to Token Endpoint from Identity Provider
+      The authorization code will be switched and exchanged for ID Token + Access Token
+      And then ALB do the request to User Info Endpoint from Identity Provider with that Token to access user info

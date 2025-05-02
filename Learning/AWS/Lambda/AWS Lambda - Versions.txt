@@ -1,0 +1,16 @@
+AWS Lambda - Versions
+    When you work on a Lambda function, we work on $LATEST
+    When we're ready to publish a Lambda function, we create a version
+    Version are immutable
+    Versions have increasing version numbers
+    Version get their own ARN (amazon resource name)
+    Version = code + configuration (nothing can be changed - immutable)
+    Each version of the lambda function can be accessed
+
+    Lambda Aliases
+        are "pointers" to lambda function versions
+        We can define a "dev", "test", "prod" aliases and have them point at different lambda version
+        Aliases are mutable
+        Aliases enable Canary deployment by assigning weights to Lambda function
+        Aliases have their own ARNs
+        Aliases cannot reference aliases

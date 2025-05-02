@@ -1,0 +1,21 @@
+AWS Lambda - Container Images
+     Deploy Lambda function as container images of up to 10GB from ECR
+     Pack complex dependencies, large dependencies in a container
+     You package your lambda as image container and run the container in lambda runtime api
+     Can create your own images as long as it implements the Lambda Runtime API
+     Test the containers locally using Lambda Runtime Interface Emulator
+     Unified workflow to build apps
+     Best practices:
+        Strategies for optimizing container images
+            Use AWS-provided Base Images
+                Stable, Built on Amazon Linux 2, cached by Lambda service
+            Use Multi-STage Builds
+                Build your code in larger preliminary images
+                You only copy the artifacts you need in your final container images
+                discard te preliminary steps
+            Build from Stable to Frequently Changing
+                Make your most frequently occurring changes as late in your Dockerfile as possible
+            Use a single Repository for Function with Large Layer
+                ECR compares each layer of a container image when it is pushed to avoid uploading and storing duplicates
+            Use them
+        Use container images to upload large Lambda function (up to 10GBs)

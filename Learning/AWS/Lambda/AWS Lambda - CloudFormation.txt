@@ -1,0 +1,19 @@
+AWS Lambda - CloudFormation
+    Inline
+        Inline functions are very simple
+            You just need to include lambda code inside CloudFormation template
+        Use the Code.ZIP file property
+        You cannot include function dependencies with inline functions
+    Through S3
+        Store the Lambda function zip in S3
+        you must refer the S3 zip location in the Cloudformation code
+            S3Bucket
+            S3Key: full path to zip
+            S3ObjectVersion: if versioned bucket (recommend option)
+        If you update the code in S3, but don't update S3bucket, S3Key or S3Objectversion, Cloudformation won't update your function
+            That's why you need to enable versioning, so cloudformation can detect the change in S3
+    through S3 Multiple Accounts
+        You have S3 bucket with Lambda code in account 1 and your lambda function is in account 2 and account 3
+            You need to provide bucket policy (allow & get list to s3 bucket) to cloudformation on account 2 and account 3
+            So cloudformation can detect the change from S3 in account S1
+

@@ -1,0 +1,9 @@
+AWS Lambda - CodeGuru
+    Gain insights into runtime performance of your lambda function using CodeGuruProfiler
+    CodeGuru creates a Profiler Group for your Lambda function
+    Supported for Java and Python runtimes
+    Activate from AWS Lambda Console
+    When activated, Lambda adds:
+        CodeGuru Profiler layer to your function
+        Environment variables to your function
+        AmazonCodeGuruProfilerAgentAccess policy to your function (IAM Role)

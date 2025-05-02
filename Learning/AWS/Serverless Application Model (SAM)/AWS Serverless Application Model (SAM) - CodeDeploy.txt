@@ -1,0 +1,23 @@
+AWS Serverless Application Model (SAM) - CodeDeploy
+    SAM framework natively uses CodeDeploy to update Lambda functions
+    Traffic Shifting feature
+    Pre and Post traffic hooks features to validate deployment (before the traffic shift starts and after it ends)
+    Easy & Automated rollback using CloudWatch alarms
+    Example: The idea is SAM trigger CICD CodeDeploy to deploy Lambda alias v2 and there's already v1 is running
+        CodeDeploy will be running some Lambda pre-traffic to test the alias v2
+        And then it will do traffic shifting with alias v1 and v2 according to deployment strategies
+        And then it will monitor through CloudWatch Alarm
+        And then deployment is done, We can run some Lambda post-traffic hook to run some test(optional)
+        and if everything goes well, v1 will goes away
+
+    CodeDeploy
+        AutoPublishAlias
+            Detects when new code is being deployed
+            Creates and publishes an updated version of that function with the latest code
+            Points the alias to the updated version of the Lambda function
+        DeploymentPreference
+            Canary, Linear, AllAtOnce
+        Alarms
+            Alarms that can trigger a rollback
+        Hooks
+            Pre and post traffic shifting Lambda function to test your deployment

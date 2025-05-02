@@ -1,0 +1,13 @@
+AWS Lambda - Best Practices
+    Perform heavy-duty work outside your function handler
+        Connect to databases outside your function handler
+        Initialize the AWS SDK outside your function handler
+        Pull in dependencies or datasets outside of your function handler
+    Use environment variables for:
+        Database Connection Strings, S3 bucket, etc... don't put these values in your code
+        Passwords, sensitives values.. they can be encrypted using KMS
+    Minimizes your deployment package size to its runtime necessities
+        Break down the function if need be
+        Remember the AWS Lambda limits
+        Use Layers where necessary
+    Avoid using recursive code, never have a Lambda function call itself

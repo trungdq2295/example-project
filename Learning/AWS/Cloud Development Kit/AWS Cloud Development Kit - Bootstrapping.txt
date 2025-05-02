@@ -1,0 +1,9 @@
+AWS Cloud Development Kit - Bootstrapping
+  The process of provisioning resources for CDK before you can deploy CDK apps into AWS Environment
+  AWS Environment = account + region
+  When you use CDK to deploy, CloudFormation create a stack called CDK Toolkit and contains:
+    S3 Bucket - to store files
+    IAM Roles - to grant permissions to perform deployments
+  You must run the following command for each new environment:
+    cdk bootstrap aws://<aws_account>//<aws_region>
+  Otherwise, you will get an error " Policy contains a statement with one or more invalid principal"

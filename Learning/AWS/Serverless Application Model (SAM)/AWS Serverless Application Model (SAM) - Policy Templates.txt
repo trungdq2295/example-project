@@ -1,0 +1,7 @@
+AWS Serverless Application Model (SAM) - Policy Templates
+    List of templates to apply permissions to your Lambda functions
+    View AWS document for available list
+    Important examples:
+        S3ReadPolicy: Gives read only permissions to object in S#
+        SQSPollerPolicy: Allows to poll an SQS queue
+        DynamoDBCrudPolicy: CRUD in DynamoDb

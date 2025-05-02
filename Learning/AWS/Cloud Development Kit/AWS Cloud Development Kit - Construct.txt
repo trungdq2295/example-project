@@ -1,0 +1,47 @@
+AWS Cloud Development Kit - Construct
+  CDK Construct is a component that encapsulates everything CDK needs to create the final CloudFormation stack
+  Can represent a single AWS resource(e.g, S3 bucket) or multiple related sources(e.g, worker queue with compute)
+  AWS Construct Library
+    A collection of Constructs included in AWS CDK which contains Constructs for every AWS resources
+    Contains 3 different levels of Constructs available (L1, L2, L3)
+  Construct Hub - contains additional Constructs from AWS, 3rd parties, and open-source CDK community
+
+  Layer 1 Construct:
+    Can be called CFN which represent all resources directly available in CloudFormation
+    Constructs are periodically generated from CloudFormation Resource Specification
+    Construct names start with Cfn (e.g, CfnBucket)
+    You must explicitly configure all resource properties
+    Example:
+      const bucket = new s3.CfnBucket(this, "MyBucket", {
+        bucketName: "MyBucket "
+      });
+  Layer 2 Constructs (L2)
+    Represents AWS resources but with a higher level (intent-based API)
+    Similarly functionality as L1 but with convenient defaults and boilerplate
+      You don't need to know all the details about the resource properties
+    Provide methods that make it simpler to work with the resource (e.g: bucket.addLifeCycleRule())
+    Example:
+      const s3 = require('aws-cdk-lib/aws-s3');
+      const bucket = new s3.Bucket(this, "MyBucket", {
+        versioned: true,
+        encryption: s3.BucketEncryption.KMS
+      });
+      const objectUrl = bucket.urlForObject('MyBucket/MyObject');
+  Layer 3 Constructs
+    Can be called Patterns, which represents multiple related resources
+    Helps you complete common tasks in AWS
+    Example:
+      aws-apigateway.LambdaRestApi: represents an API Gateway backed by a Lambda Function
+      aws-ecs-patterns.ApplicationLoadBalancerFargateService: which represents an architecture that includes a Fargate cluster with ALB
+
+      const api = new apigateway.LambdaRestApi(this,'myapi', {
+        handler: backend,
+        proxy: false
+      });
+      const items = api.root.addResource('items');
+      items.addMethod('GET');
+      items.addMethod('POST');
+      const item = items.addResource('{item}');
+      item.addMethod('POST');
+      item.addMethod('DELETE', new apigateway.HttpIntegration('http://amazon.com');
+

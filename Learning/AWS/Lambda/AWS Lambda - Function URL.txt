@@ -1,0 +1,21 @@
+AWS Lambda - Function URL
+    Dedicated HTTP(s) endpoint for your Lambda function
+    A unique URL endpoint is generated for you (never changes)
+    Invoke via a web browser, curl, Postman, or any HTTP client
+    Access your function URL through the public internet only
+    Supports Resource-based Policies & CORS configurations
+    Can be applied to any function alias or to $LATEST (can't be applied to specific function version)
+    Throttle your function by using Reserved Concurrency
+
+    Function URL Security
+        Resourced-based Policy
+            Authorize other accounts /specific CIDR/ IAM Principals
+        Cross - Origin Resource sharing (CORS)
+            If you call your Lambda function URL from a different domain
+        AuthType NONE - allow public and unauthenticated access
+            Resource-based Policy is always in effect (must grant public access)
+        AuthType AWS_IAM - IAM is used to authenticate and authorize requests
+            Both Principal's Identity-based Policy & Resource-based Policy are evaluated
+            Principal mus have lambda:InvokeFunctionUrl permissions
+            Same account - Identity-based Policy OR Resource-based Policy as ALLOW
+            Cross account - Identity-based Policy AND Resource-based Policy as ALLOW
