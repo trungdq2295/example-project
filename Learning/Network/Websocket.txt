@@ -1,5 +1,7 @@
 What is websocket?
- communication protocols used in client-server communication. It starts from ws:// or wss:// instead of http:// or https:// like HTTP, which means the connection between client and server will keep alive until it is terminated by either party (client or server). After closing the connection by either of the client and server, the connection is terminated from both ends.
+ communication protocols used in client-server communication. It starts from ws:// or wss:// instead of http:// or https:// like HTTP,
+  which means the connection between client and server will keep alive until it is terminated by either party (client or server).
+  After closing the connection by either of the client and server, the connection is terminated from both ends.
 
 Why we use it ?
    1 - It used bi- directional, full-duplex protocol mean Data can be sent from server to client at any time, without the client even requesting it. This is often called server-push and is very valuable for applications where the client needs to know fairly quickly when something happens on the server (like a new chat messages has been received or a new price has been udpated). A client cannot be pushed data over http. The client would have to regularly poll by making an http request every few seconds in order to get timely new data. Client polling is not efficient.

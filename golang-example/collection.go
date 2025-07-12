@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main2() {
 	//mapCollection()
 	//xyz := func(x int, y float64) {
 	//	fmt.Println("", y, x)

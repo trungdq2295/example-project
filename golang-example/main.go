@@ -5,7 +5,7 @@ import "fmt"
 var test, a int = 2, 4 //global variable
 var python bool
 
-func main2() {
+func main3() {
 	loop(5)
 	while(5)
 	var i int

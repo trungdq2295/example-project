@@ -9,7 +9,7 @@ type TN struct {
 
 var v1, v2 = TN{"hello", 20}, TN{"world", 30}
 
-func main3() {
+func main5() {
 	//pointer()
 	//structInGo()
 	//fmt.Println(array())

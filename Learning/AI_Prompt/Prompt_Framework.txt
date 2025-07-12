@@ -1,0 +1,12 @@
+Prompt Framework
+  Define the task
+    Identify the specific action or goal for the prompt
+  Clear instructions
+    Outline guidelines or rules for ChatGPT to follow
+  Offer context
+    Give background information, examples and scenarios for relevance
+  Prompt framework template
+    Subject: The topic you want chatgpt to help you
+    Task: The task you want chatgpt to do
+    Instruction: guidelines or rules for chatGPT to follow
+    Context: give background information this as much as possible
