@@ -1,0 +1,10 @@
+Database Index
+    Cluster Index
+        Means the table would get reshaped for that particular index. All the rows would be re-resorted in that order
+        1 table only have 1 cluster index
+        It stores all the row data on that index, so it can be retrieved faster
+        When you use execution plan: it's a scan
+    Non-cluster index
+        It just maintains separately
+        It stores the pointer to the row of that index so everytime you retrieved data, it will go to that pointer => that row data
+        When you use execution plan: it's a seek

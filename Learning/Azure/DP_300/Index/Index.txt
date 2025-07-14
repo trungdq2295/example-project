@@ -1,0 +1,36 @@
+Index
+    Note: SARgable mean Search Argument-able which refer to whether a query can efficiently use an index
+    Why
+        Index stop us from scanning all table and allow us to seek a particular point
+    Requirement to create an index
+        You have so many data like hundreds or thousands more data
+        Small column size
+            Integer column is the best suitable
+            varchar column can consume more disk space so you need to be aware of size of varchar
+        Column in where clause
+            The condition should be SARgable
+            => the function such as YEAR(), LEN() won't be working with index
+    Cluster index
+        Once per table
+        Usually created with primary key => need to be unique
+        Should be use it for frequently query and range query
+        It re-sorts the table
+    Non-cluster index
+        You can have many non-cluster index
+        Cons:
+            The operation create, update, delete will make index adjust the data so if you have many index, it can slowdown these operations
+    Filtered-Index
+        Apply index of filtered condition
+        Cons
+            Smaller size index
+            Faster queries
+            Less maintenance overhead
+        Pros:
+            If it's outside the filter condition, it won't be applied
+    FillFactor
+        Control how full each index page is built
+        Used to reserve the space for future insertion
+        Example: each page can be stored 10 data. Instead of storing all 10 data, you store 6 only and move 4 other data to another page
+            So if you insert new data next time, instead of creating new page, it will store to exist page
+            When the page full, azure sql server does the split page again and each page stores up to 60 data
+        => very useful when your table has frequent update

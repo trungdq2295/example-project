@@ -1,0 +1,29 @@
+Problems
+    If our field type is too wide:
+        Example: our data varchar's length is 100 but we're declaring the nvarchar(500) for column
+        If field type is wide, it will increase the row size which leads to increasing time retrieve the data
+    What if your query contains sort?
+
+
+Concept
+    Re-compile
+        Everytime you run a query or store procedure, SQL server generate an execution plan, a strategy for how to get data efficiently.
+        => SQL server caches this plan and reuse it next time for performance
+        Recompile means don't use that plan, build a fresh one for each time
+        This's only good if parameter values change and cache works poorly
+        Cons:
+            Extra CPU usage
+            Should be use strategically, not everywhere
+    Set-based operations
+        IT means you update many rows at a time
+        Pros:
+            Faster
+            Scalable,
+            Leverage SQL Server's internal optimizations
+    Cursor
+        allow you to process many row but one-by-one at a time unlike set-based
+        Only use it when you have to deal with complex per-row logic
+        Cons:
+            slower and higher resource usages
+            Hard to maintain
+            => better alternative often exists such as Merge, update from, apply,...

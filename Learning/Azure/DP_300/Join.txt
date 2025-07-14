@@ -1,0 +1,13 @@
+Join in execution plan
+    Three type of join in execution plan
+        Nested loop join
+            Joins each outer row with each matching inner row (can be full scan or seek) so it uses the least I/O
+            "Cross Join" usually use nested loop join in execution plan
+        Merge Join
+            It's very fast because it know when it can and merge and when it can't
+            Inner join, left join, right join on index column
+        Hash Join - Hash Match
+            Least Favourite Join
+            Used for large unsorted,  non indexed-inputs
+            Can be used in middle of complex query as intermediate results are often not indexed
+            Inner join, left join, right join on non-index column
