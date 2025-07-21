@@ -1,0 +1,29 @@
+DMV
+    Dynamic Management views
+    Used to gather query performance information
+    are prefixed with sys.dm_[functional area]
+    We have
+        sys.dm_exec_query_stats
+            Find top N queries ranked by average CPU time, the most cumulative CPU queries
+        sys.dm_exec_procedure_Stats
+            Same for query stats but used for procedures
+        sys.dm_exec_requests
+            Find still running session (by the time you execute this view)
+            Concurrent requests right now (status ='Runnable')
+            In Azure SQL Database, relates only to current database and background tasks, not other databases
+        sys.dm_exec_connections
+            Current active sessions right now
+        sys.dm_db_resource_Stats (Azure SQL Database),
+        sys.resource_stats ( all databases - must be in "master" database in AzureSQL Database)
+        sys.server_resource_stats( Managed Instance)
+        sys.elastic_pool_resource_stats (elastic pool databases)
+            These views are used to identity data and log I/O usage
+        sys.dm_tran_active_transaction
+            Find long running transactions
+        sys.dm_exec_cached_plan
+        sys.dm_exec_sql_text
+        sys.dm_exec_query_plan_Stats
+            Theres used to retrieved cached plan
+        sys.dm_db_missing_index_details
+            To explain what index is missing and can be created
+            This is really good to analyze index problem such as which query is missing index

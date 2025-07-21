@@ -1,0 +1,22 @@
+Query Hint
+    You define the hint for the query
+        Example: using option merge join
+    Since SQL server automatically choose the best plan for query so This is the last option to optimize performance when you're sure your plan is better than SQL server automatically plan
+    Option:
+        KKEEP PLAN
+            "Don’t recompile too aggressively — wait until regular stats thresholds are met."
+        KEEPFIXED PLAN
+            Means you keep the plan fixed, don't change it even when there're re-compile option which change the plan after each query
+            "Never recompile this plan unless absolutely necessary (e.g., schema change, option hint change)."
+        OPTIMIZE FOR UNKNOWN
+            You generate a plan based on the average data distribution ignoring the condition in where clause
+            Which mean: you have a Where in query, this plan still doesnt care about it. It only care about data distribution in storage
+        ROBUST PLAN
+            “SQL Server — don’t take risky shortcuts, build a safer plan.”
+            You build a safe plan without affecting resource server such as memory or cpu usage
+
+    Store Procedure
+        Optimize for Unknown
+            Is good if you want to optimize for a particular parameter with unknown values
+
+
