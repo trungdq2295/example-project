@@ -1,0 +1,30 @@
+Evaluate Scalability and Security
+    AzureSQL
+        Up to 100TB
+        Size of single DB or elastic pool can be changed or
+        Can be scaled vertically or horizontally
+        Can change service tier
+        Audit work at database level
+        .xel Log file are stored in Azure Blob Storage
+        Can use Microsoft Defender Cloud
+        Can use SQL Authentication or Azure Active Directory Authentication
+    AzureSQL Managed Instance
+        Based on purpose
+            General: up to 16TB
+            Business Critical: 4-16Tb
+            Up to 100 DB (up to 500 Tb for Next-gen General Purpose)
+        Size can be change
+        Can be scaled vertically but not easy to sharding
+        Can be change between Premium or Business Critical
+        Audit work at server level
+        .xel Log file are stored in Azure Blob Storage
+        Can use Microsoft Defender Cloud
+        Can use SQL Authentication or Azure Active Directory Authentication
+    SQL Server on Azure VM
+        Instance up to 256 Tb
+            Up to 50 instances per server
+        Size of VM can be changed as needed
+        Audit works at server level
+        Events are stored in file system or Window event logs
+        Can use Microsoft Defender Cloud
+        Windows or SQL Server Authentication

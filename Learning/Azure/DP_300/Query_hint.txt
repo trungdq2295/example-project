@@ -3,7 +3,7 @@ Query Hint
         Example: using option merge join
     Since SQL server automatically choose the best plan for query so This is the last option to optimize performance when you're sure your plan is better than SQL server automatically plan
     Option:
-        KKEEP PLAN
+        KEEP PLAN
             "Don’t recompile too aggressively — wait until regular stats thresholds are met."
         KEEPFIXED PLAN
             Means you keep the plan fixed, don't change it even when there're re-compile option which change the plan after each query

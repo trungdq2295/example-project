@@ -1,0 +1,22 @@
+High Availability
+    AzureSQL
+        Minimum is 99.99%
+        Automatically backup, including full, differential and transaction log, 7-35days
+        Can configure full DB backups to Azure Storage for long-term backup retention
+        Point-in-time restores
+        Can configure Active geo-replication
+        Can configure auto-failover group
+    AzureSQL Managed Instance
+        99.99% availability
+        Automatically backup, including full, differential and transaction log, 7-35days
+        Can perform copy-only backups for long-term backup retention
+        Point-in-time restores
+        Can't configure Active geo-replication
+        Can configure auto-failover group
+    SQL Server on Azure VM
+        Minimum SLA is 95%
+        Can configure availability replicas, using domain controller VM
+        Can configure backup
+        With appropriate backup, can do point-in-times backup
+        Can configure Active geo-replication storage (asynchronously). Data file and log file needs to be on the same disk
+        can configure Azure failover cluster instances using shared storage

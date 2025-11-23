@@ -1,0 +1,4 @@
+Elastic pool
+    A pool where you put your azuresql database together
+    This help to optimize the max DTU usage
+    Elastic pool doesn't have option hyperscale model
