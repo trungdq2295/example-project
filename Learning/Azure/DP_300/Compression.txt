@@ -1,0 +1,21 @@
+Compression Data
+    Row compression
+        For example: you can compress varchar/nvarchar
+            For english, it up to 50% cost reduce
+            It depends on the english you use
+    Prefix compression
+        For example: your data has the same prefix such as House equipment1, house equipment2,...
+        You can compress to Prefix1 which is stands for house
+            => your data be like: [prefix1] equipment1, [prefix2] equipment2
+    Diction compression
+        It will detect the data which shared the same value
+        Just think it like a Set
+    Page compression
+        Data page level
+        Contains many row compressions data
+    Compression doesn't affect the backup storage
+    You can compress non-cluster index, index view
+    Can't compress
+        System table
+    You can run sp_estimate_data_compression_savings to check the estimation of saving
+        Example: EXEC sp_estimate_data_compression_savings 'dbo','ActivityLog', null, null, 'ROW'

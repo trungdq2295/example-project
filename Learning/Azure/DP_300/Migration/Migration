@@ -1,0 +1,30 @@
+Migration
+    Lift and Shift SQL Server to a VM
+        => Azure Migrate
+    Migrate non-SQL objects to SQL Server or AzureSQL
+        => use SQL Server Migration Assistant
+    Migrate SQL Server object to SQL DB/Managed Instance
+        Migrate and/or update SQL Server
+            => use Database Migration Assistant (DMA)
+        Compare workloads between resource source and target SQL Server
+            => use Database Experimentation Assistant  (DEA)
+        Migrate open source Database (MYSQL, PostgreSQL, MariaDB) to azure - offline or online
+            => use Azure Database Migration Service (DMS)
+                Minimum downtime which is good for large migration
+                Can do online using premium tier
+                    need to allow outbound 443
+                    need to have 1434: UDP for SQL Server
+                    enable TCP/IP protocol
+                On your target DB, control your permission on server such as firewall or DB firewall
+                It's depend on your source DB so you can choose DB migrate online or offline
+    Migration
+        Online
+            Means you can use services from Azure
+        Offline
+            Means you have to setup a program on your computer PC and configure
+
+    Post Migration Validation
+        You need to have some test such as performance and correctness to make sure all the data imported correctly
+        YOu need to be careful for version compatibility
+            For example: AzureSQL and Azure Managed instanced always have the latest version
+        You need to verify if there's any missing indices

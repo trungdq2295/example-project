@@ -1,0 +1,13 @@
+SQL Data Sync
+    Allows you to synchronize Data across multiple data
+    YOu need to have primary key and can't change that key
+    Doesn't work with AzureSQL Managed instance
+    You need to define 1 Azure DB as a hub database
+    It's bi-directional change in database
+    For example:
+        A hub database change, it will send event to other member database
+        If a member database change, it send to the hub and the hub send to other member database
+    You also need a sync database which is the same region as Hub Database
+    The conflict resolution:
+        What happen if a hub database change a record and a member database also change that record
+        AzureSQL allow you to config this conflcit resolution to let either 1 of them win
