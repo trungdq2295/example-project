@@ -1,0 +1,15 @@
+Object Level Encryption
+    It's to encrypt your data on specific column
+    It works on column rather than select an row. Which mean all the column in reach row will be encryptted
+    There's 2 type encrypted
+        Deterministic:
+            Same value: same cipher text
+            Good to use if your column will be used to join
+        Randomize
+            Same value: different cipher text
+            Good to use if your column won't be use to join
+            Can't be use in join, group by, indices and distinct
+    How do we let someone read a column?
+        Give the reader’s principal (app/user/managed identity) Key Vault permissions (Get/UnwrapKey/WrapKey etc.)
+        and ensure they use an Always Encrypted–aware client (driver) or have enclave setup.
+        The DB itself only holds encrypted CEK metadata.

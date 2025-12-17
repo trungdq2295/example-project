@@ -1,0 +1,6 @@
+Transparent Data Encryption(TDE)
+    Encrypt you data at-rest in azuresql
+    Decrypt when you read data
+    We can't apply TDE on Azure managed instance through the Azure UI website
+    We can use T-SQL to apply on both AzureSQL and Azure Managed Instance
+        Example: Alter Database [DatabaseName] SET ENCRYPTION ON

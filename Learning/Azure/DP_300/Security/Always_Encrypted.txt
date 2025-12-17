@@ -1,0 +1,4 @@
+Always Encrypted
+    A security feature in AzureSQL that protects sensitive data at the column level by ensuring it always encrypted
+    Only trusted clients with the right keys can read sensitive columns; SQL Server never can
+    The key lives outside of the DB ( usually in Azure Key Vault)

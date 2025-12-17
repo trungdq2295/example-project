@@ -1,0 +1,8 @@
+Virtualization-Based Security
+    Is a hardware-backed security technology that uses virtualization to create an isolated, trusted memory region
+    For Always Encrypted, you can only query "Equality", VBS help you to query more like
+        LIKE
+        BETWEEN
+        Range queries
+        In-place encryption
+        Some aggregations
