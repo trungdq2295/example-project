@@ -1,0 +1,19 @@
+Engineering with AI
+    Prompt Engineering
+        Is how you type the prompt
+    Context Engineering
+        Is how you to prepare for AI before prompting such as setup
+            Instruction
+                System prompt & guardrails. Clears, plain language
+            User Input
+                The current Ask
+            Retrieved facts
+                Relevant snippets of data
+            Tools
+                Functions the model can call
+            Short term notes
+                Summaries recent steps
+            Long term memory
+                Stable facts, selected on demand
+            Output format
+                Schemas/example for answer shaping
